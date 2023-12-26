@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,6 +18,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -58,9 +61,10 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TeamCard(name: String = "", country: String = "", imageResourceId: Int, modifier: Modifier = Modifier) {
+fun TeamCard(name: String = "", country: String = "", imageResourceId: Int, onClick: () -> Unit = {}, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
+            .clickable { onClick() }
             .background(color = Color.White)
             .padding(12.dp)
             .border(0.1.dp, Color.Black, shape = CircleShape)
@@ -88,6 +92,7 @@ fun TeamCard(name: String = "", country: String = "", imageResourceId: Int, modi
 @Composable
 fun ScaffoldEx() {
     var presses by remember { mutableStateOf(0) }
+    var overview by remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
             TopAppBar(
@@ -106,9 +111,50 @@ fun ScaffoldEx() {
             }
         },
     ) { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding)) {
-            val team = Team.getOne()
-            TeamCard(name = team.name, country = team.country, image = team.image)
+        Box(modifier = Modifier.padding(innerPadding)) {
+            if (overview) {
+                OverviewContent(onBackPressed = { overview = false })
+            } else {
+                Column() {
+                    val team = Team.getOne()
+                    TeamCard(
+                        name = team.name,
+                        country = team.country,
+                        imageResourceId = team.imageResourceId,
+                        onClick = { overview = true },
+                    )
+                    val team2 = Team.getOne()
+                    TeamCard(
+                        name = team2.name,
+                        country = team2.country,
+                        imageResourceId = team2.imageResourceId,
+                        onClick = { overview = true },
+                    )
+                    val team3 = Team.getOne()
+                    TeamCard(
+                        name = team3.name,
+                        country = team3.country,
+                        imageResourceId = team3.imageResourceId,
+                        onClick = { overview = true },
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun OverviewContent(onBackPressed: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text("Overview Content")
+        Button(onClick = { onBackPressed() }) {
+            Text("Back")
         }
     }
 }
@@ -128,8 +174,8 @@ fun TeamList() {
             .padding(10.dp)
             .fillMaxWidth(),
     ) {
-        TeamCard()
-        TeamCard()
+        // TeamCard()
+        // TeamCard()
     }
 }
 

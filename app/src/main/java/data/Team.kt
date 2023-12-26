@@ -20,10 +20,10 @@ data class Team(val name: String, val country: String = "", val imageResourceId:
         )
 
         val sampleLogo = listOf(
-            R.drawable.logo,
-            R.drawable.logo,
-            R.drawable.logo,
-            R.drawable.logo,
+            R.drawable.logo_city,
+            R.drawable.logo_manutd,
+            R.drawable.logo_chelsea,
+            R.drawable.logo_liverpool,
         )
 
         val getOne: () -> Team = {
