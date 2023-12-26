@@ -14,10 +14,22 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults.smallTopAppBarColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -46,28 +58,75 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Team() {
-    Box(modifier = Modifier.background(color = Color.White).padding(12.dp).border(1.dp, Color.Black).fillMaxWidth()) {
+    Box(
+        modifier = Modifier
+            .background(color = Color.White)
+            .padding(12.dp)
+            .border(0.1.dp, Color.Black, shape = CircleShape)
+            .fillMaxWidth(),
+    ) {
         Row(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
-                Text("Manchester", fontSize = 16.sp)
-                Text("England", fontSize = 12.sp)
-            }
             Image(
                 painter = painterResource(id = R.drawable.logo),
                 contentDescription = null,
                 modifier = Modifier
                     .size(50.dp)
                     .background(shape = CircleShape, color = Color.White)
-                    .padding(end = 16.dp)
+                    .padding(start = 16.dp)
                     .align(Alignment.CenterVertically),
             )
+            Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
+                Text("Manchester", fontSize = 16.sp)
+                Text("England", fontSize = 12.sp)
+            }
         }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ScaffoldEx() {
+    var presses by remember { mutableStateOf(0) }
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                colors = smallTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.primary,
+                ),
+                title = {
+                    Text("Premier League")
+                },
+            )
+        },
+        floatingActionButton = {
+            FloatingActionButton(onClick = { presses++ }) {
+                Icon(Icons.Default.Add, contentDescription = "Add")
+            }
+        },
+    ) { innerPadding ->
+        Column(modifier = Modifier.padding(innerPadding)) {
+            Text("Test presses: $presses")
+            TeamList()
+        }
+    }
+}
+
+@Preview
+@Composable
+fun ScaffoldPreview() {
+    PremierLeagueAppTheme {
+        ScaffoldEx()
     }
 }
 
 @Composable
 fun TeamList() {
-    Column(modifier = Modifier.padding(10.dp).fillMaxWidth()) {
+    Column(
+        modifier = Modifier
+            .padding(10.dp)
+            .fillMaxWidth(),
+    ) {
         Team()
         Team()
     }
@@ -87,12 +146,4 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         text = "Hello $name!",
         modifier = modifier,
     )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    PremierLeagueAppTheme {
-        Greeting("Android")
-    }
 }
