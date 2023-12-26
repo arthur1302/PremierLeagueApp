@@ -38,6 +38,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
+import data.Team
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,27 +58,27 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Team() {
+fun TeamCard(name: String = "", country: String = "", imageResourceId: Int, modifier: Modifier = Modifier) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .background(color = Color.White)
             .padding(12.dp)
             .border(0.1.dp, Color.Black, shape = CircleShape)
             .fillMaxWidth(),
     ) {
-        Row(modifier = Modifier.fillMaxWidth()) {
+        Row(modifier = modifier.fillMaxWidth()) {
             Image(
-                painter = painterResource(id = R.drawable.logo),
+                painter = painterResource(id = imageResourceId),
                 contentDescription = null,
-                modifier = Modifier
+                modifier = modifier
                     .size(50.dp)
                     .background(shape = CircleShape, color = Color.White)
                     .padding(start = 16.dp)
                     .align(Alignment.CenterVertically),
             )
-            Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
-                Text("Manchester", fontSize = 16.sp)
-                Text("England", fontSize = 12.sp)
+            Column(modifier = modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
+                Text(name, fontSize = 16.sp)
+                Text(country, fontSize = 12.sp)
             }
         }
     }
@@ -106,8 +107,8 @@ fun ScaffoldEx() {
         },
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
-            Text("Test presses: $presses")
-            TeamList()
+            val team = Team.getOne()
+            TeamCard(name = team.name, country = team.country, image = team.image)
         }
     }
 }
@@ -127,8 +128,8 @@ fun TeamList() {
             .padding(10.dp)
             .fillMaxWidth(),
     ) {
-        Team()
-        Team()
+        TeamCard()
+        TeamCard()
     }
 }
 
