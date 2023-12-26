@@ -112,33 +112,32 @@ fun ScaffoldEx() {
         },
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
+            val teams = remember {
+                val list = mutableListOf(Team.getOne())
+                for (i in 1..5) {
+                    list.add(Team.getOne())
+                }
+                list.toMutableList()
+            }
             if (overview) {
                 OverviewContent(onBackPressed = { overview = false })
             } else {
-                Column() {
-                    val team = Team.getOne()
-                    TeamCard(
-                        name = team.name,
-                        country = team.country,
-                        imageResourceId = team.imageResourceId,
-                        onClick = { overview = true },
-                    )
-                    val team2 = Team.getOne()
-                    TeamCard(
-                        name = team2.name,
-                        country = team2.country,
-                        imageResourceId = team2.imageResourceId,
-                        onClick = { overview = true },
-                    )
-                    val team3 = Team.getOne()
-                    TeamCard(
-                        name = team3.name,
-                        country = team3.country,
-                        imageResourceId = team3.imageResourceId,
-                        onClick = { overview = true },
-                    )
-                }
+                TeamsList(teams, onTeamClick = { overview = true })
             }
+        }
+    }
+}
+
+@androidx.compose.runtime.Composable
+fun TeamsList(teams: List<Team>, onTeamClick: () -> Unit) {
+    Column() {
+        for (team in teams) {
+            TeamCard(
+                name = team.name,
+                country = team.country,
+                imageResourceId = team.imageResourceId,
+                onClick = onTeamClick,
+            )
         }
     }
 }
