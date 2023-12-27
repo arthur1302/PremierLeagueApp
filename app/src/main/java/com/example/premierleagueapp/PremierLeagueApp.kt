@@ -1,5 +1,9 @@
 package com.example.premierleagueapp
 
+import android.content.Intent
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
@@ -42,6 +46,8 @@ fun PremierLeagueApp() {
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
     val lazyListState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
+    val emailLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { _ ->
+    }
     Scaffold(
         topBar = {
             PremierLeagueTopBar(
@@ -86,7 +92,17 @@ fun PremierLeagueApp() {
                     }
                 }
                 Destinations.Contact.name -> {
-                    FloatingActionButton(onClick = { }) {
+                    FloatingActionButton(onClick = {
+                        val email = "arthur.haus@student.hogent.be"
+                        val subject = "About PL App"
+
+                        val intent = Intent(Intent.ACTION_SENDTO).apply {
+                            data = Uri.parse("mailto:$email")
+                            putExtra(Intent.EXTRA_SUBJECT, subject)
+                        }
+
+                        emailLauncher.launch(intent)
+                    }) {
                         Icon(Icons.Default.Email, contentDescription = "Send mail")
                     }
                 }
