@@ -1,17 +1,18 @@
 package com.example.premierleagueapp
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import data.Team
 
 @Composable
 fun TeamsList(teams: List<Team>, onTeamClick: () -> Unit) {
-    Column() {
-        for (team in teams) {
+    LazyColumn {
+        items(teams) {
             TeamCard(
-                name = team.name,
-                country = team.country,
-                imageResourceId = team.imageResourceId,
+                name = it.name,
+                country = it.country,
+                imageResourceId = it.imageResourceId,
                 onClick = onTeamClick,
             )
         }

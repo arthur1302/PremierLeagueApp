@@ -37,14 +37,16 @@ data class Team(val name: String, val country: String = "", val imageResourceId:
 
         val getAll: () -> List<Team> = {
             val list = mutableListOf<Team>()
-            for (i in sampleTeams.indices) {
-                list.add(
-                    Team(
-                        sampleTeams[i],
-                        sampleDescription[i],
-                        sampleLogo[i],
-                    ),
-                )
+            repeat(10) {
+                for (i in sampleTeams.indices) {
+                    list.add(
+                        Team(
+                            sampleTeams[i],
+                            sampleDescription[i],
+                            sampleLogo[i],
+                        ),
+                    )
+                }
             }
             list
         }
