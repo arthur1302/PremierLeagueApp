@@ -1,7 +1,7 @@
-package com.example.premierleagueapp
+package com.example.premierleagueapp.ui
 
 import androidx.lifecycle.ViewModel
-import data.Team
+import com.example.premierleagueapp.data.Team
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 

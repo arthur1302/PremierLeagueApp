@@ -1,16 +1,15 @@
-package com.example.premierleagueapp
+package com.example.premierleagueapp.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,22 +23,18 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun TeamCard(name: String = "", country: String = "", imageResourceId: Int, onClick: () -> Unit = {}, modifier: Modifier = Modifier) {
-    Box(
+    ElevatedCard(
         modifier = modifier
             .clickable { onClick() }
-            .background(color = Color.White)
-            .padding(12.dp)
-            .border(0.1.dp, Color.Black, shape = CircleShape)
-            .fillMaxWidth(),
+            .padding(16.dp, 4.dp),
     ) {
-        Row(modifier = modifier.fillMaxWidth()) {
+        Row(modifier = modifier.fillMaxWidth().padding(8.dp)) {
             Image(
                 painter = painterResource(id = imageResourceId),
                 contentDescription = null,
                 modifier = modifier
-                    .size(50.dp)
+                    .size(40.dp)
                     .background(shape = CircleShape, color = Color.White)
-                    .padding(start = 16.dp)
                     .align(Alignment.CenterVertically),
             )
             Column(modifier = modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {

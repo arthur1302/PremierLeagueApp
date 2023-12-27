@@ -1,4 +1,4 @@
-package data
+package com.example.premierleagueapp.data
 
 import com.example.premierleagueapp.R
 import kotlin.random.Random

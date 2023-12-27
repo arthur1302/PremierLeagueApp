@@ -1,4 +1,4 @@
-package com.example.premierleagueapp
+package com.example.premierleagueapp.ui
 
 import android.content.Intent
 import android.net.Uri
@@ -29,6 +29,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.premierleagueapp.R
 import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
 import kotlinx.coroutines.launch
 

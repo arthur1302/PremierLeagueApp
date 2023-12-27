@@ -1,4 +1,4 @@
-package com.example.premierleagueapp
+package com.example.premierleagueapp.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
