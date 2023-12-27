@@ -27,6 +27,10 @@ fun TeamCard(name: String = "", country: String = "", imageResourceId: Int, onCl
         modifier = modifier
             .clickable { onClick() }
             .padding(16.dp, 4.dp),
+        /*colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+            contentColor = MaterialTheme.colorScheme.onPrimary,
+        ),*/
     ) {
         Row(modifier = modifier.fillMaxWidth().padding(8.dp)) {
             Image(

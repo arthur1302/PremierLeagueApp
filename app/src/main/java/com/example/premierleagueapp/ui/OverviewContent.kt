@@ -9,7 +9,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
 
 @Composable
 fun OverviewContent(onBackPressed: () -> Unit) {
@@ -24,5 +26,13 @@ fun OverviewContent(onBackPressed: () -> Unit) {
         Button(onClick = { onBackPressed() }) {
             Text("Back")
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun OverviewPrev() {
+    PremierLeagueAppTheme {
+        OverviewContent(onBackPressed = {})
     }
 }
