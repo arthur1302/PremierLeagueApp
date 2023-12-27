@@ -1,10 +1,11 @@
 package com.example.premierleagueapp
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -15,9 +16,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
@@ -25,7 +26,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
-import data.Team
+import kotlinx.coroutines.launch
 
 enum class Destinations {
     Start,
@@ -36,9 +37,11 @@ enum class Destinations {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PremierLeagueApp() {
-    var overview by remember { mutableStateOf(false) }
+    var overview by rememberSaveable { mutableStateOf(false) }
     val navController = rememberNavController()
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
+    val lazyListState = rememberLazyListState()
+    val coroutineScope = rememberCoroutineScope()
     Scaffold(
         topBar = {
             PremierLeagueTopBar(
@@ -76,8 +79,10 @@ fun PremierLeagueApp() {
         floatingActionButton = {
             when (currentBackStackEntry?.destination?.route) {
                 Destinations.Start.name -> {
-                    FloatingActionButton(onClick = { }) {
-                        Icon(Icons.Default.Add, contentDescription = "Add")
+                    FloatingActionButton(onClick = {
+                        coroutineScope.launch { lazyListState.animateScrollToItem(0) }
+                    }) {
+                        Icon(Icons.Default.KeyboardArrowUp, contentDescription = "Scroll up")
                     }
                 }
                 Destinations.Contact.name -> {
@@ -89,15 +94,13 @@ fun PremierLeagueApp() {
         },
     ) { innerPadding ->
 
-        val teams = remember { Team.getAll().toMutableStateList() }
-
         NavHost(
             navController = navController,
             startDestination = Destinations.Start.name,
             Modifier.padding(innerPadding),
         ) {
             composable(Destinations.Start.name) {
-                StartScreen(overview, teams) {
+                StartScreen(overview, lazyListState) {
                     overview = it
                 }
             }

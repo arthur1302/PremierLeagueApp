@@ -1,21 +1,27 @@
 package com.example.premierleagueapp
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.snapshots.SnapshotStateList
-import data.Team
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun StartScreen(
     overview: Boolean,
-    teams: SnapshotStateList<Team>,
+    lazyListState: LazyListState,
     onOverviewChanged: (Boolean) -> Unit,
 ) {
+    val viewModel: TeamViewModel = viewModel()
+    val teamUiState by viewModel.teamUiState.collectAsState()
+    val teams = teamUiState.teams
+
     Box() {
         if (overview) {
             OverviewContent(onBackPressed = { onOverviewChanged(false) })
         } else {
-            TeamsList(teams, onTeamClick = { onOverviewChanged(true) })
+            TeamsList(teams, onTeamClick = { onOverviewChanged(true) }, lazyListState)
         }
     }
 }
