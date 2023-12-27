@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -37,25 +38,32 @@ enum class Destinations {
 fun PremierLeagueApp() {
     var overview by remember { mutableStateOf(false) }
     val navController = rememberNavController()
+    val currentBackStackEntry by navController.currentBackStackEntryAsState()
     Scaffold(
         topBar = {
-            PremierLeagueTopBar {
-                val currentBackStackEntry by navController.currentBackStackEntryAsState()
-                val isStartDestination = currentBackStackEntry?.destination?.route == Destinations.Start.name
-                if (isStartDestination) {
-                    IconButton(onClick = {
-                        // show menu
-                    }) {
-                        Icon(Icons.Filled.Menu, contentDescription = "Menu button")
+            PremierLeagueTopBar(
+                {
+                    val isStartDestination = currentBackStackEntry?.destination?.route == Destinations.Start.name
+                    if (isStartDestination) {
+                        IconButton(onClick = {
+                            // show menu
+                        }) {
+                            Icon(Icons.Filled.Menu, contentDescription = "Menu button")
+                        }
+                    } else {
+                        IconButton(onClick = {
+                            navController.popBackStack()
+                        }) {
+                            Icon(Icons.Filled.ArrowBack, contentDescription = "Back button")
+                        }
                     }
-                } else {
-                    IconButton(onClick = {
-                        navController.popBackStack()
-                    }) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = "Back button")
-                    }
-                }
-            }
+                },
+                when (currentBackStackEntry?.destination?.route) {
+                    Destinations.Contact.name -> R.string.contact_title
+                    Destinations.About.name -> R.string.about_title
+                    else -> { R.string.app_title }
+                },
+            )
         },
         bottomBar =
         {
@@ -66,8 +74,17 @@ fun PremierLeagueApp() {
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = { }) {
-                Icon(Icons.Default.Add, contentDescription = "Add")
+            when (currentBackStackEntry?.destination?.route) {
+                Destinations.Start.name -> {
+                    FloatingActionButton(onClick = { }) {
+                        Icon(Icons.Default.Add, contentDescription = "Add")
+                    }
+                }
+                Destinations.Contact.name -> {
+                    FloatingActionButton(onClick = { }) {
+                        Icon(Icons.Default.Email, contentDescription = "Send mail")
+                    }
+                }
             }
         },
     ) { innerPadding ->
