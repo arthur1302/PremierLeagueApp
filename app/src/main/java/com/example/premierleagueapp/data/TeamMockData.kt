@@ -3,7 +3,7 @@ package com.example.premierleagueapp.data
 import com.example.premierleagueapp.R
 import kotlin.random.Random
 
-data class Team(val name: String, val country: String = "", val imageResourceId: Int = 0) {
+data class TeamMockData(val name: String, val country: String = "", val imageResourceId: Int = 0) {
     companion object TeamSampler {
         val sampleTeams = listOf(
             "Man City",
@@ -26,21 +26,21 @@ data class Team(val name: String, val country: String = "", val imageResourceId:
             R.drawable.liverpool,
         )
 
-        val getOne: () -> Team = {
+        val getOne: () -> TeamMockData = {
             val random = Random.nextInt(0, sampleTeams.size)
-            Team(
+            TeamMockData(
                 sampleTeams[random],
                 sampleDescription[random],
                 sampleLogo[random],
             )
         }
 
-        val getAll: () -> List<Team> = {
-            val list = mutableListOf<Team>()
+        val getAll: () -> List<TeamMockData> = {
+            val list = mutableListOf<TeamMockData>()
             repeat(10) {
                 for (i in sampleTeams.indices) {
                     list.add(
-                        Team(
+                        TeamMockData(
                             sampleTeams[i],
                             sampleDescription[i],
                             sampleLogo[i],

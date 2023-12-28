@@ -14,8 +14,6 @@ fun StartScreen(
     onTeamClick: () -> Unit,
 ) {
     val viewModel: TeamViewModel = viewModel()
-    val teamUiState by viewModel.teamUiState.collectAsState()
-    val teams = teamUiState.teams
     val teamApiState = viewModel.teamApiState
 
     when (teamApiState) {
