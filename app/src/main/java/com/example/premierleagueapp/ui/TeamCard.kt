@@ -17,12 +17,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberImagePainter
 
 @Composable
-fun TeamCard(name: String = "", country: String = "", imageResourceId: Int, onClick: () -> Unit = {}, modifier: Modifier = Modifier) {
+fun TeamCard(name: String = "", country: String = "", imageUrl: String, onClick: () -> Unit = {}, modifier: Modifier = Modifier) {
     ElevatedCard(
         modifier = modifier
             .clickable { onClick() }
@@ -34,7 +34,7 @@ fun TeamCard(name: String = "", country: String = "", imageResourceId: Int, onCl
     ) {
         Row(modifier = modifier.fillMaxWidth().padding(8.dp)) {
             Image(
-                painter = painterResource(id = imageResourceId),
+                painter = rememberImagePainter(imageUrl),
                 contentDescription = null,
                 modifier = modifier
                     .size(40.dp)

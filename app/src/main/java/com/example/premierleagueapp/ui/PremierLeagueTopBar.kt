@@ -13,7 +13,7 @@ import androidx.compose.ui.res.stringResource
 fun PremierLeagueTopBar(navigationIcon: @Composable () -> Unit, title: Int) {
     TopAppBar(
         colors = TopAppBarDefaults.smallTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            containerColor = MaterialTheme.colorScheme.tertiaryContainer,
             titleContentColor = MaterialTheme.colorScheme.primary,
         ),
         title = {

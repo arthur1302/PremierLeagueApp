@@ -41,6 +41,7 @@ fun OverviewContent(onBackPressed: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(color = Color.White)
             // .padding(16.dp)
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -88,18 +89,10 @@ fun OverviewContent(onBackPressed: () -> Unit) {
             fontSize = 18.sp,
         )
 
-        LazyRow(
-            modifier = Modifier.fillMaxSize().offset(y = (-75).dp),
-            contentPadding = PaddingValues(horizontal = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
+        Row(
+            Modifier.offset(y = (-85).dp).padding(16.dp).fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            items(data) { match ->
-                UpcomingMatchCard(match)
-            }
-        }
-
-        Row(Modifier.offset(y = (-75).dp).padding(16.dp).fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween) {
             Column {
                 Text(text = "Coach", Modifier.align(Alignment.Start))
                 Text(text = teamData.coach.name, Modifier.align(Alignment.Start))
@@ -109,6 +102,16 @@ fun OverviewContent(onBackPressed: () -> Unit) {
                 Text(text = "Stadium", Modifier.align(Alignment.End))
                 Text(text = "Etihad", Modifier.align(Alignment.End))
                 Text(text = "Running competitions logos?", Modifier.align(Alignment.End))
+            }
+        }
+
+        LazyRow(
+            modifier = Modifier.fillMaxSize().offset(y = (-85).dp),
+            contentPadding = PaddingValues(horizontal = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            items(data) { match ->
+                UpcomingMatchCard(match)
             }
         }
 

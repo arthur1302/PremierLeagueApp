@@ -15,6 +15,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -94,21 +95,13 @@ fun PremierLeagueApp() {
                 }
                 Destinations.Contact.name -> {
                     FloatingActionButton(onClick = {
-                        val email = "arthur.haus@student.hogent.be"
-                        val subject = "About PL App"
-
-                        val intent = Intent(Intent.ACTION_SENDTO).apply {
-                            data = Uri.parse("mailto:$email")
-                            putExtra(Intent.EXTRA_SUBJECT, subject)
-                        }
-
-                        emailLauncher.launch(intent)
                     }) {
                         Icon(Icons.Default.Email, contentDescription = "Send mail")
                     }
                 }
             }
         },
+        containerColor = MaterialTheme.colorScheme.tertiaryContainer
     ) { innerPadding ->
 
         NavHost(

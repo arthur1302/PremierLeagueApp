@@ -9,11 +9,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun PremierLeagueAppBottomBar(onHome: () -> Unit, onContact: () -> Unit, onAbout: () -> Unit) {
     BottomAppBar(
-        containerColor = MaterialTheme.colorScheme.primaryContainer,
+        containerColor = Color.White,
         contentColor = MaterialTheme.colorScheme.primary,
         actions = {
             IconButton(onClick = onHome) {
