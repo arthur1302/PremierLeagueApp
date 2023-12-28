@@ -98,7 +98,20 @@ fun OverviewContent(onBackPressed: () -> Unit) {
             }
         }
 
-        Text(text = teamData.coach.name)
+        Row(Modifier.offset(y = (-75).dp).padding(16.dp).fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween) {
+            Column {
+                Text(text = "Coach", Modifier.align(Alignment.Start))
+                Text(text = teamData.coach.name, Modifier.align(Alignment.Start))
+                Text(text = "Nationality", Modifier.align(Alignment.Start))
+            }
+            Column {
+                Text(text = "Stadium", Modifier.align(Alignment.End))
+                Text(text = "Etihad", Modifier.align(Alignment.End))
+                Text(text = "Running competitions logos?", Modifier.align(Alignment.End))
+            }
+        }
+
         ScrollableGrid(teamData.coach, teamData.squad)
     }
 }
@@ -177,7 +190,7 @@ val test = listOf(
 
 @Composable
 fun ScrollableGrid(coach: Coach, squad: List<Player>) {
-    LazyRow() {
+    LazyRow(Modifier.offset(y = (-70).dp)) {
         item {
             CoachCard(coach, isCoach = true)
         }
@@ -198,19 +211,29 @@ fun ScrollableGrid(coach: Coach, squad: List<Player>) {
 fun PlayerCard(player: Player, isCoach: Boolean) {
     Card(
         modifier = Modifier
-            .fillMaxWidth()
+            .width(150.dp)
+            .height(150.dp)
             .padding(8.dp),
         onClick = { /* Handle player click */ },
     ) {
-        Column(
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp),
+                .padding(start = 8.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text(
                 text = if (isCoach) "C" else player.shirtNumber.toString(),
-                modifier = Modifier.padding(bottom = 4.dp),
+                fontSize = 50.sp,
+                modifier = Modifier.padding(bottom = 4.dp).alpha(0.5F),
             )
+            Image(
+                painter = painterResource(R.drawable.city),
+                contentDescription = null,
+                modifier = Modifier.size(55.dp).align(Alignment.CenterVertically).padding(end = 8.dp),
+            )
+        }
+        Column(Modifier.padding(8.dp)) {
             Text(text = player.name)
             Text(text = player.nationality)
         }
@@ -306,7 +329,7 @@ data class TeamData(
 val teamData = TeamData(
     coach = Coach(name = "Coach Name", nationality = "Nationality"),
     squad = listOf(
-        Player(name = "Player 1", nationality = "Nationality 1", shirtNumber = 10),
+        Player(name = "Player 1", nationality = "Arg 1", shirtNumber = 10),
         Player(name = "Player 2", nationality = "Nationality 2", shirtNumber = 7),
         Player(name = "Player 3", nationality = "Nationality 2", shirtNumber = 7),
     ),
