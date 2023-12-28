@@ -52,6 +52,9 @@ data class Team(
     val website: String,
 )
 
+fun List<Team>.asDomainObjects() =
+    map { Team(it.id, it.name, it.shortName, it.crest, it.website) }
+
 var retrofit = Retrofit.Builder()
     .baseUrl("https://api.football-data.org/v4/")
     .addConverterFactory(GsonConverterFactory.create())
