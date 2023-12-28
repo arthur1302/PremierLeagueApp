@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 
 @Composable
-fun TeamCard(name: String = "", country: String = "", imageUrl: String, onClick: () -> Unit = {}, modifier: Modifier = Modifier) {
+fun TeamCard(name: String = "", country: String = "", imageUrl: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
     ElevatedCard(
         modifier = modifier
             .clickable { onClick() }

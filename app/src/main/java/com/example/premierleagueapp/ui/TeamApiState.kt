@@ -7,3 +7,9 @@ sealed interface TeamApiState {
     object Loading : TeamApiState
     data class Succes(val teams: List<Team>) : TeamApiState
 }
+
+sealed interface TeamApiDetailState {
+    object Error : TeamApiDetailState
+    object Loading : TeamApiDetailState
+    data class Success(val team: Team) : TeamApiDetailState
+}

@@ -109,8 +109,8 @@ fun PremierLeagueApp() {
             Modifier.padding(innerPadding),
         ) {
             composable(Destinations.Start.name) {
-                StartScreen(lazyListState) {
-                    navController.navigate(Destinations.Overview.name)
+                StartScreen(lazyListState) { teamId ->
+                    navController.navigate("${Destinations.Overview.name}/$teamId")
                 }
             }
             composable(Destinations.Contact.name) {
@@ -120,7 +120,15 @@ fun PremierLeagueApp() {
                 Text("My about info")
             }
             composable(Destinations.Overview.name) {
-                OverviewContent()
+                //OverviewContent()
+            }
+            composable(Destinations.Overview.name + "/{teamId}") { backStackEntry ->
+                val teamId = backStackEntry.arguments?.getString("teamId")?.toIntOrNull()
+                if (teamId != null) {
+                    OverviewContent(teamId)
+                } else {
+                    // Handle foutieve of ontbrekende teamId
+                }
             }
         }
     }

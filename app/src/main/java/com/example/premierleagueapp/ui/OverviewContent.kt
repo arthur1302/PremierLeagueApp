@@ -33,89 +33,104 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.premierleagueapp.R
 import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
 
 @Composable
-fun OverviewContent() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = Color.White)
-            // .padding(16.dp)
-            .verticalScroll(rememberScrollState()),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        // Logo and Name
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                // .clip(shape = MaterialTheme.shapes.large)
-                .background(color = Color.Gray),
-        ) {
-            Image(
-                painter = painterResource(R.drawable.england),
-                contentDescription = null,
+fun OverviewContent(teamId: Int) {
+    val viewModel: TeamViewModel = viewModel()
+    val teamApiDetailState = viewModel.teamApiDetailState
+
+    viewModel.getSingleTeam(teamId)
+
+    when (teamApiDetailState) {
+        is TeamApiDetailState.Success -> {
+            val team = teamApiDetailState.team
+
+            Column(
                 modifier = Modifier
-                    .height(120.dp)
-                    .fillMaxWidth()
-                    .alpha(0.5F),
-                contentScale = ContentScale.Crop,
-            )
-            Image(
-                painter = painterResource(R.drawable.city),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(80.dp)
-                    .align(Alignment.BottomEnd)
-                    .padding(16.dp),
-            )
-        }
-        Text(
-            text = "Manchester City",
-            modifier = Modifier
-                .align(Alignment.Start)
-                .padding(16.dp)
-                .offset(y = (-95).dp),
-            fontSize = 24.sp,
-        )
-        // Hier wordt de tekst "England" toegevoegd, ook links uitgelijnd
-        Text(
-            text = "England",
-            modifier = Modifier
-                .align(Alignment.Start)
-                .padding(start = 16.dp)
-                .offset(y = (-100).dp),
-            fontSize = 18.sp,
-        )
+                    .fillMaxSize()
+                    .background(color = Color.White)
+                    // .padding(16.dp)
+                    .verticalScroll(rememberScrollState()),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                // Logo and Name
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        // .clip(shape = MaterialTheme.shapes.large)
+                        .background(color = Color.Gray),
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.england),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .height(120.dp)
+                            .fillMaxWidth()
+                            .alpha(0.5F),
+                        contentScale = ContentScale.Crop,
+                    )
+                    Image(
+                        painter = painterResource(R.drawable.city),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(80.dp)
+                            .align(Alignment.BottomEnd)
+                            .padding(16.dp),
+                    )
+                }
+                Text(
+                    text = team.name,
+                    modifier = Modifier
+                        .align(Alignment.Start)
+                        .padding(16.dp)
+                        .offset(y = (-95).dp),
+                    fontSize = 24.sp,
+                )
+                // Hier wordt de tekst "England" toegevoegd, ook links uitgelijnd
+                Text(
+                    text = "England",
+                    modifier = Modifier
+                        .align(Alignment.Start)
+                        .padding(start = 16.dp)
+                        .offset(y = (-100).dp),
+                    fontSize = 18.sp,
+                )
 
-        Row(
-            Modifier.offset(y = (-85).dp).padding(16.dp).fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-        ) {
-            Column {
-                Text(text = "Coach", Modifier.align(Alignment.Start))
-                Text(text = teamData.coach.name, Modifier.align(Alignment.Start))
-                Text(text = "Nationality", Modifier.align(Alignment.Start))
-            }
-            Column {
-                Text(text = "Stadium", Modifier.align(Alignment.End))
-                Text(text = "Etihad", Modifier.align(Alignment.End))
-                Text(text = "Running competitions logos?", Modifier.align(Alignment.End))
+                Row(
+                    Modifier.offset(y = (-85).dp).padding(16.dp).fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Column {
+                        Text(text = "Coach", Modifier.align(Alignment.Start))
+                        Text(text = teamData.coach.name, Modifier.align(Alignment.Start))
+                        Text(text = "Nationality", Modifier.align(Alignment.Start))
+                    }
+                    Column {
+                        Text(text = "Stadium", Modifier.align(Alignment.End))
+                        Text(text = "Etihad", Modifier.align(Alignment.End))
+                        Text(text = "Running competitions logos?", Modifier.align(Alignment.End))
+                    }
+                }
+
+                LazyRow(
+                    modifier = Modifier.fillMaxSize().offset(y = (-85).dp),
+                    contentPadding = PaddingValues(horizontal = 8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                ) {
+                    items(data) { match ->
+                        UpcomingMatchCard(match)
+                    }
+                }
+
+                ScrollableGrid(teamData.coach, teamData.squad)
             }
         }
-
-        LazyRow(
-            modifier = Modifier.fillMaxSize().offset(y = (-85).dp),
-            contentPadding = PaddingValues(horizontal = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-        ) {
-            items(data) { match ->
-                UpcomingMatchCard(match)
-            }
-        }
-
-        ScrollableGrid(teamData.coach, teamData.squad)
+        // ... (andere gevallen zoals Error en Loading)
+        TeamApiDetailState.Error -> Text(text = "ERROR IMPLEMENTEREN")
+        TeamApiDetailState.Loading -> Text(text = "Loading team...")
     }
 }
 
@@ -342,6 +357,6 @@ val teamData = TeamData(
 @Composable
 fun OverviewPrev() {
     PremierLeagueAppTheme {
-        OverviewContent()
+        // OverviewContent()
     }
 }

@@ -7,14 +7,14 @@ import androidx.compose.runtime.Composable
 import com.example.premierleagueapp.network.Team
 
 @Composable
-fun TeamsList(teams: List<Team>, onTeamClick: () -> Unit, lazyListState: LazyListState) {
+fun TeamsList(teams: List<Team>, onTeamClick: (teamId: Int) -> Unit, lazyListState: LazyListState) {
     LazyColumn(state = lazyListState) {
-        items(teams) {
+        items(teams) { team ->
             TeamCard(
-                name = it.name,
-                country = it.shortName,
-                imageUrl = it.crest,
-                onClick = onTeamClick,
+                name = team.name,
+                country = team.shortName,
+                imageUrl = team.crest,
+                onClick = { onTeamClick(team.id) },
             )
         }
     }

@@ -8,5 +8,5 @@ data class Season(
     val startDate: String,
     val endDate: String,
     val currentMatchday: Int,
-    val winner: String?, // Pas dit aan op basis van de werkelijke gegevens
+    val winner: String?,
 )

@@ -11,7 +11,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 @Composable
 fun StartScreen(
     lazyListState: LazyListState,
-    onTeamClick: () -> Unit,
+    onTeamClick: (teamId: Int) -> Unit,
 ) {
     val viewModel: TeamViewModel = viewModel()
     val teamApiState = viewModel.teamApiState
@@ -26,7 +26,9 @@ fun StartScreen(
         }
         is TeamApiState.Succes -> {
             Box() {
-                TeamsList(teamApiState.teams, onTeamClick = onTeamClick, lazyListState)
+                TeamsList(teamApiState.teams, onTeamClick = { teamId ->
+                    onTeamClick(teamId)
+                }, lazyListState)
             }
         }
     }
