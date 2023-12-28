@@ -1,7 +1,5 @@
 package com.example.premierleagueapp.ui
 
-import android.content.Intent
-import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.padding
@@ -38,6 +36,7 @@ enum class Destinations {
     Start,
     About,
     Contact,
+    Overview,
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -101,7 +100,7 @@ fun PremierLeagueApp() {
                 }
             }
         },
-        containerColor = MaterialTheme.colorScheme.tertiaryContainer
+        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
     ) { innerPadding ->
 
         NavHost(
@@ -110,8 +109,8 @@ fun PremierLeagueApp() {
             Modifier.padding(innerPadding),
         ) {
             composable(Destinations.Start.name) {
-                StartScreen(overview, lazyListState) {
-                    overview = it
+                StartScreen(lazyListState) {
+                    navController.navigate(Destinations.Overview.name)
                 }
             }
             composable(Destinations.Contact.name) {
@@ -119,6 +118,9 @@ fun PremierLeagueApp() {
             }
             composable(Destinations.About.name) {
                 Text("My about info")
+            }
+            composable(Destinations.Overview.name) {
+                OverviewContent()
             }
         }
     }

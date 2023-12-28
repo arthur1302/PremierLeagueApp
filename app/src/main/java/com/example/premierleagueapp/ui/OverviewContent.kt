@@ -37,7 +37,7 @@ import com.example.premierleagueapp.R
 import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
 
 @Composable
-fun OverviewContent(onBackPressed: () -> Unit) {
+fun OverviewContent() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -342,6 +342,6 @@ val teamData = TeamData(
 @Composable
 fun OverviewPrev() {
     PremierLeagueAppTheme {
-        OverviewContent(onBackPressed = {})
+        OverviewContent()
     }
 }

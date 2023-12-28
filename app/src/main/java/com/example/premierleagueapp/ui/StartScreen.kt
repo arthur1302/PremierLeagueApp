@@ -9,19 +9,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun StartScreen(
-    overview: Boolean,
     lazyListState: LazyListState,
-    onOverviewChanged: (Boolean) -> Unit,
+    onTeamClick: () -> Unit,
 ) {
     val viewModel: TeamViewModel = viewModel()
     val teamUiState by viewModel.teamUiState.collectAsState()
     val teams = teamUiState.teams
 
     Box() {
-        if (overview) {
-            OverviewContent(onBackPressed = { onOverviewChanged(false) })
-        } else {
-            TeamsList(teams, onTeamClick = { onOverviewChanged(true) }, lazyListState)
-        }
+        TeamsList(teams, onTeamClick = onTeamClick, lazyListState)
     }
 }

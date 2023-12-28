@@ -26,20 +26,14 @@ class TeamViewModel : ViewModel() {
                 if (result.isSuccessful) {
                     val teams: List<Team>? = result.body()?.teams
                     teams?.let {
-                        // Log de teamgegevens
-                        for (team in it) {
-                            Log.i("Team Name: ", team.name)
-                            Log.i("Team Crest: ", team.crest)
-                        }
-
-                        // Update de staat van het UI
-                        _teamUiState.value = TeamUiState(teams = it)
+                        val sortedTeams = it.sortedBy { team -> team.name }
+                        _teamUiState.value = TeamUiState(teams = sortedTeams)
                     }
                 } else {
                     Log.e("Error: ", "${result.code()} - ${result.message()}")
                 }
             } catch (e: Exception) {
-                Log.e("Errorf: ", e.message, e)
+                Log.e("Error: ", e.message, e)
             }
         }
     }
