@@ -1,6 +1,6 @@
 package com.example.premierleagueapp.data
 
-import com.example.premierleagueapp.network.TeamApiService
+import com.example.premierleagueapp.network.SoccerApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -15,8 +15,8 @@ class DefaultAppContainer() : AppContainer {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    private val teamService: TeamApiService by lazy {
-        retrofit.create(TeamApiService::class.java)
+    private val teamService: SoccerApiService by lazy {
+        retrofit.create(SoccerApiService::class.java)
     }
 
     override val soccerRepository: SoccerRepository by lazy {

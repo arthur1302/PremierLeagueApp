@@ -1,4 +1,4 @@
-package com.example.premierleagueapp.data
+package com.example.premierleagueapp.model
 
 import com.example.premierleagueapp.network.Match
 import kotlinx.serialization.Serializable

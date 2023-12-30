@@ -15,7 +15,7 @@ import com.example.premierleagueapp.data.SoccerRepository
 import com.example.premierleagueapp.network.asDomainObjects
 import kotlinx.coroutines.launch
 
-class TeamViewModel(
+class SoccerViewModel(
     private val soccerRepository: SoccerRepository,
 ) : ViewModel() {
 
@@ -62,7 +62,7 @@ class TeamViewModel(
     fun getMatchesByTeam(teamId: Int) {
         viewModelScope.launch {
             try {
-                val matches = soccerRepository.getMatcesByTeam(teamId, "e2b1a771617b483bb629ab23272611a3")
+                val matches = soccerRepository.getMatchesByTeam(teamId, "e2b1a771617b483bb629ab23272611a3")
                 matches?.let {
                     matchApiState = MatchApiState.Success(matches.asDomainObjects())
                 }
@@ -78,7 +78,7 @@ class TeamViewModel(
             initializer {
                 val application = this[APPLICATION_KEY] as SoccerApplication
                 val soccerRepository = application.container.soccerRepository
-                TeamViewModel(soccerRepository)
+                SoccerViewModel(soccerRepository)
             }
         }
     }

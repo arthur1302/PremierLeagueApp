@@ -1,6 +1,6 @@
 package com.example.premierleagueapp.network
 
-import com.example.premierleagueapp.data.Competition
+import com.example.premierleagueapp.model.Competition
 import kotlinx.serialization.Serializable
 
 @Serializable

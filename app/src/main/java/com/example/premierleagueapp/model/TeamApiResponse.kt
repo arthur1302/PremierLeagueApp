@@ -1,6 +1,5 @@
-package com.example.premierleagueapp.data
+package com.example.premierleagueapp.model
 
-import com.example.premierleagueapp.network.Filters
 import com.example.premierleagueapp.network.Team
 import kotlinx.serialization.Serializable
 
@@ -8,7 +7,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class TeamApiResponse(
     val count: Int,
-    val filters: Filters,
     val competition: Competition,
     val season: Season,
     val teams: List<Team>,

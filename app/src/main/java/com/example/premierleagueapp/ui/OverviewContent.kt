@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -45,7 +44,7 @@ import java.util.TimeZone
 
 @Composable
 fun OverviewContent(teamId: Int) {
-    val viewModel: TeamViewModel = viewModel(factory = TeamViewModel.Factory)
+    val viewModel: SoccerViewModel = viewModel(factory = SoccerViewModel.Factory)
     val teamApiDetailState = viewModel.teamApiDetailState
     val matchApiState = viewModel.matchApiState
 
@@ -227,7 +226,7 @@ fun UpcomingMatchCard(match: com.example.premierleagueapp.network.Match) {
 }
 
 @Composable
-fun ScrollableGrid(squad: List<com.example.premierleagueapp.data.Player>, crest: String) {
+fun ScrollableGrid(squad: List<com.example.premierleagueapp.model.Player>, crest: String) {
     LazyRow() {
         items(squad) { player ->
             PlayerCard(player, crest)
@@ -243,7 +242,7 @@ fun ScrollableGrid(squad: List<com.example.premierleagueapp.data.Player>, crest:
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PlayerCard(player: com.example.premierleagueapp.data.Player, crest: String) {
+fun PlayerCard(player: com.example.premierleagueapp.model.Player, crest: String) {
     Card(
         modifier = Modifier
             .width(175.dp)
