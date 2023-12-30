@@ -34,6 +34,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import coil.compose.rememberImagePainter
 import com.example.premierleagueapp.R
 import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
 
@@ -73,7 +74,7 @@ fun OverviewContent(teamId: Int) {
                         contentScale = ContentScale.Crop,
                     )
                     Image(
-                        painter = painterResource(R.drawable.city),
+                        painter = rememberImagePainter(team.crest),
                         contentDescription = null,
                         modifier = Modifier
                             .size(80.dp)
@@ -91,7 +92,7 @@ fun OverviewContent(teamId: Int) {
                 )
                 // Hier wordt de tekst "England" toegevoegd, ook links uitgelijnd
                 Text(
-                    text = "England",
+                    text = team.tla,
                     modifier = Modifier
                         .align(Alignment.Start)
                         .padding(start = 16.dp)
@@ -105,13 +106,12 @@ fun OverviewContent(teamId: Int) {
                 ) {
                     Column {
                         Text(text = "Coach", Modifier.align(Alignment.Start))
-                        Text(text = teamData.coach.name, Modifier.align(Alignment.Start))
-                        Text(text = "Nationality", Modifier.align(Alignment.Start))
+                        Text(text = team.coach.name, Modifier.align(Alignment.Start))
+                        Text(text = team.coach.nationality, Modifier.align(Alignment.Start))
                     }
                     Column {
                         Text(text = "Stadium", Modifier.align(Alignment.End))
-                        Text(text = "Etihad", Modifier.align(Alignment.End))
-                        Text(text = "Running competitions logos?", Modifier.align(Alignment.End))
+                        Text(text = team.venue, Modifier.align(Alignment.End))
                     }
                 }
 
@@ -129,7 +129,7 @@ fun OverviewContent(teamId: Int) {
             }
         }
         // ... (andere gevallen zoals Error en Loading)
-        TeamApiDetailState.Error -> Text(text = "ERROR IMPLEMENTEREN")
+        TeamApiDetailState.Error -> Text(text = "Error while loading team.")
         TeamApiDetailState.Loading -> Text(text = "Loading team...")
     }
 }
@@ -139,7 +139,6 @@ fun OverviewContent(teamId: Int) {
 fun UpcomingMatchCard(match: Match) {
     Card(
         modifier = Modifier.width(375.dp),
-        onClick = { /* Handle match click */ },
         colors = CardDefaults.cardColors(
             containerColor = Color.LightGray,
         ),
