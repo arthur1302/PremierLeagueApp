@@ -6,7 +6,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.premierleagueapp.data.MatchApiResponse
 import com.example.premierleagueapp.data.TeamApiResponse
+import com.example.premierleagueapp.network.Match
 import com.example.premierleagueapp.network.Team
 import com.example.premierleagueapp.network.TeamApi.teamService
 import com.example.premierleagueapp.network.asDomainObjects
@@ -21,6 +23,9 @@ class TeamViewModel : ViewModel() {
     var teamApiDetailState: TeamApiDetailState by mutableStateOf(TeamApiDetailState.Loading)
         private set
 
+    var matchApiState: MatchApiState by mutableStateOf(MatchApiState.Loading)
+        private set
+
     init {
         getApiTeams()
     }
@@ -33,7 +38,7 @@ class TeamViewModel : ViewModel() {
                     val teams: List<Team>? = result.body()?.teams
                     teams?.let {
                         val sortedTeams = it.sortedBy { team -> team.name }
-                        teamApiState = TeamApiState.Succes(sortedTeams.asDomainObjects())
+                        teamApiState = TeamApiState.Success(sortedTeams.asDomainObjects())
                     }
                 } else {
                     teamApiState = TeamApiState.Error
@@ -63,6 +68,26 @@ class TeamViewModel : ViewModel() {
                 }
             } catch (e: Exception) {
                 teamApiDetailState = TeamApiDetailState.Error
+                Log.e("Error: ", e.message, e)
+            }
+        }
+    }
+
+    fun getMatchesByTeam(teamId: Int) {
+        viewModelScope.launch {
+            try {
+                val result: Response<MatchApiResponse> = teamService.getMatcesByTeam(teamId, "e2b1a771617b483bb629ab23272611a3")
+                if (result.isSuccessful) {
+                    val matches: List<Match>? = result.body()?.matches
+                    matches?.let {
+                        matchApiState = MatchApiState.Success(matches.asDomainObjects())
+                    }
+                } else {
+                    matchApiState = MatchApiState.Error
+                    Log.e("Error: ", "${result.code()} - ${result.message()}")
+                }
+            } catch (e: Exception) {
+                matchApiState = MatchApiState.Error
                 Log.e("Error: ", e.message, e)
             }
         }

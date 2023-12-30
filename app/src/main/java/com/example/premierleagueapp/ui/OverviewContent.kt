@@ -1,5 +1,6 @@
 package com.example.premierleagueapp.ui
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -42,8 +43,10 @@ import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
 fun OverviewContent(teamId: Int) {
     val viewModel: TeamViewModel = viewModel()
     val teamApiDetailState = viewModel.teamApiDetailState
+    val matchApiState = viewModel.matchApiState
 
     viewModel.getSingleTeam(teamId)
+    viewModel.getMatchesByTeam(teamId)
 
     when (teamApiDetailState) {
         is TeamApiDetailState.Success -> {
@@ -115,14 +118,26 @@ fun OverviewContent(teamId: Int) {
                     }
                 }
 
-                LazyRow(
-                    modifier = Modifier.fillMaxSize().offset(y = (-85).dp),
-                    contentPadding = PaddingValues(horizontal = 8.dp),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                ) {
-                    items(data) { match ->
-                        UpcomingMatchCard(match)
+                when (matchApiState) {
+                    is MatchApiState.Success -> {
+                        val timedMatches = matchApiState.matches
+                            .filter { it.status == "TIMED" }
+                            .take(5)
+
+                        LazyRow(
+                            modifier = Modifier.fillMaxSize().offset(y = (-85).dp),
+                            contentPadding = PaddingValues(horizontal = 8.dp),
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
+                        ) {
+                            items(timedMatches) { match ->
+                                UpcomingMatchCard(match)
+                            }
+                        }
                     }
+
+                    // ... (andere gevallen zoals Error en Loading)
+                    MatchApiState.Error -> Log.i("ERROR", "error matches")
+                    MatchApiState.Loading -> Log.i("Loading", "Loading matches")
                 }
 
                 ScrollableGrid(teamData.coach, teamData.squad)
@@ -136,7 +151,7 @@ fun OverviewContent(teamId: Int) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun UpcomingMatchCard(match: Match) {
+fun UpcomingMatchCard(match: com.example.premierleagueapp.network.Match) {
     Card(
         modifier = Modifier.width(375.dp),
         colors = CardDefaults.cardColors(
@@ -155,12 +170,12 @@ fun UpcomingMatchCard(match: Match) {
                 horizontalArrangement = Arrangement.SpaceAround,
             ) {
                 Image(
-                    painter = painterResource(match.team1LogoResId),
+                    painter = rememberImagePainter(match.homeTeam.crest),
                     contentDescription = null,
                     modifier = Modifier.size(40.dp),
                 )
                 Image(
-                    painter = painterResource(match.team2LogoResId),
+                    painter = rememberImagePainter(match.awayTeam.crest),
                     contentDescription = null,
                     modifier = Modifier.size(40.dp),
                 )
@@ -176,7 +191,7 @@ fun UpcomingMatchCard(match: Match) {
                         .padding(14.dp), // Aanpassen indien nodig voor de afstand tussen tekst en streepje
                     contentAlignment = Alignment.CenterStart,
                 ) {
-                    Text(text = "Manchester City", Modifier.align(Alignment.Center))
+                    Text(text = match.homeTeam.shortName, Modifier.align(Alignment.Center))
                 }
 
                 Text(text = "-", Modifier.align(Alignment.CenterVertically))
@@ -187,11 +202,17 @@ fun UpcomingMatchCard(match: Match) {
                         .padding(14.dp), // Aanpassen indien nodig voor de afstand tussen streepje en tekst
                     contentAlignment = Alignment.CenterEnd,
                 ) {
-                    Text(text = "Manchester United", Modifier.align(Alignment.Center))
+                    Text(text = match.awayTeam.shortName, Modifier.align(Alignment.Center))
                 }
             }
             Text(
-                text = match.date,
+                text = match.competition.name,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(bottom = 16.dp),
+            )
+            Text(
+                text = match.utcDate,
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(bottom = 16.dp),

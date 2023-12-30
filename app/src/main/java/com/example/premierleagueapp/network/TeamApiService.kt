@@ -1,5 +1,6 @@
 package com.example.premierleagueapp.network
 
+import com.example.premierleagueapp.data.MatchApiResponse
 import com.example.premierleagueapp.data.TeamApiResponse
 import kotlinx.serialization.Serializable
 import retrofit2.Response
@@ -15,6 +16,9 @@ interface TeamApiService {
 
     @GET("teams/{id}")
     suspend fun getSingleTeam(@Path("id") teamId: Int, @Header("X-Auth-Token") apiKey: String): Response<Team>
+
+    @GET("teams/{id}/matches")
+    suspend fun getMatcesByTeam(@Path("id") teamId: Int, @Header("X-Auth-Token") apiKey: String): Response<MatchApiResponse>
 }
 
 @Serializable

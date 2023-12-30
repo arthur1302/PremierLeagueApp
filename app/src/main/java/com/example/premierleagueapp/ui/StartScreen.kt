@@ -24,7 +24,7 @@ fun StartScreen(
         is TeamApiState.Error -> {
             Text("Error while loading teams...")
         }
-        is TeamApiState.Succes -> {
+        is TeamApiState.Success -> {
             Box() {
                 TeamsList(teamApiState.teams, onTeamClick = { teamId ->
                     onTeamClick(teamId)
