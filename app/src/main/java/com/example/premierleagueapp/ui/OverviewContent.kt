@@ -25,6 +25,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -51,9 +52,13 @@ fun OverviewContent(teamId: Int) {
     viewModel.getSingleTeam(teamId)
     viewModel.getMatchesByTeam(teamId)
 
+    // val uiTeamState = viewModel.uiTeamState
+
+    // Log.i("Test", uiTeamState!!.name)
+
     when (teamApiDetailState) {
         is TeamApiDetailState.Success -> {
-            val team = teamApiDetailState.team
+            val team = teamApiDetailState.team!!
 
             Column(
                 modifier = Modifier
@@ -107,7 +112,9 @@ fun OverviewContent(teamId: Int) {
                 }
 
                 Row(
-                    Modifier.padding(16.dp).fillMaxWidth(),
+                    Modifier
+                        .padding(16.dp)
+                        .fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
                     Column {
@@ -128,7 +135,9 @@ fun OverviewContent(teamId: Int) {
                             .take(5)
 
                         LazyRow(
-                            modifier = Modifier.fillMaxSize().padding(bottom = 8.dp),
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(bottom = 8.dp),
                             contentPadding = PaddingValues(horizontal = 8.dp),
                             horizontalArrangement = Arrangement.spacedBy(16.dp),
                         ) {
@@ -269,13 +278,19 @@ fun PlayerCard(player: com.example.premierleagueapp.model.Player, crest: String)
                     else -> "N/A"
                 },
                 fontSize = 35.sp,
-                modifier = Modifier.padding(bottom = 8.dp).align(Alignment.CenterVertically).alpha(0.5F),
+                modifier = Modifier
+                    .padding(bottom = 8.dp)
+                    .align(Alignment.CenterVertically)
+                    .alpha(0.5F),
             )
             // Text(text = "7", fontSize = 55.sp, modifier = Modifier.padding(end = 16.dp).alpha(0.5F).align(Alignment.CenterVertically))
             Image(
                 painter = rememberImagePainter(crest),
                 contentDescription = null,
-                modifier = Modifier.size(65.dp).align(Alignment.CenterVertically).padding(12.dp),
+                modifier = Modifier
+                    .size(65.dp)
+                    .align(Alignment.CenterVertically)
+                    .padding(12.dp),
             )
         }
         Column(Modifier.padding(start = 8.dp, end = 8.dp)) {
