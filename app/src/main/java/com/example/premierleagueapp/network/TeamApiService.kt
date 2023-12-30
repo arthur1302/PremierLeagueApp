@@ -24,13 +24,3 @@ interface TeamApiService {
 @Serializable
 data class Filters(val season: String)
 
-var retrofit = Retrofit.Builder()
-    .baseUrl("https://api.football-data.org/v4/")
-    .addConverterFactory(GsonConverterFactory.create())
-    .build()
-
-object TeamApi {
-    val teamService: TeamApiService by lazy {
-        retrofit.create(TeamApiService::class.java)
-    }
-}

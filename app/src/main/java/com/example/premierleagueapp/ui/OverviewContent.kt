@@ -45,7 +45,7 @@ import java.util.TimeZone
 
 @Composable
 fun OverviewContent(teamId: Int) {
-    val viewModel: TeamViewModel = viewModel()
+    val viewModel: TeamViewModel = viewModel(factory = TeamViewModel.Factory)
     val teamApiDetailState = viewModel.teamApiDetailState
     val matchApiState = viewModel.matchApiState
 

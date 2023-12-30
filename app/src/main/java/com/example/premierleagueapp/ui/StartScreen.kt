@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
 
@@ -13,7 +12,7 @@ fun StartScreen(
     lazyListState: LazyListState,
     onTeamClick: (teamId: Int) -> Unit,
 ) {
-    val viewModel: TeamViewModel = viewModel()
+    val viewModel: TeamViewModel = viewModel(factory = TeamViewModel.Factory)
     val teamApiState = viewModel.teamApiState
 
     when (teamApiState) {
@@ -32,6 +31,4 @@ fun StartScreen(
             }
         }
     }
-
-
 }
