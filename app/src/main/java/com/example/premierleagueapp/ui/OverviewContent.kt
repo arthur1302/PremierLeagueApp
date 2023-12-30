@@ -23,6 +23,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -38,6 +39,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberImagePainter
 import com.example.premierleagueapp.R
 import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
+import java.text.SimpleDateFormat
+import java.util.Locale
+import java.util.TimeZone
 
 @Composable
 fun OverviewContent(teamId: Int) {
@@ -71,7 +75,7 @@ fun OverviewContent(teamId: Int) {
                         painter = painterResource(R.drawable.england),
                         contentDescription = null,
                         modifier = Modifier
-                            .height(120.dp)
+                            .height(115.dp)
                             .fillMaxWidth()
                             .alpha(0.5F),
                         contentScale = ContentScale.Crop,
@@ -84,27 +88,27 @@ fun OverviewContent(teamId: Int) {
                             .align(Alignment.BottomEnd)
                             .padding(16.dp),
                     )
+                    Text(
+                        text = team.name,
+                        modifier = Modifier
+                            .align(Alignment.TopStart)
+                            .padding(16.dp)
+                            .offset(y = 25.dp),
+                        fontSize = 24.sp,
+                    )
+                    // Hier wordt de tekst "England" toegevoegd, ook links uitgelijnd
+                    Text(
+                        text = team.tla,
+                        modifier = Modifier
+                            .align(Alignment.TopStart)
+                            .padding(start = 16.dp)
+                            .offset(y = 85.dp),
+                        fontSize = 18.sp,
+                    )
                 }
-                Text(
-                    text = team.name,
-                    modifier = Modifier
-                        .align(Alignment.Start)
-                        .padding(16.dp)
-                        .offset(y = (-95).dp),
-                    fontSize = 24.sp,
-                )
-                // Hier wordt de tekst "England" toegevoegd, ook links uitgelijnd
-                Text(
-                    text = team.tla,
-                    modifier = Modifier
-                        .align(Alignment.Start)
-                        .padding(start = 16.dp)
-                        .offset(y = (-100).dp),
-                    fontSize = 18.sp,
-                )
 
                 Row(
-                    Modifier.offset(y = (-85).dp).padding(16.dp).fillMaxWidth(),
+                    Modifier.padding(16.dp).fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
                     Column {
@@ -125,7 +129,7 @@ fun OverviewContent(teamId: Int) {
                             .take(5)
 
                         LazyRow(
-                            modifier = Modifier.fillMaxSize().offset(y = (-85).dp),
+                            modifier = Modifier.fillMaxSize().padding(bottom = 8.dp),
                             contentPadding = PaddingValues(horizontal = 8.dp),
                             horizontalArrangement = Arrangement.spacedBy(16.dp),
                         ) {
@@ -140,7 +144,7 @@ fun OverviewContent(teamId: Int) {
                     MatchApiState.Loading -> Log.i("Loading", "Loading matches")
                 }
 
-                ScrollableGrid(teamData.coach, teamData.squad)
+                ScrollableGrid(team.squad, team.crest)
             }
         }
         // ... (andere gevallen zoals Error en Loading)
@@ -155,7 +159,8 @@ fun UpcomingMatchCard(match: com.example.premierleagueapp.network.Match) {
     Card(
         modifier = Modifier.width(375.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color.LightGray,
+            containerColor = MaterialTheme.colorScheme.tertiary,
+            contentColor = MaterialTheme.colorScheme.onPrimary,
         ),
     ) {
         Column(
@@ -212,7 +217,7 @@ fun UpcomingMatchCard(match: com.example.premierleagueapp.network.Match) {
                     .padding(bottom = 16.dp),
             )
             Text(
-                text = match.utcDate,
+                text = formatUtcDate(match.utcDate),
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(bottom = 16.dp),
@@ -221,19 +226,11 @@ fun UpcomingMatchCard(match: com.example.premierleagueapp.network.Match) {
     }
 }
 
-val test = listOf(
-    "test1",
-    "trst2",
-)
-
 @Composable
-fun ScrollableGrid(coach: Coach, squad: List<Player>) {
-    LazyRow(Modifier.offset(y = (-70).dp)) {
-        item {
-            CoachCard(coach, isCoach = true)
-        }
+fun ScrollableGrid(squad: List<com.example.premierleagueapp.data.Player>, crest: String) {
+    LazyRow() {
         items(squad) { player ->
-            PlayerCard(player, isCoach = false)
+            PlayerCard(player, crest)
         }
     }
     // GRID WERKT NIET
@@ -246,32 +243,43 @@ fun ScrollableGrid(coach: Coach, squad: List<Player>) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PlayerCard(player: Player, isCoach: Boolean) {
+fun PlayerCard(player: com.example.premierleagueapp.data.Player, crest: String) {
     Card(
         modifier = Modifier
-            .width(150.dp)
-            .height(150.dp)
+            .width(175.dp)
+            .height(175.dp)
             .padding(8.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+            contentColor = MaterialTheme.colorScheme.onPrimary,
+        ),
         onClick = { /* Handle player click */ },
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 8.dp),
+                .padding(8.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text(
-                text = if (isCoach) "C" else player.shirtNumber.toString(),
-                fontSize = 50.sp,
-                modifier = Modifier.padding(bottom = 4.dp).alpha(0.5F),
+                text = when (player.position) {
+                    "Goalkeeper" -> "GK"
+                    "Defence" -> "DEF"
+                    "Midfield" -> "MID"
+                    "Offence" -> "ATT"
+                    else -> "N/A"
+                },
+                fontSize = 35.sp,
+                modifier = Modifier.padding(bottom = 8.dp).align(Alignment.CenterVertically).alpha(0.5F),
             )
+            // Text(text = "7", fontSize = 55.sp, modifier = Modifier.padding(end = 16.dp).alpha(0.5F).align(Alignment.CenterVertically))
             Image(
-                painter = painterResource(R.drawable.city),
+                painter = rememberImagePainter(crest),
                 contentDescription = null,
-                modifier = Modifier.size(55.dp).align(Alignment.CenterVertically).padding(end = 8.dp),
+                modifier = Modifier.size(65.dp).align(Alignment.CenterVertically).padding(12.dp),
             )
         }
-        Column(Modifier.padding(8.dp)) {
+        Column(Modifier.padding(start = 8.dp, end = 8.dp)) {
             Text(text = player.name)
             Text(text = player.nationality)
         }
@@ -372,6 +380,21 @@ val teamData = TeamData(
         Player(name = "Player 3", nationality = "Nationality 2", shirtNumber = 7),
     ),
 )
+
+fun formatUtcDate(utcDateString: String): String {
+    val utcFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
+    utcFormat.timeZone = TimeZone.getTimeZone("UTC")
+
+    val localFormat = SimpleDateFormat("dd-MM-yyyy | HH'h'mm", Locale.getDefault())
+    localFormat.timeZone = TimeZone.getDefault()
+
+    return try {
+        val utcDate = utcFormat.parse(utcDateString)
+        localFormat.format(utcDate!!)
+    } catch (e: Exception) {
+        "Invalid Date"
+    }
+}
 
 @Preview(showBackground = true)
 @Composable
