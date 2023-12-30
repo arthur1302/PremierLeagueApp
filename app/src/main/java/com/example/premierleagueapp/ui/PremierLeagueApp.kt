@@ -79,8 +79,16 @@ fun PremierLeagueApp() {
         {
             PremierLeagueAppBottomBar(
                 { navController.popBackStack(Destinations.Start.name, false) },
-                { navController.navigate(Destinations.Contact.name) },
-                { navController.navigate(Destinations.About.name) },
+                {
+                    navController.navigate(Destinations.Contact.name) {
+                        launchSingleTop = true
+                    }
+                },
+                {
+                    navController.navigate(Destinations.About.name) {
+                        launchSingleTop = true
+                    }
+                },
             )
         },
         floatingActionButton = {
@@ -120,7 +128,7 @@ fun PremierLeagueApp() {
                 Text("My about info")
             }
             composable(Destinations.Overview.name) {
-                //OverviewContent()
+                // OverviewContent()
             }
             composable(Destinations.Overview.name + "/{teamId}") { backStackEntry ->
                 val teamId = backStackEntry.arguments?.getString("teamId")?.toIntOrNull()
