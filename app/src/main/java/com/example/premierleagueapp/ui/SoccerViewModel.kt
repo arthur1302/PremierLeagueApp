@@ -42,14 +42,17 @@ class SoccerViewModel(
 
     private fun getRepoTeams() {
         try {
-            viewModelScope.launch { soccerRepository.refresh() }
-            uiListState = soccerRepository.getTeams()
-                .stateIn(
-                    scope = viewModelScope,
-                    started = SharingStarted.WhileSubscribed(5_000L),
-                    initialValue = listOf(),
-                )
-            teamApiState = TeamApiState.Success
+            teamApiState = TeamApiState.Loading // Zet de status op Loading voordat de gegevens worden opgehaald
+            viewModelScope.launch {
+                soccerRepository.refresh()
+                uiListState = soccerRepository.getTeams()
+                    .stateIn(
+                        scope = viewModelScope,
+                        started = SharingStarted.WhileSubscribed(5_000L),
+                        initialValue = listOf(),
+                    )
+                teamApiState = TeamApiState.Success
+            }
         } catch (e: Exception) {
             teamApiState = TeamApiState.Error
             Log.e("Error: ", e.message, e)

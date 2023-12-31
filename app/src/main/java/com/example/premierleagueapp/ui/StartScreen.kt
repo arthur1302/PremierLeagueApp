@@ -15,7 +15,7 @@ fun StartScreen(
 ) {
     val viewModel: SoccerViewModel = viewModel(factory = SoccerViewModel.Factory)
     val teamApiState = viewModel.teamApiState
-    val uiListState by viewModel.uiListState.collectAsState()
+
     when (teamApiState) {
         is TeamApiState.Loading -> {
             Text("Loading teams...")
@@ -25,6 +25,7 @@ fun StartScreen(
             Text("Error while loading teams...")
         }
         is TeamApiState.Success -> {
+            val uiListState by viewModel.uiListState.collectAsState()
             Box() {
                 TeamsList(uiListState, onTeamClick = { teamId ->
                     onTeamClick(teamId)
