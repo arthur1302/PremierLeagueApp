@@ -12,7 +12,12 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.premierleagueapp.SoccerApplication
 import com.example.premierleagueapp.data.SoccerRepository
+import com.example.premierleagueapp.model.Coach
+import com.example.premierleagueapp.network.Team
 import com.example.premierleagueapp.network.asDomainObjects
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class SoccerViewModel(
@@ -28,34 +33,45 @@ class SoccerViewModel(
     var matchApiState: MatchApiState by mutableStateOf(MatchApiState.Loading)
         private set
 
+    lateinit var uiListState: StateFlow<List<Team>>
+
+    lateinit var uiTeamState: StateFlow<Team?>
     init {
-        getApiTeams()
+        getRepoTeams()
     }
 
-    private fun getApiTeams() {
-        viewModelScope.launch {
-            try {
-                val listResult = soccerRepository.getTeams("e2b1a771617b483bb629ab23272611a3")
-                listResult?.let {
-                    val sortedTeams = it.sortedBy { team -> team.name }
-                    teamApiState = TeamApiState.Success(sortedTeams)
-                }
-            } catch (e: Exception) {
-                teamApiState = TeamApiState.Error
-                Log.e("Error: ", e.message, e)
-            }
+    private fun getRepoTeams() {
+        try {
+            viewModelScope.launch { soccerRepository.refresh() }
+            uiListState = soccerRepository.getTeams()
+                .stateIn(
+                    scope = viewModelScope,
+                    started = SharingStarted.WhileSubscribed(5_000L),
+                    initialValue = listOf(),
+                )
+            teamApiState = TeamApiState.Success
+        } catch (e: Exception) {
+            teamApiState = TeamApiState.Error
+            Log.e("Error: ", e.message, e)
         }
     }
 
     fun getSingleTeam(teamId: Int) {
-        viewModelScope.launch {
-            try {
-                val team = soccerRepository.getSingleTeam(teamId, "e2b1a771617b483bb629ab23272611a3")
-                teamApiDetailState = TeamApiDetailState.Success(team!!)
-            } catch (e: Exception) {
-                teamApiDetailState = TeamApiDetailState.Error
-                Log.e("Error: ", e.message, e)
-            }
+        try {
+            val team = soccerRepository.getSingleTeam(teamId)
+            uiTeamState = soccerRepository.getSingleTeam(teamId)
+                .stateIn(
+                    scope = viewModelScope,
+                    started = SharingStarted.WhileSubscribed(5_000L),
+                    initialValue = Team(0, "", "", "", "", "", Coach("", ""), "", listOf()),
+                )
+
+            Log.d("SoccerViewModel", "UI Team State: ${uiTeamState.value}")
+            teamApiDetailState = TeamApiDetailState.Success
+            Log.d("SoccerViewModel", "TeamApiDetailState: $teamApiDetailState")
+        } catch (e: Exception) {
+            teamApiDetailState = TeamApiDetailState.Error
+            Log.e("Error: ", e.message, e)
         }
     }
 

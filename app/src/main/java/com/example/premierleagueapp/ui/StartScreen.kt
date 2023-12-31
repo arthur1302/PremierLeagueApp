@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
@@ -13,7 +14,7 @@ fun StartScreen(
 ) {
     val viewModel: SoccerViewModel = viewModel(factory = SoccerViewModel.Factory)
     val teamApiState = viewModel.teamApiState
-
+    val uiListState = viewModel.uiListState.collectAsState()
     when (teamApiState) {
         is TeamApiState.Loading -> {
             Text("Loading teams...")
@@ -24,7 +25,7 @@ fun StartScreen(
         }
         is TeamApiState.Success -> {
             Box() {
-                TeamsList(teamApiState.teams, onTeamClick = { teamId ->
+                TeamsList(uiListState, onTeamClick = { teamId ->
                     onTeamClick(teamId)
                 }, lazyListState)
             }

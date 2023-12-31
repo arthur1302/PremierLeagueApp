@@ -25,6 +25,9 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -53,7 +56,8 @@ fun OverviewContent(teamId: Int) {
 
     when (teamApiDetailState) {
         is TeamApiDetailState.Success -> {
-            val team = teamApiDetailState.team
+            val uiTeamState = viewModel.uiTeamState.collectAsState()
+            val team by remember(uiTeamState) { uiTeamState }
 
             Column(
                 modifier = Modifier
@@ -80,7 +84,7 @@ fun OverviewContent(teamId: Int) {
                         contentScale = ContentScale.Crop,
                     )
                     Image(
-                        painter = rememberImagePainter(team.crest),
+                        painter = rememberImagePainter(team?.crest),
                         contentDescription = null,
                         modifier = Modifier
                             .size(80.dp)
@@ -88,7 +92,7 @@ fun OverviewContent(teamId: Int) {
                             .padding(16.dp),
                     )
                     Text(
-                        text = team.name,
+                        text = team!!.name,
                         modifier = Modifier
                             .align(Alignment.TopStart)
                             .padding(16.dp)
@@ -97,7 +101,7 @@ fun OverviewContent(teamId: Int) {
                     )
                     // Hier wordt de tekst "England" toegevoegd, ook links uitgelijnd
                     Text(
-                        text = team.tla,
+                        text = team!!.tla,
                         modifier = Modifier
                             .align(Alignment.TopStart)
                             .padding(start = 16.dp)
@@ -112,19 +116,19 @@ fun OverviewContent(teamId: Int) {
                 ) {
                     Column {
                         Text(text = "Coach", Modifier.align(Alignment.Start))
-                        Text(text = team.coach.name, Modifier.align(Alignment.Start))
-                        Text(text = team.coach.nationality, Modifier.align(Alignment.Start))
+                        Text(text = team!!.coach.name, Modifier.align(Alignment.Start))
+                        Text(text = team!!.coach.nationality, Modifier.align(Alignment.Start))
                     }
                     Column {
                         Text(text = "Stadium", Modifier.align(Alignment.End))
-                        Text(text = team.venue, Modifier.align(Alignment.End))
+                        Text(text = team!!.venue, Modifier.align(Alignment.End))
                     }
                 }
 
                 when (matchApiState) {
                     is MatchApiState.Success -> {
                         val timedMatches = matchApiState.matches
-                            .filter { it.status == "TIMED" }
+                            .filter { it.status != "FINISHED" }
                             .take(5)
 
                         LazyRow(
@@ -143,7 +147,7 @@ fun OverviewContent(teamId: Int) {
                     MatchApiState.Loading -> Log.i("Loading", "Loading matches")
                 }
 
-                ScrollableGrid(team.squad, team.crest)
+                ScrollableGrid(team?.squad, team?.crest)
             }
         }
         // ... (andere gevallen zoals Error en Loading)
@@ -226,10 +230,10 @@ fun UpcomingMatchCard(match: com.example.premierleagueapp.network.Match) {
 }
 
 @Composable
-fun ScrollableGrid(squad: List<com.example.premierleagueapp.model.Player>, crest: String) {
+fun ScrollableGrid(squad: List<com.example.premierleagueapp.model.Player>?, crest: String?) {
     LazyRow() {
-        items(squad) { player ->
-            PlayerCard(player, crest)
+        items(squad!!) { player ->
+            PlayerCard(player, crest!!)
         }
     }
     // GRID WERKT NIET
