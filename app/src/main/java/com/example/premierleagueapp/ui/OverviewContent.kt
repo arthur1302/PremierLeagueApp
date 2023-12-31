@@ -25,9 +25,9 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -51,14 +51,17 @@ fun OverviewContent(teamId: Int) {
     val teamApiDetailState = viewModel.teamApiDetailState
     val matchApiState = viewModel.matchApiState
 
-    viewModel.getSingleTeam(teamId)
-    viewModel.getMatchesByTeam(teamId)
+    LaunchedEffect(teamId) {
+        viewModel.getSingleTeam(teamId)
+        viewModel.getMatchesByTeam(teamId)
+    }
 
     when (teamApiDetailState) {
         is TeamApiDetailState.Success -> {
-            val uiTeamState = viewModel.uiTeamState.collectAsState()
-            val team by remember(uiTeamState) { uiTeamState }
-
+            // val uiTeamState = viewModel.uiTeamState.collectAsState()
+            val uiTeamState by viewModel.uiTeamState.collectAsState()
+            val team = uiTeamState
+            Log.i("TEAMMM", team.toString())
             Column(
                 modifier = Modifier
                     .fillMaxSize()

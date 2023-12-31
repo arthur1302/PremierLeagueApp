@@ -57,18 +57,16 @@ class SoccerViewModel(
     }
 
     fun getSingleTeam(teamId: Int) {
+        Log.i("TESTBEFORE", "Voor try")
         try {
-            val team = soccerRepository.getSingleTeam(teamId)
+            Log.i("AFTERRR", "na try")
             uiTeamState = soccerRepository.getSingleTeam(teamId)
                 .stateIn(
                     scope = viewModelScope,
                     started = SharingStarted.WhileSubscribed(5_000L),
                     initialValue = Team(0, "", "", "", "", "", Coach("", ""), "", listOf()),
                 )
-
-            Log.d("SoccerViewModel", "UI Team State: ${uiTeamState.value}")
             teamApiDetailState = TeamApiDetailState.Success
-            Log.d("SoccerViewModel", "TeamApiDetailState: $teamApiDetailState")
         } catch (e: Exception) {
             teamApiDetailState = TeamApiDetailState.Error
             Log.e("Error: ", e.message, e)
