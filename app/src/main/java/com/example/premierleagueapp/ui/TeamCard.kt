@@ -12,21 +12,21 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 
 @Composable
-fun TeamCard(name: String = "", country: String = "", imageUrl: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
+fun TeamCard(name: String = "", shortName: String = "", imageUrl: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
     ElevatedCard(
         modifier = modifier
             .clickable { onClick() }
-            .padding(16.dp, 4.dp),
+            .padding(16.dp, 4.dp)
+            .testTag(name),
         /*colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.primary,
             contentColor = MaterialTheme.colorScheme.onPrimary,
@@ -43,7 +43,7 @@ fun TeamCard(name: String = "", country: String = "", imageUrl: String, onClick:
             )
             Column(modifier = modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
                 Text(name, fontSize = 16.sp)
-                Text(country, fontSize = 12.sp)
+                Text(shortName, fontSize = 12.sp)
             }
         }
     }
