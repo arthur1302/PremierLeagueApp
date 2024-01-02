@@ -130,16 +130,15 @@ fun OverviewContent(teamId: Int) {
 
                 when (matchApiState) {
                     is MatchApiState.Success -> {
-                        val timedMatches = matchApiState.matches
-                            .filter { it.status != "FINISHED" }
-                            .take(5)
+                        val uiMatchListState by viewModel.uiMatchListState.collectAsState()
+                        val matches = uiMatchListState
 
                         LazyRow(
                             modifier = Modifier.fillMaxSize().padding(bottom = 8.dp),
                             contentPadding = PaddingValues(horizontal = 8.dp),
                             horizontalArrangement = Arrangement.spacedBy(16.dp),
                         ) {
-                            items(timedMatches) { match ->
+                            items(matches) { match ->
                                 UpcomingMatchCard(match)
                             }
                         }
@@ -259,7 +258,6 @@ fun PlayerCard(player: com.example.premierleagueapp.model.Player, crest: String)
             containerColor = MaterialTheme.colorScheme.tertiaryContainer,
             contentColor = MaterialTheme.colorScheme.onPrimary,
         ),
-        onClick = { /* Handle player click */ },
     ) {
         Row(
             modifier = Modifier

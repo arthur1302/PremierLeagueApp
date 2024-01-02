@@ -1,20 +1,23 @@
 package com.example.premierleagueapp.data
 
 import android.util.Log
+import com.example.premierleagueapp.data.database.MatchDao
 import com.example.premierleagueapp.data.database.TeamDao
+import com.example.premierleagueapp.data.database.asDbMatch
 import com.example.premierleagueapp.data.database.asDbTeam
+import com.example.premierleagueapp.data.database.asDomainMatches
 import com.example.premierleagueapp.data.database.asDomainTeam
 import com.example.premierleagueapp.data.database.asDomainTeams
-import com.example.premierleagueapp.model.MatchApiResponse
 import com.example.premierleagueapp.network.Match
 import com.example.premierleagueapp.network.SoccerApiService
 import com.example.premierleagueapp.network.Team
+import com.example.premierleagueapp.network.getMatchesAsFlow
 import com.example.premierleagueapp.network.getTeamsAsFlow
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
-import retrofit2.Response
+import kotlinx.coroutines.withContext
 
 interface SoccerRepository {
     // suspend fun getTeams(apiKey: String): List<Team>?
@@ -23,22 +26,35 @@ interface SoccerRepository {
 
     suspend fun insert(team: Team)
 
+    suspend fun insert(match: Match)
+
     fun getTeams(): Flow<List<Team>>
 
     fun getSingleTeam(teamId: Int): Flow<Team?>
 
-    suspend fun getMatchesByTeam(teamId: Int, apiKey: String): List<Match>?
+    suspend fun getMatchesByTeam(teamId: Int): Flow<List<Match>>
 
     suspend fun refresh()
+
+    suspend fun dropMatches()
 }
 
 class CachingTeamRespository(
     private val teamDao: TeamDao,
-    private val teamApiService: SoccerApiService,
+    private val soccerApiService: SoccerApiService,
+    private val matchDao: MatchDao,
 ) : SoccerRepository {
 
     override suspend fun insert(team: Team) {
         teamDao.insert(team.asDbTeam())
+    }
+
+    override suspend fun insert(match: Match) {
+        matchDao.insert(match.asDbMatch())
+    }
+
+    override suspend fun dropMatches() {
+        matchDao.drop()
     }
 
     override fun getTeams(): Flow<List<Team>> {
@@ -58,7 +74,7 @@ class CachingTeamRespository(
     }
 
     override suspend fun refresh() {
-        teamApiService.getTeamsAsFlow().collect() {
+        soccerApiService.getTeamsAsFlow().collect() {
             val teams: List<Team> = it.body()!!.teams
             for (team in teams) {
                 Log.i("Test", "refresh: $team")
@@ -66,12 +82,22 @@ class CachingTeamRespository(
             }
         }
     }
+    override suspend fun getMatchesByTeam(teamId: Int): Flow<List<Match>> = withContext(Dispatchers.IO) {
+        // Run the dropMatches operation on a background thread
+        dropMatches()
 
-    override suspend fun getMatchesByTeam(teamId: Int, apiKey: String): List<Match>? {
-        val result: Response<MatchApiResponse> =
-            teamApiService.getMatcesByTeam(teamId, "e2b1a771617b483bb629ab23272611a3")
-        val matches: List<Match>? = result.body()?.matches
-        return matches
+        // Fetch new matches from the API
+        return@withContext matchDao.getAllMatches().map { it.asDomainMatches() }.onEach {
+            if (it.isEmpty()) {
+                soccerApiService.getMatchesAsFlow(teamId).collect() {
+                    val matches: List<Match> = it.body()!!.matches
+                    for (match in matches) {
+                        Log.i("Test", "refresh: $match")
+                        insert(match)
+                    }
+                }
+            }
+        }
     }
 }
 

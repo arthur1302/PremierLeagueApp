@@ -2,6 +2,7 @@ package com.example.premierleagueapp.data
 
 import android.content.Context
 import androidx.room.Room
+import com.example.premierleagueapp.data.database.MatchDao
 import com.example.premierleagueapp.data.database.SoccerDatabase
 import com.example.premierleagueapp.data.database.TeamDao
 import com.example.premierleagueapp.network.SoccerApiService
@@ -34,8 +35,12 @@ class DefaultAppContainer(
         soccerDb.teamDao()
     }
 
+    private val matchDao: MatchDao by lazy {
+        soccerDb.matchDao()
+    }
+
     override val soccerRepository: SoccerRepository by lazy {
         // ApiSoccerRepository(teamService)
-        CachingTeamRespository(teamDao, retrofitService)
+        CachingTeamRespository(teamDao, retrofitService, matchDao)
     }
 }

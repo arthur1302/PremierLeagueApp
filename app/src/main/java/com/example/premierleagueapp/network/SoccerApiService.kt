@@ -16,7 +16,9 @@ interface SoccerApiService {
     suspend fun getSingleTeam(@Path("id") teamId: Int, @Header("X-Auth-Token") apiKey: String): Response<Team>
 
     @GET("teams/{id}/matches")
-    suspend fun getMatcesByTeam(@Path("id") teamId: Int, @Header("X-Auth-Token") apiKey: String): Response<MatchApiResponse>
+    suspend fun getMatchesByTeam(@Path("id") teamId: Int, @Header("X-Auth-Token") apiKey: String): Response<MatchApiResponse>
 }
 
 fun SoccerApiService.getTeamsAsFlow() = flow { emit(getTeams("e2b1a771617b483bb629ab23272611a3")) }
+
+fun SoccerApiService.getMatchesAsFlow(id: Int) = flow { emit(getMatchesByTeam(id, "e2b1a771617b483bb629ab23272611a3")) }

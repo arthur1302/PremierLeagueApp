@@ -13,8 +13,8 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.premierleagueapp.SoccerApplication
 import com.example.premierleagueapp.data.SoccerRepository
 import com.example.premierleagueapp.model.Coach
+import com.example.premierleagueapp.network.Match
 import com.example.premierleagueapp.network.Team
-import com.example.premierleagueapp.network.asDomainObjects
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
@@ -36,6 +36,8 @@ class SoccerViewModel(
     lateinit var uiListState: StateFlow<List<Team>>
 
     lateinit var uiTeamState: StateFlow<Team?>
+
+    lateinit var uiMatchListState: StateFlow<List<Match>>
     init {
         getRepoTeams()
     }
@@ -60,9 +62,7 @@ class SoccerViewModel(
     }
 
     fun getSingleTeam(teamId: Int) {
-        Log.i("TESTBEFORE", "Voor try")
         try {
-            Log.i("AFTERRR", "na try")
             uiTeamState = soccerRepository.getSingleTeam(teamId)
                 .stateIn(
                     scope = viewModelScope,
@@ -77,16 +77,19 @@ class SoccerViewModel(
     }
 
     fun getMatchesByTeam(teamId: Int) {
-        viewModelScope.launch {
-            try {
-                val matches = soccerRepository.getMatchesByTeam(teamId, "e2b1a771617b483bb629ab23272611a3")
-                matches?.let {
-                    matchApiState = MatchApiState.Success(matches.asDomainObjects())
-                }
-            } catch (e: Exception) {
-                matchApiState = MatchApiState.Error
-                Log.e("Error: ", e.message, e)
+        try {
+            viewModelScope.launch {
+                uiMatchListState = soccerRepository.getMatchesByTeam(teamId)
+                    .stateIn(
+                        scope = viewModelScope,
+                        started = SharingStarted.WhileSubscribed(5_000L),
+                        initialValue = listOf(),
+                    )
+                matchApiState = MatchApiState.Success
             }
+        } catch (e: Exception) {
+            matchApiState = MatchApiState.Error
+            Log.e("Error: ", e.message, e)
         }
     }
 
