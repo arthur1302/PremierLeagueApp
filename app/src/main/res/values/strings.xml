@@ -3,4 +3,8 @@
     <string name="app_title">Premier League</string>
     <string name="contact_title">Contact</string>
     <string name="about_title">About</string>
+    <string name="back_button">Back button</string>
+    <string name="home_button">Home button</string>
+    <string name="about_button">About button</string>
+    <string name="contact_button">Contact button</string>
 </resources>

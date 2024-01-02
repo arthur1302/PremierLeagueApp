@@ -8,7 +8,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -23,7 +22,9 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -41,9 +42,8 @@ enum class Destinations {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PremierLeagueApp() {
+fun PremierLeagueApp(navController: NavHostController = rememberNavController()) {
     var overview by rememberSaveable { mutableStateOf(false) }
-    val navController = rememberNavController()
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
     val lazyListState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
@@ -54,17 +54,11 @@ fun PremierLeagueApp() {
             PremierLeagueTopBar(
                 {
                     val isStartDestination = currentBackStackEntry?.destination?.route == Destinations.Start.name
-                    if (isStartDestination) {
-                        IconButton(onClick = {
-                            // show menu
-                        }) {
-                            Icon(Icons.Filled.Menu, contentDescription = "Menu button")
-                        }
-                    } else {
+                    if (!isStartDestination) {
                         IconButton(onClick = {
                             navController.popBackStack()
                         }) {
-                            Icon(Icons.Filled.ArrowBack, contentDescription = "Back button")
+                            Icon(Icons.Filled.ArrowBack, contentDescription = stringResource(R.string.back_button))
                         }
                     }
                 },
