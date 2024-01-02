@@ -1,7 +1,8 @@
 package com.example.premierleagueapp.ui
 
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
+import android.content.Intent
+import android.net.Uri
+import android.widget.Toast
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
@@ -23,8 +24,10 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -48,7 +51,18 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
     val lazyListState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
-    val emailLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { _ ->
+    val context = LocalContext.current
+    fun sendMail() {
+        val intent = Intent(Intent.ACTION_SENDTO)
+        intent.data = Uri.parse("mailto:arthur.haus@student.hogent.be")
+        intent.putExtra(Intent.EXTRA_EMAIL, "test")
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Hello World")
+        if (intent.resolveActivity(context.packageManager) != null) {
+            ContextCompat.startActivity(context, intent, null)
+        } else {
+            // Handle the case where no activity is available
+            Toast.makeText(context, "No email client found", Toast.LENGTH_SHORT).show()
+        }
     }
     Scaffold(
         topBar = {
@@ -97,6 +111,7 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
                 }
                 Destinations.Contact.name -> {
                     FloatingActionButton(onClick = {
+                        sendMail()
                     }) {
                         Icon(Icons.Default.Email, contentDescription = "Send mail")
                     }
@@ -117,10 +132,10 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
                 }
             }
             composable(Destinations.Contact.name) {
-                Text("My contact info")
+                ContactScreen()
             }
             composable(Destinations.About.name) {
-                Text("My about info")
+                AboutScreen()
             }
             composable(Destinations.Overview.name) {
                 // OverviewContent()

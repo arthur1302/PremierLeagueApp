@@ -8,4 +8,6 @@
     <string name="about_button">About button</string>
     <string name="contact_button">Contact button</string>
     <string name="fab_scroll_up">Scroll Up</string>
+    <string name="about_content">About Content</string>
+    <string name="contact_content">Contact Content</string>
 </resources>
