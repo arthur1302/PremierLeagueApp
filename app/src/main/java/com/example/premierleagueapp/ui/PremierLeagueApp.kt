@@ -8,6 +8,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -91,7 +92,7 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
                     FloatingActionButton(onClick = {
                         coroutineScope.launch { lazyListState.animateScrollToItem(0) }
                     }) {
-                        Icon(Icons.Default.KeyboardArrowUp, contentDescription = "Scroll up")
+                        Icon(Icons.Default.KeyboardArrowUp, contentDescription = stringResource(R.string.fab_scroll_up))
                     }
                 }
                 Destinations.Contact.name -> {
@@ -129,7 +130,12 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
                 if (teamId != null) {
                     OverviewContent(teamId)
                 } else {
-                    // Handle foutieve of ontbrekende teamId
+                    Text(text = "Non existing team ID...")
+                    Button(
+                        onClick = { navController.navigate(Destinations.Start.name) },
+                    ) {
+                        Text(text = "Home")
+                    }
                 }
             }
         }
