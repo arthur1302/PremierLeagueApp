@@ -1,14 +1,12 @@
 package com.example.premierleagueapp
 
-import androidx.compose.runtime.getValue
 import com.example.premierleagueapp.fake.FakeApiSoccerRepository
 import com.example.premierleagueapp.fake.FakeDataSource
+import com.example.premierleagueapp.model.Match
 import com.example.premierleagueapp.model.MatchApiResponse
+import com.example.premierleagueapp.model.Team
 import com.example.premierleagueapp.model.TeamApiResponse
-import com.example.premierleagueapp.network.Match
-import com.example.premierleagueapp.network.Team
 import junit.framework.TestCase.assertEquals
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import retrofit2.Response

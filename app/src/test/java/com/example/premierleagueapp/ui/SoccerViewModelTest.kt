@@ -4,7 +4,6 @@ package com.example.premierleagueapp.ui
 
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.premierleagueapp.fake.FakeApiSoccerRepository
-import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestDispatcher
@@ -31,7 +30,6 @@ class SoccerViewModelTest {
 
     @Test
     fun testGetApiTeams() {
-        assertEquals("", "")
     }
 }
 

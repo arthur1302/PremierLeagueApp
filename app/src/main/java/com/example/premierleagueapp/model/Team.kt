@@ -1,7 +1,5 @@
-package com.example.premierleagueapp.network // ktlint-disable filename
+package com.example.premierleagueapp.model
 
-import com.example.premierleagueapp.model.Coach
-import com.example.premierleagueapp.model.Player
 import kotlinx.serialization.Serializable
 
 @Serializable

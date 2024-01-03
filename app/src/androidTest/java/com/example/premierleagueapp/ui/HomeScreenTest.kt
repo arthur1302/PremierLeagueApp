@@ -12,7 +12,7 @@ import androidx.navigation.testing.TestNavHostController
 import com.example.premierleagueapp.R
 import com.example.premierleagueapp.model.Coach
 import com.example.premierleagueapp.model.Player
-import com.example.premierleagueapp.network.Team
+import com.example.premierleagueapp.model.Team
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

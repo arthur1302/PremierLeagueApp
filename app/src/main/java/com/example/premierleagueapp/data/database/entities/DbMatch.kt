@@ -3,8 +3,8 @@ package com.example.premierleagueapp.data.database.entities
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.premierleagueapp.model.Competition
-import com.example.premierleagueapp.network.Match
-import com.example.premierleagueapp.network.Team
+import com.example.premierleagueapp.model.Match
+import com.example.premierleagueapp.model.Team
 
 @Entity(tableName = "matches")
 data class DbMatch(

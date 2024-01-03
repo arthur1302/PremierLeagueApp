@@ -5,21 +5,21 @@ import kotlin.random.Random
 
 data class TeamMockData(val name: String, val country: String = "", val imageResourceId: Int = 0) {
     companion object TeamSampler {
-        val sampleTeams = listOf(
+        private val sampleTeams = listOf(
             "Man City",
             "Man Utd",
             "Chelsea",
             "Liverpool",
         )
 
-        val sampleDescription = listOf(
+        private val sampleDescription = listOf(
             "Manchester",
             "Manchester",
             "London",
             "Liverpool",
         )
 
-        val sampleLogo = listOf(
+        private val sampleLogo = listOf(
             R.drawable.city,
             R.drawable.united,
             R.drawable.chelsea,

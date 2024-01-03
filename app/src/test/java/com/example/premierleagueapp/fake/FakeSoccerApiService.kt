@@ -1,9 +1,9 @@
 package com.example.premierleagueapp.fake
 
 import com.example.premierleagueapp.model.MatchApiResponse
+import com.example.premierleagueapp.model.Team
 import com.example.premierleagueapp.model.TeamApiResponse
 import com.example.premierleagueapp.network.SoccerApiService
-import com.example.premierleagueapp.network.Team
 import retrofit2.Response
 
 class FakeSoccerApiService : SoccerApiService {

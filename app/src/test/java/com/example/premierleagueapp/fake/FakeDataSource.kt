@@ -2,12 +2,12 @@ package com.example.premierleagueapp.fake
 
 import com.example.premierleagueapp.model.Coach
 import com.example.premierleagueapp.model.Competition
+import com.example.premierleagueapp.model.Match
 import com.example.premierleagueapp.model.MatchApiResponse
 import com.example.premierleagueapp.model.Player
 import com.example.premierleagueapp.model.Season
+import com.example.premierleagueapp.model.Team
 import com.example.premierleagueapp.model.TeamApiResponse
-import com.example.premierleagueapp.network.Match
-import com.example.premierleagueapp.network.Team
 import retrofit2.Response
 
 object FakeDataSource {
@@ -52,7 +52,7 @@ object FakeDataSource {
             id = 123,
             startDate = "2023-01-01",
             endDate = "2023-12-31",
-            currentMatchday = 20,
+            currentMatchDay = 20,
             winner = "Some Team",
         ),
         competition = Competition(

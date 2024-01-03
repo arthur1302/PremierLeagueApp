@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.premierleagueapp.model.Coach
 import com.example.premierleagueapp.model.Player
-import com.example.premierleagueapp.network.Team
+import com.example.premierleagueapp.model.Team
 
 @Entity(tableName = "teams")
 data class DbTeam(

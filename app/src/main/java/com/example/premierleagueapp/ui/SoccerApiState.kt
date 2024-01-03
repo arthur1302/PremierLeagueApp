@@ -1,19 +1,19 @@
 package com.example.premierleagueapp.ui
 
 sealed interface TeamApiState {
-    object Error : TeamApiState
-    object Loading : TeamApiState
-    object Success : TeamApiState
+    data object Error : TeamApiState
+    data object Loading : TeamApiState
+    data object Success : TeamApiState
 }
 
 sealed interface TeamApiDetailState {
-    object Error : TeamApiDetailState
-    object Loading : TeamApiDetailState
-    object Success : TeamApiDetailState
+    data object Error : TeamApiDetailState
+    data object Loading : TeamApiDetailState
+    data object Success : TeamApiDetailState
 }
 
 sealed interface MatchApiState {
-    object Error : MatchApiState
-    object Loading : MatchApiState
-    object Success : MatchApiState
+    data object Error : MatchApiState
+    data object Loading : MatchApiState
+    data object Success : MatchApiState
 }

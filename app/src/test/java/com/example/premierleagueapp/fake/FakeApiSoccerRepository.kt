@@ -1,8 +1,8 @@
 package com.example.premierleagueapp.fake
 
 import com.example.premierleagueapp.data.SoccerRepository
-import com.example.premierleagueapp.network.Match
-import com.example.premierleagueapp.network.Team
+import com.example.premierleagueapp.model.Match
+import com.example.premierleagueapp.model.Team
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

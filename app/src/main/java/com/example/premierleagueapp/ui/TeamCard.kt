@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 
 @Composable
@@ -27,10 +27,6 @@ fun TeamCard(name: String = "", shortName: String = "", imageUrl: String, onClic
             .clickable { onClick() }
             .padding(16.dp, 4.dp)
             .testTag(name),
-        /*colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primary,
-            contentColor = MaterialTheme.colorScheme.onPrimary,
-        ),*/
     ) {
         Row(modifier = modifier.fillMaxWidth().padding(8.dp)) {
             Image(
@@ -47,8 +43,8 @@ fun TeamCard(name: String = "", shortName: String = "", imageUrl: String, onClic
                     .align(Alignment.CenterVertically),
             )
             Column(modifier = modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
-                Text(name, fontSize = 16.sp)
-                Text(shortName, fontSize = 12.sp)
+                Text(name, style = MaterialTheme.typography.bodyLarge)
+                Text(shortName, style = MaterialTheme.typography.bodyMedium)
             }
         }
     }

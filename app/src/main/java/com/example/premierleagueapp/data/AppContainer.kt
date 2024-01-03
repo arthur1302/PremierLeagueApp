@@ -40,6 +40,6 @@ class DefaultAppContainer(
     }
 
     override val soccerRepository: SoccerRepository by lazy {
-        CachingTeamRespository(teamDao, retrofitService, matchDao)
+        CachingTeamsRepository(teamDao, retrofitService, matchDao)
     }
 }

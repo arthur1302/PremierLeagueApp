@@ -13,8 +13,8 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.premierleagueapp.SoccerApplication
 import com.example.premierleagueapp.data.SoccerRepository
 import com.example.premierleagueapp.model.Coach
-import com.example.premierleagueapp.network.Match
-import com.example.premierleagueapp.network.Team
+import com.example.premierleagueapp.model.Match
+import com.example.premierleagueapp.model.Team
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
@@ -44,7 +44,7 @@ class SoccerViewModel(
 
     private fun getRepoTeams() {
         try {
-            teamApiState = TeamApiState.Loading // Zet de status op Loading voordat de gegevens worden opgehaald
+            teamApiState = TeamApiState.Loading
             viewModelScope.launch {
                 soccerRepository.refresh()
                 uiListState = soccerRepository.getTeams()
