@@ -1,46 +1,82 @@
 package com.example.premierleagueapp
 
-import com.example.premierleagueapp.data.ApiSoccerRepository
+import androidx.compose.runtime.getValue
+import com.example.premierleagueapp.fake.FakeApiSoccerRepository
 import com.example.premierleagueapp.fake.FakeDataSource
-import com.example.premierleagueapp.fake.FakeSoccerApiService
 import com.example.premierleagueapp.model.MatchApiResponse
 import com.example.premierleagueapp.model.TeamApiResponse
 import com.example.premierleagueapp.network.Match
 import com.example.premierleagueapp.network.Team
-import com.example.premierleagueapp.network.asDomainObjects
 import junit.framework.TestCase.assertEquals
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import retrofit2.Response
 
 class ApiSoccerRepositoryTest {
+
     @Test
     fun apiSoccerRepository_getTeams_verifyTeams() = runTest {
-        val repository = ApiSoccerRepository(FakeSoccerApiService())
+        val apiSoccerRepository = FakeApiSoccerRepository()
+
+        val teamsList = mutableListOf<Team>()
 
         val result: Response<TeamApiResponse> = FakeDataSource.getFakeTeamsResponse()
-        val teams: List<Team>? = result?.body()?.teams
+        val fakeTeams: List<Team>? = result?.body()?.teams
 
-        assertEquals(teams?.asDomainObjects(), repository.getTeams(""))
+        for (team in fakeTeams!!) {
+            apiSoccerRepository.insert(team)
+        }
+
+        apiSoccerRepository.getTeams().collect { teams ->
+
+            teamsList.addAll(teams)
+            println("Collected teams: $teamsList")
+        }
+
+        assertEquals(fakeTeams, teamsList)
     }
 
     @Test
     fun apiSoccerRepository_getTeam_verifyTeam() = runTest {
-        val repository = ApiSoccerRepository(FakeSoccerApiService())
+        val apiSoccerRepository = FakeApiSoccerRepository()
+
+        val resultFakeTeams: Response<TeamApiResponse> = FakeDataSource.getFakeTeamsResponse()
+        val fakeTeams: List<Team>? = resultFakeTeams?.body()?.teams
+
+        for (team in fakeTeams!!) {
+            apiSoccerRepository.insert(team)
+        }
+
+        var team: Team? = null
+        apiSoccerRepository.getSingleTeam(1).collect {
+                result ->
+            team = result!!
+        }
 
         val result: Response<Team> = FakeDataSource.getFakeTeamResponse()
-        val team: Team? = result?.body()
+        val fakeTeam: Team? = result?.body()
 
-        assertEquals(team, repository.getSingleTeam(0, ""))
+        assertEquals(fakeTeam, team)
     }
 
     @Test
     fun apiSoccerRepository_getMatches_verifyMatches() = runTest {
-        val repository = ApiSoccerRepository(FakeSoccerApiService())
+        val apiSoccerRepository = FakeApiSoccerRepository()
+
+        val matchList = mutableListOf<Match>()
 
         val result: Response<MatchApiResponse> = FakeDataSource.getFakeMatchesByTeamResponse()
-        val matches: List<Match>? = result?.body()?.matches
+        val fakeMatches: List<Match>? = result?.body()?.matches
 
-        assertEquals(matches?.asDomainObjects(), repository.getMatchesByTeam(0, ""))
+        for (match in fakeMatches!!) {
+            apiSoccerRepository.insert(match)
+        }
+
+        apiSoccerRepository.getMatchesByTeam(1).collect { match ->
+            matchList.addAll(match)
+        }
+
+        assertEquals(fakeMatches, matchList)
     }
 }

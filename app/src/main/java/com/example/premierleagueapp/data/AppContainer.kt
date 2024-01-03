@@ -2,9 +2,9 @@ package com.example.premierleagueapp.data
 
 import android.content.Context
 import androidx.room.Room
-import com.example.premierleagueapp.data.database.MatchDao
 import com.example.premierleagueapp.data.database.SoccerDatabase
-import com.example.premierleagueapp.data.database.TeamDao
+import com.example.premierleagueapp.data.database.dao.MatchDao
+import com.example.premierleagueapp.data.database.dao.TeamDao
 import com.example.premierleagueapp.network.SoccerApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -40,7 +40,6 @@ class DefaultAppContainer(
     }
 
     override val soccerRepository: SoccerRepository by lazy {
-        // ApiSoccerRepository(teamService)
         CachingTeamRespository(teamDao, retrofitService, matchDao)
     }
 }

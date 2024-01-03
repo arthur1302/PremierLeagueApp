@@ -1,4 +1,4 @@
-package com.example.premierleagueapp.data.database
+package com.example.premierleagueapp.data.database.converters
 
 import androidx.room.TypeConverter
 import com.example.premierleagueapp.model.Coach

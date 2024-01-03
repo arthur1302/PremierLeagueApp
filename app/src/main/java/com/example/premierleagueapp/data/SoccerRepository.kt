@@ -1,13 +1,13 @@
 package com.example.premierleagueapp.data
 
 import android.util.Log
-import com.example.premierleagueapp.data.database.MatchDao
-import com.example.premierleagueapp.data.database.TeamDao
-import com.example.premierleagueapp.data.database.asDbMatch
-import com.example.premierleagueapp.data.database.asDbTeam
-import com.example.premierleagueapp.data.database.asDomainMatches
-import com.example.premierleagueapp.data.database.asDomainTeam
-import com.example.premierleagueapp.data.database.asDomainTeams
+import com.example.premierleagueapp.data.database.dao.MatchDao
+import com.example.premierleagueapp.data.database.dao.TeamDao
+import com.example.premierleagueapp.data.database.entities.asDbMatch
+import com.example.premierleagueapp.data.database.entities.asDbTeam
+import com.example.premierleagueapp.data.database.entities.asDomainMatches
+import com.example.premierleagueapp.data.database.entities.asDomainTeam
+import com.example.premierleagueapp.data.database.entities.asDomainTeams
 import com.example.premierleagueapp.network.Match
 import com.example.premierleagueapp.network.SoccerApiService
 import com.example.premierleagueapp.network.Team

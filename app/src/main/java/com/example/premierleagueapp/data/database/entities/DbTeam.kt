@@ -1,4 +1,4 @@
-package com.example.premierleagueapp.data.database
+package com.example.premierleagueapp.data.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -18,19 +18,6 @@ data class DbTeam(
     var coach: Coach,
     var venue: String,
     var squad: List<Player>,
-)
-
-@Entity(tableName = "coach")
-data class DbCoach(
-    val name: String,
-    val nationality: String,
-)
-
-@Entity(tableName = "players")
-data class DbPlayer(
-    val name: String,
-    val position: String,
-    val nationality: String,
 )
 
 fun Team.asDbTeam(): DbTeam = DbTeam(id, name, shortName, crest, website, tla, coach, venue, squad)

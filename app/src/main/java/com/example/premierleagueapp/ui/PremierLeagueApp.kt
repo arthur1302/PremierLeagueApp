@@ -113,7 +113,7 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
                     FloatingActionButton(onClick = {
                         sendMail()
                     }) {
-                        Icon(Icons.Default.Email, contentDescription = "Send mail")
+                        Icon(Icons.Default.Email, contentDescription = stringResource(R.string.fab_send_email))
                     }
                 }
             }

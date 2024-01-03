@@ -2,10 +2,7 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="HomeScreenTest">
-        <State />
-      </entry>
-      <entry key="PremierLeagueAppNavigationTest">
+      <entry key="ContactScreenTest">
         <State />
       </entry>
       <entry key="app">
@@ -24,10 +21,7 @@
           <timeTargetWasSelectedWithDropDown value="2023-12-28T14:43:27.220686100Z" />
         </State>
       </entry>
-      <entry key="homeScreen_navigateToDetailPage()">
-        <State />
-      </entry>
-      <entry key="navHost_verifyStartDestination()">
+      <entry key="contactScreen_fab()">
         <State />
       </entry>
     </value>

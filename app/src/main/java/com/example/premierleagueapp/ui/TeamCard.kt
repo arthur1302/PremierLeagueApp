@@ -34,7 +34,12 @@ fun TeamCard(name: String = "", shortName: String = "", imageUrl: String, onClic
     ) {
         Row(modifier = modifier.fillMaxWidth().padding(8.dp)) {
             Image(
-                painter = rememberImagePainter(imageUrl),
+                painter = rememberImagePainter(
+                    data = imageUrl,
+                    builder = {
+                        crossfade(true)
+                    },
+                ),
                 contentDescription = null,
                 modifier = modifier
                     .size(40.dp)

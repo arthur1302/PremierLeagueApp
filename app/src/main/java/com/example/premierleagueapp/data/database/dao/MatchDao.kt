@@ -1,9 +1,10 @@
-package com.example.premierleagueapp.data.database
+package com.example.premierleagueapp.data.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.premierleagueapp.data.database.entities.DbMatch
 import kotlinx.coroutines.flow.Flow
 
 @Dao
