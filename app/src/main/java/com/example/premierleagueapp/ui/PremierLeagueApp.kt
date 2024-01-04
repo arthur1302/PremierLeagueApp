@@ -26,7 +26,7 @@ import com.example.premierleagueapp.R
 import com.example.premierleagueapp.ui.components.general.PremierLeagueAppBottomBar
 import com.example.premierleagueapp.ui.components.general.PremierLeagueTopBar
 import com.example.premierleagueapp.ui.screens.AboutScreen
-import com.example.premierleagueapp.ui.screens.CameraScreen
+import com.example.premierleagueapp.ui.screens.CameraScreenExperimental
 import com.example.premierleagueapp.ui.screens.ContactScreen
 import com.example.premierleagueapp.ui.screens.DetailScreen
 import com.example.premierleagueapp.ui.screens.StartScreen
@@ -92,7 +92,7 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
                 },
             )
         },
-        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+        containerColor = MaterialTheme.colorScheme.onError,
     ) { innerPadding ->
 
         NavHost(
@@ -125,7 +125,7 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
                 }
             }
             composable(Destinations.Camera.name) {
-                CameraScreen()
+                CameraScreenExperimental()
             }
         }
     }

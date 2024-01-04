@@ -1,11 +1,14 @@
 package com.example.premierleagueapp.ui.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.premierleagueapp.R
@@ -30,7 +33,7 @@ fun StartScreen(
         }
         is TeamApiState.Success -> {
             val uiListState by viewModel.uiListState.collectAsState()
-            Box {
+            Box(Modifier.background(MaterialTheme.colorScheme.tertiaryContainer)) {
                 TeamsList(uiListState, onTeamClick = { teamId ->
                     onTeamClick(teamId)
                 }, lazyListState)

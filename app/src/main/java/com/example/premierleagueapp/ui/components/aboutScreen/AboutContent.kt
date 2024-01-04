@@ -17,7 +17,7 @@ import com.example.premierleagueapp.R
 fun AboutContent() {
     Column(
         Modifier
-            .padding(start = 8.dp, end = 8.dp)
+            .padding(8.dp, 8.dp, 8.dp)
             .testTag(stringResource(R.string.about_content)),
     ) {
         Text(stringResource(R.string.about_paragraph1), style = MaterialTheme.typography.bodyLarge)

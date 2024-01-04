@@ -43,7 +43,6 @@ fun DetailScreen(teamId: Int) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(color = Color.White)
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {

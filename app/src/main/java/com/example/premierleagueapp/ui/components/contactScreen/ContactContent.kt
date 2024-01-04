@@ -16,7 +16,7 @@ import com.example.premierleagueapp.ui.components.helpers.MailComponent
 
 @Composable
 fun ContactContent() {
-    Column(Modifier.padding(start = 8.dp, end = 8.dp).testTag(stringResource(R.string.contact_content))) {
+    Column(Modifier.padding(8.dp, 8.dp, 8.dp).testTag(stringResource(R.string.contact_content))) {
         Text(stringResource(R.string.contact_paragraph1), style = MaterialTheme.typography.bodyLarge)
         Spacer(Modifier.height(25.dp))
         MailComponent()

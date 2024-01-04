@@ -52,7 +52,7 @@ android {
 }
 
 dependencies {
-    val camerax_version = "1.3.0"
+    val camerax_version = "1.3.0-alpha07"
     implementation("androidx.camera:camera-core:$camerax_version")
     implementation("androidx.camera:camera-camera2:$camerax_version")
     implementation("androidx.camera:camera-lifecycle:$camerax_version")
@@ -60,6 +60,7 @@ dependencies {
 
     implementation("androidx.camera:camera-view:$camerax_version")
     implementation("androidx.camera:camera-extensions:$camerax_version")
+    implementation("com.google.accompanist:accompanist-permissions:0.33.2-alpha")
     val nav_version = "2.7.4"
 
     implementation("androidx.navigation:navigation-compose:$nav_version")
