@@ -1,4 +1,4 @@
-package com.example.premierleagueapp.ui
+package com.example.premierleagueapp.ui.components.helpers
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider

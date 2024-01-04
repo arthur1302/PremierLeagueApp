@@ -1,4 +1,4 @@
-package com.example.premierleagueapp.ui
+package com.example.premierleagueapp.ui.components.detailScreen
 
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
@@ -15,6 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.premierleagueapp.R
+import com.example.premierleagueapp.ui.MatchApiState
+import com.example.premierleagueapp.ui.viewmodels.SoccerViewModel
 import dev.chrisbanes.snapper.ExperimentalSnapperApi
 import dev.chrisbanes.snapper.rememberSnapperFlingBehavior
 

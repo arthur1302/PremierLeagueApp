@@ -17,12 +17,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.premierleagueapp.R
-import com.example.premierleagueapp.ui.DetailHeader
-import com.example.premierleagueapp.ui.MatchList
-import com.example.premierleagueapp.ui.SoccerViewModel
-import com.example.premierleagueapp.ui.SquadList
+import com.example.premierleagueapp.ui.components.detailScreen.DetailHeader
+import com.example.premierleagueapp.ui.components.detailScreen.MatchList
+import com.example.premierleagueapp.ui.viewmodels.SoccerViewModel
+import com.example.premierleagueapp.ui.components.detailScreen.SquadList
 import com.example.premierleagueapp.ui.TeamApiDetailState
-import com.example.premierleagueapp.ui.TeamDetails
+import com.example.premierleagueapp.ui.components.detailScreen.TeamDetails
 import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
 
 @Composable

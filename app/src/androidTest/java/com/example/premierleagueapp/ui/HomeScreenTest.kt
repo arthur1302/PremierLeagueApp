@@ -13,6 +13,7 @@ import com.example.premierleagueapp.R
 import com.example.premierleagueapp.model.Coach
 import com.example.premierleagueapp.model.Player
 import com.example.premierleagueapp.model.Team
+import com.example.premierleagueapp.ui.components.startScreen.TeamsList
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

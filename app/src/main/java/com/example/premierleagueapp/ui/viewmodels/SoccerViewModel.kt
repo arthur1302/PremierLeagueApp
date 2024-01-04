@@ -1,4 +1,4 @@
-package com.example.premierleagueapp.ui
+package com.example.premierleagueapp.ui.viewmodels
 
 import android.util.Log
 import androidx.compose.runtime.getValue
@@ -15,6 +15,9 @@ import com.example.premierleagueapp.data.SoccerRepository
 import com.example.premierleagueapp.model.Coach
 import com.example.premierleagueapp.model.Match
 import com.example.premierleagueapp.model.Team
+import com.example.premierleagueapp.ui.MatchApiState
+import com.example.premierleagueapp.ui.TeamApiDetailState
+import com.example.premierleagueapp.ui.TeamApiState
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn

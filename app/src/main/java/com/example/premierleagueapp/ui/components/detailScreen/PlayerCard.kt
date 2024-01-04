@@ -1,4 +1,4 @@
-package com.example.premierleagueapp.ui
+package com.example.premierleagueapp.ui.components.detailScreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.example.premierleagueapp.R
 import com.example.premierleagueapp.model.Player
+import com.example.premierleagueapp.ui.components.helpers.ImageHandler
 
 @Composable
 fun PlayerCard(player: Player, crest: String) {

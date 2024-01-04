@@ -1,4 +1,4 @@
-package com.example.premierleagueapp.ui
+package com.example.premierleagueapp.ui.components.helpers
 
 import android.annotation.SuppressLint
 import android.content.Context

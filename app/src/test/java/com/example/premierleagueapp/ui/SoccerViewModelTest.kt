@@ -2,8 +2,8 @@
 
 package com.example.premierleagueapp.ui
 
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.premierleagueapp.fake.FakeApiSoccerRepository
+import com.example.premierleagueapp.ui.viewmodels.SoccerViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestDispatcher

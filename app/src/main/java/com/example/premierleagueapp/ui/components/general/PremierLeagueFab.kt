@@ -1,4 +1,4 @@
-package com.example.premierleagueapp.ui
+package com.example.premierleagueapp.ui.components.general
 
 import android.content.Intent
 import android.net.Uri
@@ -16,6 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavBackStackEntry
 import com.example.premierleagueapp.R
+import com.example.premierleagueapp.ui.Destinations
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

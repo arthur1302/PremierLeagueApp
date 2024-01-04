@@ -1,4 +1,4 @@
-package com.example.premierleagueapp.ui
+package com.example.premierleagueapp.ui.components.startScreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -20,10 +20,9 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.example.premierleagueapp.R
+import com.example.premierleagueapp.ui.components.helpers.ImageHandler
 
-@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun TeamCard(name: String = "", shortName: String = "", imageUrl: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
     var painter: Painter = rememberImagePainter(R.drawable.england)

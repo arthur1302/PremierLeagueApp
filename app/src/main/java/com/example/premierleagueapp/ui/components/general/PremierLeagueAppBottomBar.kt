@@ -1,4 +1,4 @@
-package com.example.premierleagueapp.ui
+package com.example.premierleagueapp.ui.components.general
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call

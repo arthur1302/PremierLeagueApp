@@ -23,6 +23,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.premierleagueapp.R
+import com.example.premierleagueapp.ui.components.general.PremierLeagueAppBottomBar
+import com.example.premierleagueapp.ui.components.general.PremierLeagueFab
+import com.example.premierleagueapp.ui.components.general.PremierLeagueTopBar
 import com.example.premierleagueapp.ui.screens.AboutScreen
 import com.example.premierleagueapp.ui.screens.ContactScreen
 import com.example.premierleagueapp.ui.screens.DetailScreen

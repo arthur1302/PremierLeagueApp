@@ -9,9 +9,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.premierleagueapp.R
-import com.example.premierleagueapp.ui.SoccerViewModel
 import com.example.premierleagueapp.ui.TeamApiState
-import com.example.premierleagueapp.ui.TeamsList
+import com.example.premierleagueapp.ui.components.startScreen.TeamsList
+import com.example.premierleagueapp.ui.viewmodels.SoccerViewModel
 
 @Composable
 fun StartScreen(
