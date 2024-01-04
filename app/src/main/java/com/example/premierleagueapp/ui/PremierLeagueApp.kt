@@ -24,7 +24,6 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.premierleagueapp.R
 import com.example.premierleagueapp.ui.components.general.PremierLeagueAppBottomBar
-import com.example.premierleagueapp.ui.components.general.PremierLeagueFab
 import com.example.premierleagueapp.ui.components.general.PremierLeagueTopBar
 import com.example.premierleagueapp.ui.screens.AboutScreen
 import com.example.premierleagueapp.ui.screens.CameraScreen
@@ -72,9 +71,9 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
         bottomBar =
         {
             PremierLeagueAppBottomBar(
-                /*currentBackStackEntry,
+                currentBackStackEntry,
                 coroutineScope,
-                lazyListState,*/
+                lazyListState,
                 { navController.popBackStack(Destinations.Start.name, false) },
                 {
                     navController.navigate(Destinations.Contact.name) {
@@ -92,9 +91,6 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
                     }
                 },
             )
-        },
-        floatingActionButton = {
-            PremierLeagueFab(currentBackStackEntry, coroutineScope, lazyListState)
         },
         containerColor = MaterialTheme.colorScheme.tertiaryContainer,
     ) { innerPadding ->

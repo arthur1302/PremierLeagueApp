@@ -12,6 +12,7 @@
     <string name="home_button">Home button</string>
     <string name="about_button">About button</string>
     <string name="contact_button">Contact button</string>
+    <string name="add_button">Add button</string>
 
     <!-- FAB's -->
     <string name="fab_scroll_up">Scroll Up</string>
