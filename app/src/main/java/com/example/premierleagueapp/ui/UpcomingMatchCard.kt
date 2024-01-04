@@ -16,8 +16,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
+import com.example.premierleagueapp.R
 import com.example.premierleagueapp.model.Match
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -25,6 +27,7 @@ import java.util.TimeZone
 
 @Composable
 fun UpcomingMatchCard(match: Match) {
+    var painter: Painter = rememberImagePainter(R.drawable.england)
     Card(
         modifier = Modifier.width(375.dp),
         colors = CardDefaults.cardColors(
@@ -43,13 +46,15 @@ fun UpcomingMatchCard(match: Match) {
                     .padding(top = 16.dp),
                 horizontalArrangement = Arrangement.SpaceAround,
             ) {
+                painter = ImageHandler(match.homeTeam.crest, painter)
                 Image(
-                    painter = rememberImagePainter(match.homeTeam.crest),
+                    painter = painter,
                     contentDescription = null,
                     modifier = Modifier.size(40.dp),
                 )
+                painter = ImageHandler(match.awayTeam.crest, painter)
                 Image(
-                    painter = rememberImagePainter(match.awayTeam.crest),
+                    painter = painter,
                     contentDescription = null,
                     modifier = Modifier.size(40.dp),
                 )

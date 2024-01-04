@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
@@ -25,6 +26,7 @@ import com.example.premierleagueapp.model.Player
 
 @Composable
 fun PlayerCard(player: Player, crest: String) {
+    var painter: Painter = rememberImagePainter(R.drawable.england)
     Card(
         modifier = Modifier
             .width(175.dp)
@@ -53,8 +55,9 @@ fun PlayerCard(player: Player, crest: String) {
                 modifier = Modifier.padding(bottom = 8.dp).align(Alignment.CenterVertically)
                     .alpha(0.5F),
             )
+            painter = ImageHandler(crest, painter)
             Image(
-                painter = rememberImagePainter(crest),
+                painter = painter,
                 contentDescription = null,
                 modifier = Modifier.size(65.dp).align(Alignment.CenterVertically).padding(12.dp),
             )

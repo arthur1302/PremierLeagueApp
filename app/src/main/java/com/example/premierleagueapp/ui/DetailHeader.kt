@@ -15,15 +15,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.example.premierleagueapp.R
 import com.example.premierleagueapp.model.Team
+import com.example.premierleagueapp.ui.ImageHandler
 
 @Composable
 fun DetailHeader(team: Team?) {
+    var painter: Painter = rememberImagePainter(R.drawable.england)
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -38,8 +41,9 @@ fun DetailHeader(team: Team?) {
                 .alpha(0.5F),
             contentScale = ContentScale.Crop,
         )
+        painter = ImageHandler(team?.crest!!, painter)
         Image(
-            painter = rememberImagePainter(team?.crest),
+            painter = painter,
             contentDescription = null,
             modifier = Modifier
                 .size(80.dp)

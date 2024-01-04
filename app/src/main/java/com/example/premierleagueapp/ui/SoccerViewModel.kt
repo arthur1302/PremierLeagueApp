@@ -44,7 +44,6 @@ class SoccerViewModel(
 
     private fun getRepoTeams() {
         try {
-            teamApiState = TeamApiState.Loading
             viewModelScope.launch {
                 soccerRepository.refresh()
                 uiListState = soccerRepository.getTeams()
