@@ -27,6 +27,7 @@ import com.example.premierleagueapp.ui.components.general.PremierLeagueAppBottom
 import com.example.premierleagueapp.ui.components.general.PremierLeagueFab
 import com.example.premierleagueapp.ui.components.general.PremierLeagueTopBar
 import com.example.premierleagueapp.ui.screens.AboutScreen
+import com.example.premierleagueapp.ui.screens.CameraScreen
 import com.example.premierleagueapp.ui.screens.ContactScreen
 import com.example.premierleagueapp.ui.screens.DetailScreen
 import com.example.premierleagueapp.ui.screens.StartScreen
@@ -37,6 +38,7 @@ enum class Destinations {
     About,
     Contact,
     Overview,
+    Camera,
 }
 
 @SuppressLint("QueryPermissionsNeeded")
@@ -70,6 +72,9 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
         bottomBar =
         {
             PremierLeagueAppBottomBar(
+                /*currentBackStackEntry,
+                coroutineScope,
+                lazyListState,*/
                 { navController.popBackStack(Destinations.Start.name, false) },
                 {
                     navController.navigate(Destinations.Contact.name) {
@@ -78,6 +83,11 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
                 },
                 {
                     navController.navigate(Destinations.About.name) {
+                        launchSingleTop = true
+                    }
+                },
+                {
+                    navController.navigate(Destinations.Camera.name) {
                         launchSingleTop = true
                     }
                 },
@@ -117,6 +127,9 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
                         Text(stringResource(R.string.home_button_no_id))
                     }
                 }
+            }
+            composable(Destinations.Camera.name) {
+                CameraScreen()
             }
         }
     }
