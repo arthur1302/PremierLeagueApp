@@ -92,4 +92,9 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.5.1")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // Svg files
+    implementation("com.github.bumptech.glide:compose:1.0.0-alpha.1")
+    implementation("io.coil-kt:coil-compose:1.3.2")
+    implementation("io.coil-kt:coil-svg:1.3.2")
 }
