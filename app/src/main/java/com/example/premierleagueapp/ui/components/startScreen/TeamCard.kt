@@ -43,7 +43,7 @@ fun TeamCard(name: String = "", shortName: String = "", imageUrl: String, onClic
                 contentDescription = null,
                 modifier = modifier
                     .size(40.dp)
-                    .background(shape = CircleShape, color = Color.White)
+                    .background(shape = CircleShape, color = Color.Transparent)
                     .align(Alignment.CenterVertically),
             )
             Column(modifier = modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
