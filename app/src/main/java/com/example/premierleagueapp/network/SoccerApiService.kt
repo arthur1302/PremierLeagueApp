@@ -1,6 +1,7 @@
 package com.example.premierleagueapp.network
 
 import com.example.premierleagueapp.model.MatchApiResponse
+import com.example.premierleagueapp.model.TableApiResponse
 import com.example.premierleagueapp.model.Team
 import com.example.premierleagueapp.model.TeamApiResponse
 import kotlinx.coroutines.flow.flow
@@ -18,9 +19,14 @@ interface SoccerApiService {
 
     @GET("teams/{id}/matches")
     suspend fun getMatchesByTeam(@Path("id") teamId: Int, @Header("X-Auth-Token") apiKey: String): Response<MatchApiResponse>
+
+    @GET("competitions/PL/standings")
+    suspend fun getTables(@Header("X-Auth-Token") apiKey: String): Response<TableApiResponse>
 }
 
 val apiKey = ApiConfig.API_TOKEN
 fun SoccerApiService.getTeamsAsFlow() = flow { emit(getTeams(apiKey)) }
+
+fun SoccerApiService.getTablesAsFlow() = flow { emit(getTables(apiKey)) }
 
 fun SoccerApiService.getMatchesAsFlow(id: Int) = flow { emit(getMatchesByTeam(id, apiKey)) }

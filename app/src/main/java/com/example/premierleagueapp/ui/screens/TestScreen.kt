@@ -9,31 +9,26 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.premierleagueapp.R
-import com.example.premierleagueapp.ui.TeamApiState
-import com.example.premierleagueapp.ui.components.startScreen.TeamsList
+import com.example.premierleagueapp.ui.TableApiState
+import com.example.premierleagueapp.ui.components.Ranking
 import com.example.premierleagueapp.ui.viewmodels.SoccerViewModel
 
 @Composable
-fun StartScreen(
-    lazyListState: LazyListState,
-    onTeamClick: (teamId: Int) -> Unit,
-) {
+fun TestScreen(lazyListState: LazyListState) {
     val viewModel: SoccerViewModel = viewModel(factory = SoccerViewModel.Factory)
-    val teamApiState = viewModel.teamApiState
+    val tableApiState = viewModel.tableApiState
 
-    when (teamApiState) {
-        is TeamApiState.Loading -> {
+    when (tableApiState) {
+        is TableApiState.Loading -> {
             Text(stringResource(R.string.loading_teams))
         }
-        is TeamApiState.Error -> {
+        is TableApiState.Error -> {
             Text(stringResource(R.string.error_fetching_teams))
         }
-        is TeamApiState.Success -> {
-            val uiListState by viewModel.uiListState.collectAsState()
+        is TableApiState.Success -> {
+            val uiTableState by viewModel.uiTableState.collectAsState()
             Box {
-                TeamsList(uiListState, onTeamClick = { teamId ->
-                    onTeamClick(teamId)
-                }, lazyListState)
+                Ranking(uiTableState, lazyListState)
             }
         }
     }

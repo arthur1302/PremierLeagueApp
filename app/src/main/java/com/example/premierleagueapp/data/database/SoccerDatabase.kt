@@ -8,13 +8,17 @@ import com.example.premierleagueapp.data.database.converters.CompetitionConverte
 import com.example.premierleagueapp.data.database.converters.PlayerListConverter
 import com.example.premierleagueapp.data.database.converters.TeamConverter
 import com.example.premierleagueapp.data.database.dao.MatchDao
+import com.example.premierleagueapp.data.database.dao.TableDao
 import com.example.premierleagueapp.data.database.dao.TeamDao
 import com.example.premierleagueapp.data.database.entities.DbMatch
+import com.example.premierleagueapp.data.database.entities.DbTable
 import com.example.premierleagueapp.data.database.entities.DbTeam
 
-@Database(entities = [DbTeam::class, DbMatch::class], version = 1)
+@Database(entities = [DbTeam::class, DbMatch::class, DbTable::class], version = 1)
 @TypeConverters(CoachConverter::class, PlayerListConverter::class, TeamConverter::class, CompetitionConverter::class)
 abstract class SoccerDatabase : RoomDatabase() {
     abstract fun teamDao(): TeamDao
     abstract fun matchDao(): MatchDao
+
+    abstract fun tableDao(): TableDao
 }

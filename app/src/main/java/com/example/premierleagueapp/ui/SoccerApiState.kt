@@ -17,3 +17,9 @@ sealed interface MatchApiState {
     data object Loading : MatchApiState
     data object Success : MatchApiState
 }
+
+sealed interface TableApiState {
+    data object Error : TableApiState
+    data object Loading : TableApiState
+    data object Success : TableApiState
+}

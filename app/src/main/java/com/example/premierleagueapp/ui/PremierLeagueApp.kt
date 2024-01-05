@@ -26,10 +26,10 @@ import com.example.premierleagueapp.R
 import com.example.premierleagueapp.ui.components.general.PremierLeagueAppBottomBar
 import com.example.premierleagueapp.ui.components.general.PremierLeagueTopBar
 import com.example.premierleagueapp.ui.screens.AboutScreen
-import com.example.premierleagueapp.ui.screens.CameraScreenExperimental
 import com.example.premierleagueapp.ui.screens.ContactScreen
 import com.example.premierleagueapp.ui.screens.DetailScreen
 import com.example.premierleagueapp.ui.screens.StartScreen
+import com.example.premierleagueapp.ui.screens.TestScreen
 import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
 
 enum class Destinations {
@@ -125,7 +125,7 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
                 }
             }
             composable(Destinations.Camera.name) {
-                CameraScreenExperimental()
+                TestScreen(lazyListState)
             }
         }
     }

@@ -14,8 +14,10 @@ import com.example.premierleagueapp.SoccerApplication
 import com.example.premierleagueapp.data.SoccerRepository
 import com.example.premierleagueapp.model.Coach
 import com.example.premierleagueapp.model.Match
+import com.example.premierleagueapp.model.Table
 import com.example.premierleagueapp.model.Team
 import com.example.premierleagueapp.ui.MatchApiState
+import com.example.premierleagueapp.ui.TableApiState
 import com.example.premierleagueapp.ui.TeamApiDetailState
 import com.example.premierleagueapp.ui.TeamApiState
 import kotlinx.coroutines.flow.SharingStarted
@@ -36,19 +38,24 @@ class SoccerViewModel(
     var matchApiState: MatchApiState by mutableStateOf(MatchApiState.Loading)
         private set
 
+    var tableApiState: TableApiState by mutableStateOf(TableApiState.Loading)
+        private set
+
     lateinit var uiListState: StateFlow<List<Team>>
 
     lateinit var uiTeamState: StateFlow<Team?>
 
     lateinit var uiMatchListState: StateFlow<List<Match>>
+
+    lateinit var uiTableState: StateFlow<List<Table>>
     init {
         getRepoTeams()
+        getRepoStandings()
     }
 
     private fun getRepoTeams() {
         try {
             viewModelScope.launch {
-                soccerRepository.refresh()
                 uiListState = soccerRepository.getTeams()
                     .stateIn(
                         scope = viewModelScope,
@@ -63,6 +70,22 @@ class SoccerViewModel(
         }
     }
 
+    private fun getRepoStandings() {
+        try {
+            viewModelScope.launch {
+                uiTableState = soccerRepository.getStandings()
+                    .stateIn(
+                        scope = viewModelScope,
+                        started = SharingStarted.WhileSubscribed(5_000L),
+                        initialValue = listOf(),
+                    )
+                tableApiState = TableApiState.Success
+            }
+        } catch (e: Exception) {
+            tableApiState = TableApiState.Error
+            Log.e("Error: ", e.message, e)
+        }
+    }
     fun getSingleTeam(teamId: Int) {
         try {
             uiTeamState = soccerRepository.getSingleTeam(teamId)
