@@ -29,6 +29,19 @@ import com.example.premierleagueapp.R
 import com.example.premierleagueapp.ui.Destinations
 import kotlinx.coroutines.CoroutineScope
 
+/**
+ * Composable that contains the [BottomAppBar]
+ *
+ * @author Arthur Haus
+ *
+ * @param currentBackStackEntry [NavBackStackEntry]
+ * @param coroutineScope [CoroutineScope]
+ * @param lazyListState [LazyListState]
+ * @param onHome [Unit]
+ * @param onContact [Unit]
+ * @param onAbout [Unit]
+ * @param onRanking [Unit]
+ */
 @Composable
 fun PremierLeagueAppBottomBar(
     currentBackStackEntry: NavBackStackEntry?,
@@ -55,6 +68,15 @@ fun PremierLeagueAppBottomBar(
     )
 }
 
+/**
+ * Composable that contains a [NavBarItem]
+ *
+ * @author Arthur Haus
+ *
+ * @param icon [ImageVector]
+ * @param resource [Int]
+ * @param onClick [Unit]
+ */
 @Composable
 private fun NavBarItem(icon: ImageVector, onClick: () -> Unit, resource: Int) {
     Column(

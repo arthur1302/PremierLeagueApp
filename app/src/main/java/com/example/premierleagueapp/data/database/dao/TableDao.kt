@@ -7,6 +7,12 @@ import androidx.room.Query
 import com.example.premierleagueapp.data.database.entities.DbTable
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * Dao for tables
+ *
+ * @author Arthur Haus
+ *
+ */
 @Dao
 interface TableDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)

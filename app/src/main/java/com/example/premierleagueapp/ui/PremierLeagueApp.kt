@@ -32,6 +32,9 @@ import com.example.premierleagueapp.ui.screens.RankingScreen
 import com.example.premierleagueapp.ui.screens.StartScreen
 import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
 
+/**
+ * Enum class that contains all the route destinations
+ */
 enum class Destinations {
     Start,
     About,
@@ -40,13 +43,23 @@ enum class Destinations {
     Ranking,
 }
 
+/**
+ * Composable that contains the whole application
+ *
+ * @author Arthur Haus
+ *
+ * @param navController [NavHostController]
+ */
+
 @SuppressLint("QueryPermissionsNeeded")
 @Composable
 fun PremierLeagueApp(navController: NavHostController = rememberNavController()) {
+    // Contains the backstack for navigation
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
     val lazyListState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
 
+    // Main layout component
     Scaffold(
         topBar = {
             PremierLeagueTopBar(
@@ -60,6 +73,7 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
                         }
                     }
                 },
+                // The title will change, depending on which route is active
                 when (currentBackStackEntry?.destination?.route) {
                     Destinations.Contact.name -> R.string.contact_title
                     Destinations.About.name -> R.string.about_title
@@ -95,7 +109,7 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
         },
         containerColor = MaterialTheme.colorScheme.onError,
     ) { innerPadding ->
-
+        // Contains all the possible routes
         NavHost(
             navController = navController,
             startDestination = Destinations.Start.name,
@@ -132,6 +146,9 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
     }
 }
 
+/**
+ * Composable for a preview of the application
+ */
 @Preview
 @Composable
 fun PremierLeagueAppPreview() {

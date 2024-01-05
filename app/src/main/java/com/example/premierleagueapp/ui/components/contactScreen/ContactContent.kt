@@ -14,6 +14,11 @@ import androidx.compose.ui.unit.dp
 import com.example.premierleagueapp.R
 import com.example.premierleagueapp.ui.components.helpers.MailComponent
 
+/**
+ * Composable that contains the content for the contact page
+ *
+ * @author Arthur Haus
+ */
 @Composable
 fun ContactContent() {
     Column(Modifier.padding(8.dp, 8.dp, 8.dp).testTag(stringResource(R.string.contact_content))) {

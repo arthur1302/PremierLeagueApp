@@ -27,11 +27,20 @@ import com.example.premierleagueapp.R
 import com.example.premierleagueapp.model.Table
 import com.example.premierleagueapp.ui.components.helpers.imageHandler
 
+/**
+ * Composable for the ranking
+ *
+ * @author Arthur Haus
+ *
+ * @param tables [List] of [Table]
+ * @param lazyListState [LazyListState]
+ */
 @Composable
 fun Ranking(tables: List<Table>, lazyListState: LazyListState) {
     var painter: Painter = rememberImagePainter(R.drawable.england)
     LazyColumn(state = lazyListState) {
         items(tables) { table ->
+            // Depending which position in the ranking a team has, another color will be assigned to the team card
             val cardColor = when (table.position) {
                 in 1..4 -> Color.Green.copy(alpha = 0.4F)
                 in 5..5 -> Color.Yellow.copy(alpha = 0.4F)

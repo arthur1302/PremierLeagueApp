@@ -10,6 +10,11 @@ import androidx.compose.ui.Modifier
 import com.example.premierleagueapp.ui.PremierLeagueApp
 import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
 
+/**
+ * Main Activity of the application
+ *
+ * @author Arthur Haus
+ */
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

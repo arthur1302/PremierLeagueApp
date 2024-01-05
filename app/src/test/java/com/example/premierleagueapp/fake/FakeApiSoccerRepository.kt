@@ -7,6 +7,11 @@ import com.example.premierleagueapp.model.Team
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
+/**
+ * Fake API soccerRepository to test
+ *
+ * @author Arthur Haus
+ */
 class FakeApiSoccerRepository : SoccerRepository {
 
     private val teamsList = mutableListOf<Team>()

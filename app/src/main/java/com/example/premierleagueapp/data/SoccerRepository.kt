@@ -52,22 +52,45 @@ class CachingTeamsRepository(
     private val tableDao: TableDao,
 ) : SoccerRepository {
 
+    /**
+     * Function that inserts teams in the database
+     *
+     * @param team an instance of [Team]
+     */
     override suspend fun insert(team: Team) {
         teamDao.insert(team.asDbTeam())
     }
 
+    /**
+     * Function that inserts matches in the database
+     *
+     * @param match an instance of [Match]
+     */
     override suspend fun insert(match: Match) {
         matchDao.insert(match.asDbMatch())
     }
 
+    /**
+     * Function that inserts tables in the database
+     *
+     * @param table an instance of [Table]
+     */
     override suspend fun insert(table: Table) {
         tableDao.insert(table.asDbTable())
     }
 
+    /**
+     * Function that drops all matches in the database
+     */
     override suspend fun dropMatches() {
         matchDao.drop()
     }
 
+    /**
+     * Function that returns a flow of all teams
+     *
+     * @return a [Flow] of a [List] of [Team] objects
+     */
     override fun getTeams(): Flow<List<Team>> {
         return teamDao.getAllTeams().map {
             it.asDomainTeams()
@@ -78,6 +101,11 @@ class CachingTeamsRepository(
         }
     }
 
+    /**
+     * Function that returns a flow of all rankings
+     *
+     * @return a [Flow] of a [List] of [Table] objects
+     */
     override fun getStandings(): Flow<List<Table>> {
         return tableDao.getAllStandings().map {
             it.asDomainTables()
@@ -88,12 +116,21 @@ class CachingTeamsRepository(
         }
     }
 
+    /**
+     * Function that returns a flow of a team
+     *
+     * @param teamId [Int]
+     * @return a [Flow] of a [Team] instance
+     */
     override fun getSingleTeam(teamId: Int): Flow<Team?> {
         return teamDao.getTeam(teamId).map {
             it.asDomainTeam()
         }
     }
 
+    /**
+     * Function that refreshes the database
+     */
     override suspend fun refresh() {
         soccerApiService.getTeamsAsFlow().collect {
             val teams: List<Team> = it.body()!!.teams
@@ -103,6 +140,9 @@ class CachingTeamsRepository(
         }
     }
 
+    /**
+     * Function that refreshes the database
+     */
     override suspend fun refreshStandings() {
         soccerApiService.getTablesAsFlow().collect {
             val standings: List<Standings> = it.body()!!.standings
@@ -115,6 +155,13 @@ class CachingTeamsRepository(
             }
         }
     }
+
+    /**
+     * Function that returns a flow of a list of matches
+     *
+     * @param teamId [Int]
+     * @return a [Flow] of a [List] of [Match] instances
+     */
     override suspend fun getMatchesByTeam(teamId: Int): Flow<List<Match>> = withContext(Dispatchers.IO) {
         dropMatches()
         return@withContext matchDao.getAllMatches().map { it.asDomainMatches() }.onEach { it ->

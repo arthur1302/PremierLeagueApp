@@ -13,6 +13,11 @@ import com.example.premierleagueapp.model.apiResponses.TableApiResponse
 import com.example.premierleagueapp.model.apiResponses.TeamApiResponse
 import retrofit2.Response
 
+/**
+ * Fake data source to test
+ *
+ * @author Arthur Haus
+ */
 object FakeDataSource {
 
     private val team1 = Team(

@@ -5,6 +5,12 @@ import com.example.premierleagueapp.model.Team
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+/**
+ * Converter for a Team item
+ *
+ * @author Arthur Haus
+ *
+ */
 class TeamConverter {
     private val gson = Gson()
 

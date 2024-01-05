@@ -25,6 +25,15 @@ import com.example.premierleagueapp.R
 import com.example.premierleagueapp.model.Player
 import com.example.premierleagueapp.ui.components.helpers.imageHandler
 
+/**
+ * Composable that contains the content for a specific player
+ *
+ * @author Arthur Haus
+ *
+ * @param player represents the specific [Player] for whom we want to make a card
+ * @param crest represents the crest of the team for which the player is playing
+ *
+ */
 @Composable
 fun PlayerCard(player: Player, crest: String) {
     var painter: Painter = rememberImagePainter(R.drawable.england)

@@ -7,6 +7,12 @@ import androidx.room.Query
 import com.example.premierleagueapp.data.database.entities.DbMatch
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * Dao for matches
+ *
+ * @author Arthur Haus
+ *
+ */
 @Dao
 interface MatchDao {
 

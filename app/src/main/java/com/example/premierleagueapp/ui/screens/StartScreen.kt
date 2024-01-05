@@ -16,15 +16,22 @@ import com.example.premierleagueapp.ui.TeamApiState
 import com.example.premierleagueapp.ui.components.startScreen.TeamsList
 import com.example.premierleagueapp.ui.viewmodels.TeamsViewModel
 
+/**
+ * Composable for the home screen
+ *
+ * @author Arthur Haus
+ *
+ * @param lazyListState [LazyListState]
+ * @param onTeamClick [Unit]
+ */
 @Composable
 fun StartScreen(
     lazyListState: LazyListState,
     onTeamClick: (teamId: Int) -> Unit,
 ) {
     val viewModel: TeamsViewModel = viewModel(factory = TeamsViewModel.Factory)
-    val teamApiState = viewModel.teamApiState
 
-    when (teamApiState) {
+    when (viewModel.teamApiState) {
         is TeamApiState.Loading -> {
             Text(stringResource(R.string.loading_teams))
         }

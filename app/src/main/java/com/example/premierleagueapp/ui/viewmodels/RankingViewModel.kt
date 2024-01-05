@@ -18,16 +18,27 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
+/**
+ * ViewModel for the rankings
+ *
+ * @author Arthur Haus
+ *
+ * @param soccerRepository [SoccerRepository]
+ */
 class RankingViewModel(private val soccerRepository: SoccerRepository) : ViewModel() {
     var tableApiState: TableApiState by mutableStateOf(TableApiState.Loading)
         private set
 
     lateinit var uiTableState: StateFlow<List<Table>>
 
+    // When this ViewModel is made getRepoStandings() will be executed
     init {
         getRepoStandings()
     }
 
+    /**
+     * Function that returns the rankings from the database
+     */
     private fun getRepoStandings() {
         try {
             viewModelScope.launch {
@@ -45,6 +56,7 @@ class RankingViewModel(private val soccerRepository: SoccerRepository) : ViewMod
         }
     }
 
+    // Companion object defining a Factory for creating instances of RankingViewModel
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {

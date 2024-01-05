@@ -6,6 +6,15 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import com.example.premierleagueapp.model.Team
 
+/**
+ * Composable that represents a [LazyColumn] of all [TeamCard] items
+ *
+ * @author Arthur Haus
+ *
+ * @param teams [List] of [Team]
+ * @param onTeamClick [Unit]
+ * @param lazyListState [LazyListState]
+ */
 @Composable
 fun TeamsList(teams: List<Team>, onTeamClick: (teamId: Int) -> Unit, lazyListState: LazyListState) {
     LazyColumn(state = lazyListState) {

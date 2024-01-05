@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>app</title>
+    <link href="images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="scripts/sourceset_dependencies.js" async="async"></script>
+<link href="styles/style.css" rel="Stylesheet">
+<link href="styles/main.css" rel="Stylesheet">
+<link href="styles/prism.css" rel="Stylesheet">
+<link href="styles/logo-styles.css" rel="Stylesheet">
+<link href="styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="index.html">
+                            app
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":app:dokkaHtml/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" id="content" pageIds="app::////PointingToDeclaration//492899073">
+  <div class="breadcrumbs"></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>app</span></span></h1>
+    <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><p class="paragraph">This is the module app</p></div></div>
+  </div>
+  <h2 class="">Packages</h2>
+  <div class="table"><a data-name="778469529%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp" id="778469529%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp/index.html">com.example.premierleagueapp</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="778469529%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="778469529%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp" id="778469529%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This is the main package of the application</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="51721827%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.data" id="51721827%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.data/index.html">com.example.premierleagueapp.data</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="51721827%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="51721827%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.data" id="51721827%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains everything to process data</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="-556142870%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.data.database" id="-556142870%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.data.database/index.html">com.example.premierleagueapp.data.database</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-556142870%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-556142870%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.data.database" id="-556142870%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains everything for the database</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="702851099%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.data.database.converters" id="702851099%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.data.database.converters/index.html">com.example.premierleagueapp.data.database.converters</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="702851099%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="702851099%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.data.database.converters" id="702851099%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains everything to convert specific data for the database</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="-901393778%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.data.database.dao" id="-901393778%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.data.database.dao/index.html">com.example.premierleagueapp.data.database.dao</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-901393778%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-901393778%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.data.database.dao" id="-901393778%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains all dao's</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="832383241%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.data.database.entities" id="832383241%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.data.database.entities/index.html">com.example.premierleagueapp.data.database.entities</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="832383241%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="832383241%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.data.database.entities" id="832383241%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains all entities for the database</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="2033778516%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.model" id="2033778516%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.model/index.html">com.example.premierleagueapp.model</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2033778516%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="2033778516%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.model" id="2033778516%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains all models</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="-1841823050%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.model.apiResponses" id="-1841823050%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.model.apiResponses/index.html">com.example.premierleagueapp.model.apiResponses</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1841823050%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="893776857%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.network" id="893776857%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.network/index.html">com.example.premierleagueapp.network</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="893776857%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="893776857%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.network" id="893776857%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains everything for the API calls</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="-426520947%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui" id="-426520947%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.ui/index.html">com.example.premierleagueapp.ui</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-426520947%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-426520947%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui" id="-426520947%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains everything for the UI</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="1949961030%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.aboutScreen" id="1949961030%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.ui.components.aboutScreen/index.html">com.example.premierleagueapp.ui.components.aboutScreen</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1949961030%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="1949961030%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.aboutScreen" id="1949961030%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains all components used for the about page</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="1455872281%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.contactScreen" id="1455872281%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.ui.components.contactScreen/index.html">com.example.premierleagueapp.ui.components.contactScreen</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1455872281%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="1455872281%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.contactScreen" id="1455872281%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains all components used for the contact page</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="-987840812%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.detailScreen" id="-987840812%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.ui.components.detailScreen/index.html">com.example.premierleagueapp.ui.components.detailScreen</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-987840812%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-987840812%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.detailScreen" id="-987840812%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains all components used for the detail page</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="1526292393%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.detailScreen.matchList" id="1526292393%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.ui.components.detailScreen.matchList/index.html">com.example.premierleagueapp.ui.components.detailScreen.matchList</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1526292393%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="1526292393%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.detailScreen.matchList" id="1526292393%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains all components that are used to render the list with upcoming matches</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="-1344390306%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.detailScreen.squadList" id="-1344390306%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.ui.components.detailScreen.squadList/index.html">com.example.premierleagueapp.ui.components.detailScreen.squadList</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1344390306%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-1344390306%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.detailScreen.squadList" id="-1344390306%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains all components that are used to render the list with players</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="-990867041%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.detailScreen.teamDetails.details" id="-990867041%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.ui.components.detailScreen.teamDetails.details/index.html">com.example.premierleagueapp.ui.components.detailScreen.teamDetails.details</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-990867041%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-990867041%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.detailScreen.teamDetails.details" id="-990867041%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains all components concerning the details that are used to render the team details component</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="1451357396%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.detailScreen.teamDetails.header" id="1451357396%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.ui.components.detailScreen.teamDetails.header/index.html">com.example.premierleagueapp.ui.components.detailScreen.teamDetails.header</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1451357396%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="1451357396%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.detailScreen.teamDetails.header" id="1451357396%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains all components that are used to render the team details header component</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="374086293%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.general" id="374086293%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.ui.components.general/index.html">com.example.premierleagueapp.ui.components.general</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="374086293%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="374086293%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.general" id="374086293%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains all components that are used in the whole application</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="-406323726%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.helpers" id="-406323726%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.ui.components.helpers/index.html">com.example.premierleagueapp.ui.components.helpers</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-406323726%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-406323726%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.helpers" id="-406323726%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains helpers used in the project</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="675719471%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.rankingScreen" id="675719471%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.ui.components.rankingScreen/index.html">com.example.premierleagueapp.ui.components.rankingScreen</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="675719471%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="675719471%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.rankingScreen" id="675719471%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains all the components used for the ranking page</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="-1421928421%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.startScreen" id="-1421928421%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.ui.components.startScreen/index.html">com.example.premierleagueapp.ui.components.startScreen</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1421928421%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-1421928421%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.components.startScreen" id="-1421928421%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains all the components used for the home page</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="-266988570%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.screens" id="-266988570%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.ui.screens/index.html">com.example.premierleagueapp.ui.screens</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-266988570%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-215058200%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.theme" id="-215058200%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.ui.theme/index.html">com.example.premierleagueapp.ui.theme</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-215058200%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-215058200%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.theme" id="-215058200%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains all the files used for the applications theme</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="-870122476%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.viewmodels" id="-870122476%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+    <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="app/com.example.premierleagueapp.ui.viewmodels/index.html">com.example.premierleagueapp.ui.viewmodels</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-870122476%2FPackages%2F492899073"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-870122476%2FPackages%2F492899073" anchor-label="com.example.premierleagueapp.ui.viewmodels" id="-870122476%2FPackages%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+            <p class="paragraph">This package contains all the viewmodels used in the application</p>
+          </span></div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

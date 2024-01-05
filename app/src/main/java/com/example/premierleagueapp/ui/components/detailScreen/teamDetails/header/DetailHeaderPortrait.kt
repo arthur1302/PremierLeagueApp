@@ -23,6 +23,14 @@ import com.example.premierleagueapp.R
 import com.example.premierleagueapp.model.Team
 import com.example.premierleagueapp.ui.components.helpers.imageHandler
 
+/**
+ * Composable that contains the header of a specific [Team] for portrait mode
+ *
+ * @author Arthur Haus
+ *
+ * @param team [Team]
+ * @param painter [Painter]
+ */
 @Composable
 fun DetailHeaderPortrait(
     painter: Painter,

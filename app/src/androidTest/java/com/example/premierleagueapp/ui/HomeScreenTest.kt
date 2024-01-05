@@ -18,6 +18,11 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+/**
+ * Test class for the home page
+ *
+ * @author Arthur Haus
+ */
 class HomeScreenTest {
 
     private val team1 = Team(0, "Test", "T", "", "www.test.com", "TE", Coach("Coach", "EN"), "", listOf(Player("Name", "Attacker", "England"), Player("Name", "Attacker", "England")))
@@ -79,8 +84,6 @@ class HomeScreenTest {
     fun homeScreen_navigateToDetailPage() {
         composeTestRule.onNodeWithTag("Test").assertExists()
         // .performClick()
-        // HIER NOG AAN WERKEN
-        // TEST MAKEN VOOR HET NAVIGEREN? EVENTUEEL DE OVERVEIWPAGE MOCKEN ALS DEZE IS OPGESPLITST?
         // navController.assertCurrentRouteName(Destinations.Overview.name)
     }
 

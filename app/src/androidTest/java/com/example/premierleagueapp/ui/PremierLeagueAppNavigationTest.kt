@@ -13,6 +13,11 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+/**
+ * Test class for the navigation
+ *
+ * @author Arthur Haus
+ */
 class PremierLeagueAppNavigationTest {
 
     @get:Rule

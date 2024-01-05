@@ -14,12 +14,24 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.core.content.ContextCompat
 import com.example.premierleagueapp.R
 
+/**
+ * Composable for a clickable email address
+ *
+ * @author Arthur Haus
+ */
 @Composable
 fun MailComponent() {
     val context = LocalContext.current
     ClickableText(text = buildAnnotatedString { append(stringResource(R.string.mail_address)) }, onClick = { onClick(context) }, style = MaterialTheme.typography.bodyLarge)
 }
 
+/**
+ * Function to send an email and check whether there is an email client installed or not
+ *
+ * @author Arthur Haus
+ *
+ * @param context [Context]
+ */
 @SuppressLint("QueryPermissionsNeeded")
 fun onClick(context: Context) {
     val intent = Intent(Intent.ACTION_SENDTO)

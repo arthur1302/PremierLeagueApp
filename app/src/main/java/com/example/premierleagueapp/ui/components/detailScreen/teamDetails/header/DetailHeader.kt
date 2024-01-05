@@ -8,6 +8,13 @@ import coil.compose.rememberImagePainter
 import com.example.premierleagueapp.R
 import com.example.premierleagueapp.model.Team
 
+/**
+ * Composable that contains the header of a specific [Team]
+ *
+ * @author Arthur Haus
+ *
+ * @param team [Team]
+ */
 @Composable
 fun DetailHeader(team: Team?) {
     val painter: Painter = rememberImagePainter(R.drawable.england)
@@ -19,4 +26,3 @@ fun DetailHeader(team: Team?) {
         DetailHeaderLandscape(team, painter)
     }
 }
-

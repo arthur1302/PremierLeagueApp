@@ -10,6 +10,11 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+/**
+ * Test class for the application
+ *
+ * @author Arthur Haus
+ */
 class PremierLeagueAppTest {
     @get:Rule
     val composeTestRule = createAndroidComposeRule<ComponentActivity>()

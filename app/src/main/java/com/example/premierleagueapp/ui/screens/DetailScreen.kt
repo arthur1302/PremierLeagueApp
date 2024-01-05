@@ -15,17 +15,26 @@ import com.example.premierleagueapp.ui.components.detailScreen.DetailContentLand
 import com.example.premierleagueapp.ui.components.detailScreen.DetailContentPortrait
 import com.example.premierleagueapp.ui.viewmodels.TeamDetailsViewModel
 
+/**
+ * Composable for the detail screen
+ *
+ * @author Arthur Haus
+ *
+ * @param teamId [Int]
+ */
 @Composable
 fun DetailScreen(teamId: Int) {
     val viewModel: TeamDetailsViewModel = viewModel(factory = TeamDetailsViewModel.Factory)
     val teamApiDetailState = viewModel.teamApiDetailState
     val matchApiState = viewModel.matchApiState
 
+    // This will only re-render when teamId changes
     LaunchedEffect(teamId) {
         viewModel.getSingleTeam(teamId)
         viewModel.getMatchesByTeam(teamId)
     }
 
+    // Check whether the phone is in portrait mode or landscape mode
     val orientation = LocalConfiguration.current.orientation
 
     when (teamApiDetailState) {

@@ -5,6 +5,12 @@ import com.example.premierleagueapp.model.Player
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+/**
+ * Converter for a PlayerList
+ *
+ * @author Arthur Haus
+ *
+ */
 class PlayerListConverter {
     @TypeConverter
     fun fromPlayerList(playerList: List<Player>): String {

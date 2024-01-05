@@ -7,6 +7,12 @@ import androidx.room.Query
 import com.example.premierleagueapp.data.database.entities.DbTeam
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * Dao for teams
+ *
+ * @author Arthur Haus
+ *
+ */
 @Dao
 interface TeamDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)

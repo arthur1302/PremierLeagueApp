@@ -16,12 +16,18 @@ import com.example.premierleagueapp.ui.TableApiState
 import com.example.premierleagueapp.ui.components.rankingScreen.Ranking
 import com.example.premierleagueapp.ui.viewmodels.RankingViewModel
 
+/**
+ * Composable for the ranking screen
+ *
+ * @author Arthur Haus
+ *
+ * @param lazyListState [LazyListState]
+ */
 @Composable
 fun RankingScreen(lazyListState: LazyListState) {
     val viewModel: RankingViewModel = viewModel(factory = RankingViewModel.Factory)
-    val tableApiState = viewModel.tableApiState
 
-    when (tableApiState) {
+    when (viewModel.tableApiState) {
         is TableApiState.Loading -> {
             Text(stringResource(R.string.loading_teams))
         }

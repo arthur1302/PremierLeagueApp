@@ -11,6 +11,14 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.example.premierleagueapp.model.Team
 
+/**
+ * Composable that contains the details of a specific [Team]
+ *
+ * @author Arthur Haus
+ *
+ * @param team [Team]
+ *
+ */
 @Composable
 fun TeamDetails(team: Team?) {
     Row(

@@ -16,6 +16,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
+/**
+ * Composable for the legend used in the ranking
+ *
+ * @author Arthur Haus
+ */
 @Composable
 fun Legend() {
     Column(

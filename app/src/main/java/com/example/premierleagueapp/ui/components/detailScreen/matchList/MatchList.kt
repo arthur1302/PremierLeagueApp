@@ -21,6 +21,15 @@ import com.example.premierleagueapp.ui.viewmodels.TeamDetailsViewModel
 import dev.chrisbanes.snapper.ExperimentalSnapperApi
 import dev.chrisbanes.snapper.rememberSnapperFlingBehavior
 
+/**
+ * Composable that contains a LazyRow of upcomingMatchCards with the 5 upcoming matches of a team
+ *
+ * @author Arthur Haus
+ *
+ * @param matchApiState gets an apiState of the viewmodel
+ * @param viewModel gets an instance of the [TeamDetailsViewModel]
+ *
+ */
 @OptIn(ExperimentalSnapperApi::class)
 @Composable
 fun MatchList(

@@ -13,6 +13,14 @@ import androidx.compose.ui.unit.dp
 import com.example.premierleagueapp.R
 import com.example.premierleagueapp.model.Team
 
+/**
+ * Composable that contains the details of a specific [Team] for landscape mode
+ *
+ * @author Arthur Haus
+ *
+ * @param team [Team]
+ *
+ */
 @Composable
 fun TeamDetailsLandscape(team: Team?) {
     Column {

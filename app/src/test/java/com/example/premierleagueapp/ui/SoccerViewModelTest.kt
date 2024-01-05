@@ -18,6 +18,11 @@ import org.junit.Test
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
+/**
+ * ViewModel testing
+ *
+ * @author Arthur Haus
+ */
 class SoccerViewModelTest {
 
     @get:Rule

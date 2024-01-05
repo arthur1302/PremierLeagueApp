@@ -13,7 +13,11 @@ import com.example.premierleagueapp.assertCurrentRouteName
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-
+/**
+ * Test class for the contact page
+ *
+ * @author Arthur Haus
+ */
 class ContactScreenTest {
     @get:Rule
     val composeTestRule = createAndroidComposeRule<ComponentActivity>()

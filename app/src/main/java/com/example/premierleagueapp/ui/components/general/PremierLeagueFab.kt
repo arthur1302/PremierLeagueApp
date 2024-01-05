@@ -20,6 +20,15 @@ import com.example.premierleagueapp.ui.Destinations
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+/**
+ * Composable that contains the [FloatingActionButton]
+ *
+ * @author Arthur Haus
+ *
+ * @param currentBackStackEntry [NavBackStackEntry]
+ * @param coroutineScope [CoroutineScope]
+ * @param lazyListState [LazyListState]
+ */
 @Composable
 fun PremierLeagueFab(
     currentBackStackEntry: NavBackStackEntry?,
@@ -28,6 +37,11 @@ fun PremierLeagueFab(
 ) {
     val context = LocalContext.current
 
+    /**
+     * Function to send an email and check whether there is an email client installed or not
+     *
+     * @author Arthur Haus
+     */
     fun sendMail() {
         val intent = Intent(Intent.ACTION_SENDTO)
         intent.data = Uri.parse("mailto:arthur.haus@student.hogent.be")
@@ -40,6 +54,7 @@ fun PremierLeagueFab(
         }
     }
 
+    // Depending which route is active, there will be shown an other FAB
     when (currentBackStackEntry?.destination?.route) {
         Destinations.Start.name -> {
             FloatingActionButton(onClick = {

@@ -11,6 +11,11 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import retrofit2.Response
 
+/**
+ * API soccerRepository testing
+ *
+ * @author Arthur Haus
+ */
 class ApiSoccerRepositoryTest {
 
     @Test
@@ -20,7 +25,7 @@ class ApiSoccerRepositoryTest {
         val teamsList = mutableListOf<Team>()
 
         val result: Response<TeamApiResponse> = FakeDataSource.getFakeTeamsResponse()
-        val fakeTeams: List<Team>? = result?.body()?.teams
+        val fakeTeams: List<Team>? = result.body()?.teams
 
         for (team in fakeTeams!!) {
             apiSoccerRepository.insert(team)
@@ -40,7 +45,7 @@ class ApiSoccerRepositoryTest {
         val apiSoccerRepository = FakeApiSoccerRepository()
 
         val resultFakeTeams: Response<TeamApiResponse> = FakeDataSource.getFakeTeamsResponse()
-        val fakeTeams: List<Team>? = resultFakeTeams?.body()?.teams
+        val fakeTeams: List<Team>? = resultFakeTeams.body()?.teams
 
         for (team in fakeTeams!!) {
             apiSoccerRepository.insert(team)
@@ -53,7 +58,7 @@ class ApiSoccerRepositoryTest {
         }
 
         val result: Response<Team> = FakeDataSource.getFakeTeamResponse()
-        val fakeTeam: Team? = result?.body()
+        val fakeTeam: Team? = result.body()
 
         assertEquals(fakeTeam, team)
     }
@@ -65,7 +70,7 @@ class ApiSoccerRepositoryTest {
         val matchList = mutableListOf<Match>()
 
         val result: Response<MatchApiResponse> = FakeDataSource.getFakeMatchesByTeamResponse()
-        val fakeMatches: List<Match>? = result?.body()?.matches
+        val fakeMatches: List<Match>? = result.body()?.matches
 
         for (match in fakeMatches!!) {
             apiSoccerRepository.insert(match)

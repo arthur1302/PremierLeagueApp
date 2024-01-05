@@ -15,6 +15,15 @@ import com.example.premierleagueapp.ui.components.detailScreen.teamDetails.detai
 import com.example.premierleagueapp.ui.components.detailScreen.teamDetails.header.DetailHeader
 import com.example.premierleagueapp.ui.viewmodels.TeamDetailsViewModel
 
+/**
+ * Composable that contains the detail content of a specific [Team] for portrait mode
+ *
+ * @author Arthur Haus
+ *
+ * @param team [Team]
+ * @param matchApiState [MatchApiState]
+ * @param viewModel [TeamDetailsViewModel]
+ */
 @Composable
 fun DetailContentPortrait(
     team: Team?,

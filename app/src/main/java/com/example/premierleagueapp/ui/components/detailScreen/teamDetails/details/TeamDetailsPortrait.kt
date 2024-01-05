@@ -9,6 +9,14 @@ import androidx.compose.ui.res.stringResource
 import com.example.premierleagueapp.R
 import com.example.premierleagueapp.model.Team
 
+/**
+ * Composable that contains the details of a specific [Team] for portrait mode
+ *
+ * @author Arthur Haus
+ *
+ * @param team [Team]
+ *
+ */
 @Composable
 fun TeamDetailsPortrait(team: Team?) {
     Column {

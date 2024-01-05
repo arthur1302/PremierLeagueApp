@@ -21,6 +21,11 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+/**
+ * Test class for the ranking page
+ *
+ * @author Arthur Haus
+ */
 class RankingScreenTest {
 
     private val team1 = Team(

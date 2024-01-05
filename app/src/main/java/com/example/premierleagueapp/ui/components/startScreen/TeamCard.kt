@@ -23,6 +23,17 @@ import coil.compose.rememberImagePainter
 import com.example.premierleagueapp.R
 import com.example.premierleagueapp.ui.components.helpers.imageHandler
 
+/**
+ * Composable for a TeamCard that will represent one team out of the list
+ *
+ * @author Arthur Haus
+ *
+ * @param name [String]
+ * @param shortName [String]
+ * @param imageUrl [String]
+ * @param onClick [Unit]
+ * @param modifier [Modifier]
+ */
 @Composable
 fun TeamCard(name: String = "", shortName: String = "", imageUrl: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
     var painter: Painter = rememberImagePainter(R.drawable.england)

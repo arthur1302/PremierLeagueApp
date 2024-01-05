@@ -15,6 +15,14 @@ import androidx.compose.ui.unit.dp
 import com.example.premierleagueapp.model.Team
 import com.example.premierleagueapp.ui.components.helpers.imageHandler
 
+/**
+ * Composable that contains the header of a specific [Team] for landscape mode
+ *
+ * @author Arthur Haus
+ *
+ * @param team [Team]
+ * @param painter [Painter]
+ */
 @Composable
 fun DetailHeaderLandscape(
     team: Team?,

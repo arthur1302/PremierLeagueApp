@@ -5,6 +5,11 @@ import com.example.premierleagueapp.model.Season
 import com.example.premierleagueapp.model.Team
 import kotlinx.serialization.Serializable
 
+/**
+ * Represents the data of a team API response
+ *
+ * @author Arthur Haus
+ */
 @Serializable
 data class TeamApiResponse(
     val count: Int,

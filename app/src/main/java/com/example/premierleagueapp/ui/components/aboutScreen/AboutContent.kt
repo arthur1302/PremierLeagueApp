@@ -13,6 +13,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.premierleagueapp.R
 
+/**
+ * Composable that contains the content for the about page
+ *
+ * @author Arthur Haus
+ *
+ */
 @Composable
 fun AboutContent() {
     Column(

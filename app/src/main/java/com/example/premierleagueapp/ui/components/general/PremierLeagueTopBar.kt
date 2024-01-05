@@ -10,6 +10,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 
+/**
+ * Composable that contains the [TopAppBar]
+ *
+ * @author Arthur Haus
+ *
+ * @param navigationIcon [Composable]
+ * @param title [Int]
+ */
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun PremierLeagueTopBar(navigationIcon: @Composable () -> Unit, title: Int) {

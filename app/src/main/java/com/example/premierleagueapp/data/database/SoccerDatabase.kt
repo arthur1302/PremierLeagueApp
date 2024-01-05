@@ -14,7 +14,13 @@ import com.example.premierleagueapp.data.database.entities.DbMatch
 import com.example.premierleagueapp.data.database.entities.DbTable
 import com.example.premierleagueapp.data.database.entities.DbTeam
 
-@Database(entities = [DbTeam::class, DbMatch::class, DbTable::class], version = 1)
+/**
+ * Creation of a database
+ *
+ * @author Arthur Haus
+ *
+ */
+@Database(entities = [DbTeam::class, DbMatch::class, DbTable::class], version = 1, exportSchema = false)
 @TypeConverters(CoachConverter::class, PlayerListConverter::class, TeamConverter::class, CompetitionConverter::class)
 abstract class SoccerDatabase : RoomDatabase() {
     abstract fun teamDao(): TeamDao

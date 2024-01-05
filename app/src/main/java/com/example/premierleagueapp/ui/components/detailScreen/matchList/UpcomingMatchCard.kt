@@ -26,6 +26,13 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.TimeZone
 
+/**
+ * Composable that contains the information about an upcoming match
+ *
+ * @author Arthur Haus
+ *
+ * @param match represents a specific match
+ */
 @Composable
 fun UpcomingMatchCard(match: Match) {
     var painter: Painter = rememberImagePainter(R.drawable.england)
@@ -101,6 +108,12 @@ fun UpcomingMatchCard(match: Match) {
     }
 }
 
+/**
+ * Function that formats the date String
+ *
+ * @param utcDateString [String]
+ * @return [String]
+ */
 fun formatUtcDate(utcDateString: String): String {
     val utcFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
     utcFormat.timeZone = TimeZone.getTimeZone("UTC")

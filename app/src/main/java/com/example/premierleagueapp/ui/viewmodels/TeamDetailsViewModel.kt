@@ -21,6 +21,13 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
+/**
+ * ViewModel for the team details
+ *
+ * @author Arthur Haus
+ *
+ * @param soccerRepository [SoccerRepository]
+ */
 class TeamDetailsViewModel(private val soccerRepository: SoccerRepository) : ViewModel() {
     var teamApiDetailState: TeamApiDetailState by mutableStateOf(TeamApiDetailState.Loading)
         private set
@@ -31,6 +38,11 @@ class TeamDetailsViewModel(private val soccerRepository: SoccerRepository) : Vie
     lateinit var uiTeamState: StateFlow<Team?>
     lateinit var uiMatchListState: StateFlow<List<Match>>
 
+    /**
+     * Function that returns a single team from the database
+     *
+     * @param teamId [Int]
+     */
     fun getSingleTeam(teamId: Int) {
         try {
             uiTeamState = soccerRepository.getSingleTeam(teamId)
@@ -46,6 +58,11 @@ class TeamDetailsViewModel(private val soccerRepository: SoccerRepository) : Vie
         }
     }
 
+    /**
+     * Function that returns the matches from a specific team from the database
+     *
+     * @param teamId [Int]
+     */
     fun getMatchesByTeam(teamId: Int) {
         try {
             viewModelScope.launch {
@@ -63,6 +80,7 @@ class TeamDetailsViewModel(private val soccerRepository: SoccerRepository) : Vie
         }
     }
 
+    // Companion object defining a Factory for creating instances of TeamDetailsViewModel.
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
