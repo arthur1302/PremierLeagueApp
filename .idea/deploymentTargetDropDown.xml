@@ -2,9 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="PremierLeagueAppNavigationTest">
-        <State />
-      </entry>
       <entry key="PremierLeagueAppTest">
         <State />
       </entry>
@@ -28,9 +25,6 @@
         </State>
       </entry>
       <entry key="rankingScreen_title()">
-        <State />
-      </entry>
-      <entry key="showsHomeButton()">
         <State />
       </entry>
     </value>
