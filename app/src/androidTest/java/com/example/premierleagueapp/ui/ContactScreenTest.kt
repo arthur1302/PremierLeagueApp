@@ -5,7 +5,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
-import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
@@ -43,7 +42,7 @@ class ContactScreenTest {
     fun contactScreen_title() {
         goToContactScreen()
         val title = composeTestRule.activity.getString(R.string.contact_title)
-        composeTestRule.onNodeWithText(title).assertExists()
+        composeTestRule.onNodeWithTag(title).assertExists()
     }
 
     @Test
@@ -59,12 +58,14 @@ class ContactScreenTest {
     fun contactScreen_navigationButtons() {
         goToContactScreen()
         val homeButton = composeTestRule.activity.getString(R.string.home_button)
-        val aboutButton = composeTestRule.activity.getString(R.string.about_button)
         val contactButton = composeTestRule.activity.getString(R.string.contact_button)
+        val aboutButton = composeTestRule.activity.getString(R.string.about_button)
+        val rankingButton = composeTestRule.activity.getString(R.string.ranking_button)
 
         composeTestRule.onNodeWithContentDescription(homeButton).assertExists()
-        composeTestRule.onNodeWithContentDescription(aboutButton).assertExists()
         composeTestRule.onNodeWithContentDescription(contactButton).assertExists()
+        composeTestRule.onNodeWithContentDescription(aboutButton).assertExists()
+        composeTestRule.onNodeWithContentDescription(rankingButton).assertExists()
     }
 
     @Test

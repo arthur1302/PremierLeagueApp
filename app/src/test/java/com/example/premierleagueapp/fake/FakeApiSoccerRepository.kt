@@ -2,6 +2,7 @@ package com.example.premierleagueapp.fake
 
 import com.example.premierleagueapp.data.SoccerRepository
 import com.example.premierleagueapp.model.Match
+import com.example.premierleagueapp.model.Table
 import com.example.premierleagueapp.model.Team
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -10,6 +11,7 @@ class FakeApiSoccerRepository : SoccerRepository {
 
     private val teamsList = mutableListOf<Team>()
     private val matchesList = mutableListOf<Match>()
+    private val tablesList = mutableListOf<Table>()
 
     override suspend fun insert(team: Team) {
         teamsList.add(team)
@@ -19,8 +21,16 @@ class FakeApiSoccerRepository : SoccerRepository {
         matchesList.add(match)
     }
 
+    override suspend fun insert(table: Table) {
+        tablesList.add(table)
+    }
+
     override fun getTeams(): Flow<List<Team>> {
         return flow { emit(teamsList) }
+    }
+
+    override fun getStandings(): Flow<List<Table>> {
+        return flow { emit(tablesList) }
     }
 
     override fun getSingleTeam(teamId: Int): Flow<Team?> {
@@ -32,6 +42,9 @@ class FakeApiSoccerRepository : SoccerRepository {
     }
 
     override suspend fun refresh() {
+    }
+
+    override suspend fun refreshStandings() {
     }
 
     override suspend fun dropMatches() {

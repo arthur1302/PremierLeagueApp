@@ -92,6 +92,19 @@ class PremierLeagueAppNavigationTest {
         navController.assertCurrentRouteName(Destinations.Start.name)
     }
 
+    @Test
+    fun navHost_verifyNavigateToRanking() {
+        navigateToRanking()
+        navController.assertCurrentRouteName(Destinations.Ranking.name)
+    }
+
+    @Test
+    fun navHost_verifyBackButtonOnRankingPage() {
+        navigateToRanking()
+        val backText = composeTestRule.activity.getString(R.string.back_button)
+        composeTestRule.onNodeWithContentDescription(backText).assertExists()
+    }
+
     private fun performNavigateUp() {
         val backText = composeTestRule.activity.getString(R.string.back_button)
         composeTestRule.onNodeWithContentDescription(backText).performClick()
@@ -100,6 +113,12 @@ class PremierLeagueAppNavigationTest {
     private fun navigateToAbout() {
         val about = composeTestRule.activity.getString(R.string.about_button)
         composeTestRule.onNodeWithContentDescription(about)
+            .performClick()
+    }
+
+    private fun navigateToRanking() {
+        val ranking = composeTestRule.activity.getString(R.string.ranking_button)
+        composeTestRule.onNodeWithContentDescription(ranking)
             .performClick()
     }
 

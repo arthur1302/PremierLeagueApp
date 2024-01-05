@@ -5,14 +5,17 @@ import com.example.premierleagueapp.model.Competition
 import com.example.premierleagueapp.model.Match
 import com.example.premierleagueapp.model.Player
 import com.example.premierleagueapp.model.Season
+import com.example.premierleagueapp.model.Standings
+import com.example.premierleagueapp.model.Table
 import com.example.premierleagueapp.model.Team
 import com.example.premierleagueapp.model.apiResponses.MatchApiResponse
+import com.example.premierleagueapp.model.apiResponses.TableApiResponse
 import com.example.premierleagueapp.model.apiResponses.TeamApiResponse
 import retrofit2.Response
 
 object FakeDataSource {
 
-    val team1 = Team(
+    private val team1 = Team(
         id = 1,
         name = "Dummy Team",
         shortName = "DT",
@@ -29,7 +32,7 @@ object FakeDataSource {
 
     )
 
-    val team2 = Team(
+    private val team2 = Team(
         id = 2,
         name = "Dummy Team2",
         shortName = "DT",
@@ -46,7 +49,7 @@ object FakeDataSource {
 
     )
 
-    val teamApiResponse = TeamApiResponse(
+    private val teamApiResponse = TeamApiResponse(
         count = 2,
         season = Season(
             id = 123,
@@ -65,15 +68,40 @@ object FakeDataSource {
         teams = listOf(team1, team2),
     )
 
+    private val tables1 = Table(
+        1,
+        team1,
+        50,
+    )
+
+    private val tables2 = Table(
+        2,
+        team2,
+        45,
+    )
+
+    private val standing1 = Standings(
+        "REGULAR_SEASON",
+        listOf(tables1, tables2),
+    )
+
+    private val tableApiResponse = TableApiResponse(
+        standings = listOf(standing1),
+    )
+
     fun getFakeTeamsResponse(): Response<TeamApiResponse> {
         return Response.success(teamApiResponse)
+    }
+
+    fun getFakeTablesResponse(): Response<TableApiResponse> {
+        return Response.success(tableApiResponse)
     }
 
     fun getFakeTeamResponse(): Response<Team> {
         return Response.success(team1)
     }
 
-    val match1 = Match(
+    private val match1 = Match(
         competition = Competition(
             id = 10,
             name = "Competition",
@@ -88,7 +116,7 @@ object FakeDataSource {
         awayTeam = team2,
     )
 
-    val match2 = Match(
+    private val match2 = Match(
         competition = Competition(
             id = 10,
             name = "Competition",
@@ -103,7 +131,7 @@ object FakeDataSource {
         awayTeam = team1,
     )
 
-    val matchApiResponse = MatchApiResponse(
+    private val matchApiResponse = MatchApiResponse(
         matches = listOf(match1, match2),
     )
 

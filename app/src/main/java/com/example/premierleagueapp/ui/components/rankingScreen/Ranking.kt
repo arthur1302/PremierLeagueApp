@@ -20,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.example.premierleagueapp.R
@@ -40,7 +41,8 @@ fun Ranking(tables: List<Table>, lazyListState: LazyListState) {
 
             Card(
                 modifier = Modifier
-                    .padding(16.dp, 4.dp),
+                    .padding(16.dp, 4.dp)
+                    .testTag(table.team.name),
                 colors = CardDefaults.cardColors(
                     containerColor = cardColor,
                 ),
