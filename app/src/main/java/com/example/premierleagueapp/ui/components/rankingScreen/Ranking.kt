@@ -1,5 +1,6 @@
-package com.example.premierleagueapp.ui.components
+package com.example.premierleagueapp.ui.components.rankingScreen
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,12 +28,13 @@ fun Ranking(tables: List<Table>, lazyListState: LazyListState) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
                     Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
                         Text(table.position.toString(), style = MaterialTheme.typography.bodyLarge)
                     }
                     Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
-                        Text(table.team.name, style = MaterialTheme.typography.bodyLarge)
+                        Text(table.team.shortName, style = MaterialTheme.typography.bodyLarge)
                     }
                     Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
                         Text(table.points.toString(), style = MaterialTheme.typography.bodyLarge)

@@ -10,11 +10,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.premierleagueapp.R
 import com.example.premierleagueapp.ui.TableApiState
-import com.example.premierleagueapp.ui.components.Ranking
+import com.example.premierleagueapp.ui.components.rankingScreen.Ranking
 import com.example.premierleagueapp.ui.viewmodels.RankingViewModel
 
 @Composable
-fun TestScreen(lazyListState: LazyListState) {
+fun RankingScreen(lazyListState: LazyListState) {
     val viewModel: RankingViewModel = viewModel(factory = RankingViewModel.Factory)
     val tableApiState = viewModel.tableApiState
 

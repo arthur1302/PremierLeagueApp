@@ -1,4 +1,4 @@
-package com.example.premierleagueapp.ui.components.detailScreen
+package com.example.premierleagueapp.ui.components.detailScreen.matchList
 
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement

@@ -11,6 +11,3 @@ data class Match(
     val homeTeam: Team,
     val awayTeam: Team,
 )
-
-fun List<Match>.asDomainObjects() =
-    map { Match(it.id, it.competition, it.status, it.utcDate, it.homeTeam, it.awayTeam) }

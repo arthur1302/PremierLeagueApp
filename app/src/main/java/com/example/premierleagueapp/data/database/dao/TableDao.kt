@@ -12,6 +12,6 @@ interface TableDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(item: DbTable)
 
-    @Query("Select * from standings")
+    @Query("SELECT * FROM standings")
     fun getAllStandings(): Flow<List<DbTable>>
 }

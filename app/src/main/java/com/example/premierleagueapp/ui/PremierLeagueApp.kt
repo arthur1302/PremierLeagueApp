@@ -28,8 +28,8 @@ import com.example.premierleagueapp.ui.components.general.PremierLeagueTopBar
 import com.example.premierleagueapp.ui.screens.AboutScreen
 import com.example.premierleagueapp.ui.screens.ContactScreen
 import com.example.premierleagueapp.ui.screens.DetailScreen
+import com.example.premierleagueapp.ui.screens.RankingScreen
 import com.example.premierleagueapp.ui.screens.StartScreen
-import com.example.premierleagueapp.ui.screens.TestScreen
 import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
 
 enum class Destinations {
@@ -37,7 +37,7 @@ enum class Destinations {
     About,
     Contact,
     Overview,
-    Camera,
+    Ranking,
 }
 
 @SuppressLint("QueryPermissionsNeeded")
@@ -64,6 +64,7 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
                     Destinations.Contact.name -> R.string.contact_title
                     Destinations.About.name -> R.string.about_title
                     Destinations.Overview.name -> R.string.team_title
+                    Destinations.Ranking.name -> R.string.ranking_title
                     else -> { R.string.app_title }
                 },
             )
@@ -86,7 +87,7 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
                     }
                 },
                 {
-                    navController.navigate(Destinations.Camera.name) {
+                    navController.navigate(Destinations.Ranking.name) {
                         launchSingleTop = true
                     }
                 },
@@ -124,8 +125,8 @@ fun PremierLeagueApp(navController: NavHostController = rememberNavController())
                     }
                 }
             }
-            composable(Destinations.Camera.name) {
-                TestScreen(lazyListState)
+            composable(Destinations.Ranking.name) {
+                RankingScreen(lazyListState)
             }
         }
     }

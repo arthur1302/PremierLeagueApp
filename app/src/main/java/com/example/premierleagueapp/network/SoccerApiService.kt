@@ -1,9 +1,9 @@
 package com.example.premierleagueapp.network
 
-import com.example.premierleagueapp.model.MatchApiResponse
-import com.example.premierleagueapp.model.TableApiResponse
 import com.example.premierleagueapp.model.Team
-import com.example.premierleagueapp.model.TeamApiResponse
+import com.example.premierleagueapp.model.apiResponses.MatchApiResponse
+import com.example.premierleagueapp.model.apiResponses.TableApiResponse
+import com.example.premierleagueapp.model.apiResponses.TeamApiResponse
 import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 import retrofit2.http.GET
@@ -24,7 +24,7 @@ interface SoccerApiService {
     suspend fun getTables(@Header("X-Auth-Token") apiKey: String): Response<TableApiResponse>
 }
 
-val apiKey = ApiConfig.API_TOKEN
+const val apiKey = ApiConfig.API_TOKEN
 fun SoccerApiService.getTeamsAsFlow() = flow { emit(getTeams(apiKey)) }
 
 fun SoccerApiService.getTablesAsFlow() = flow { emit(getTables(apiKey)) }

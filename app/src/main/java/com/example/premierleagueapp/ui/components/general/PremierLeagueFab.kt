@@ -52,6 +52,17 @@ fun PremierLeagueFab(
             }
         }
 
+        Destinations.Ranking.name -> {
+            FloatingActionButton(onClick = {
+                coroutineScope.launch { lazyListState.animateScrollToItem(0) }
+            }, containerColor = MaterialTheme.colorScheme.primary) {
+                Icon(
+                    Icons.Default.KeyboardArrowUp,
+                    contentDescription = stringResource(R.string.fab_scroll_up),
+                )
+            }
+        }
+
         Destinations.Contact.name -> {
             FloatingActionButton(onClick = {
                 sendMail()

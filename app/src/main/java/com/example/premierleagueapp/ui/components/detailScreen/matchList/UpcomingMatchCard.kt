@@ -1,4 +1,4 @@
-package com.example.premierleagueapp.ui.components.detailScreen
+package com.example.premierleagueapp.ui.components.detailScreen.matchList
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.example.premierleagueapp.R
 import com.example.premierleagueapp.model.Match
-import com.example.premierleagueapp.ui.components.helpers.ImageHandler
+import com.example.premierleagueapp.ui.components.helpers.imageHandler
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.TimeZone
@@ -47,13 +47,13 @@ fun UpcomingMatchCard(match: Match) {
                     .padding(top = 16.dp),
                 horizontalArrangement = Arrangement.SpaceAround,
             ) {
-                painter = ImageHandler(match.homeTeam.crest, painter)
+                painter = imageHandler(match.homeTeam.crest, painter)
                 Image(
                     painter = painter,
                     contentDescription = null,
                     modifier = Modifier.size(40.dp),
                 )
-                painter = ImageHandler(match.awayTeam.crest, painter)
+                painter = imageHandler(match.awayTeam.crest, painter)
                 Image(
                     painter = painter,
                     contentDescription = null,
@@ -112,6 +112,6 @@ fun formatUtcDate(utcDateString: String): String {
         val utcDate = utcFormat.parse(utcDateString)
         localFormat.format(utcDate!!)
     } catch (e: Exception) {
-        "Invalid Date"
+        R.string.invalid_date.toString()
     }
 }

@@ -3,11 +3,11 @@ package com.example.premierleagueapp.fake
 import com.example.premierleagueapp.model.Coach
 import com.example.premierleagueapp.model.Competition
 import com.example.premierleagueapp.model.Match
-import com.example.premierleagueapp.model.MatchApiResponse
 import com.example.premierleagueapp.model.Player
 import com.example.premierleagueapp.model.Season
 import com.example.premierleagueapp.model.Team
-import com.example.premierleagueapp.model.TeamApiResponse
+import com.example.premierleagueapp.model.apiResponses.MatchApiResponse
+import com.example.premierleagueapp.model.apiResponses.TeamApiResponse
 import retrofit2.Response
 
 object FakeDataSource {

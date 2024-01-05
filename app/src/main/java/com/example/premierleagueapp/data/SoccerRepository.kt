@@ -1,6 +1,5 @@
 package com.example.premierleagueapp.data
 
-import android.util.Log
 import com.example.premierleagueapp.data.database.dao.MatchDao
 import com.example.premierleagueapp.data.database.dao.TableDao
 import com.example.premierleagueapp.data.database.dao.TeamDao
@@ -43,7 +42,6 @@ interface SoccerRepository {
 
     suspend fun refresh()
     suspend fun refreshStandings()
-
     suspend fun dropMatches()
 }
 
@@ -100,7 +98,6 @@ class CachingTeamsRepository(
         soccerApiService.getTeamsAsFlow().collect {
             val teams: List<Team> = it.body()!!.teams
             for (team in teams) {
-                Log.i("Test", "refresh: $team")
                 insert(team)
             }
         }
@@ -109,11 +106,9 @@ class CachingTeamsRepository(
     override suspend fun refreshStandings() {
         soccerApiService.getTablesAsFlow().collect {
             val standings: List<Standings> = it.body()!!.standings
-            Log.i("TESSSSTTT", standings.toString())
             for (standing in standings) {
                 if (standing.stage == "REGULAR_SEASON") {
                     for (table in standing.table) {
-                        Log.i("Test", "refresh: $table")
                         insert(table)
                     }
                 }
@@ -127,7 +122,6 @@ class CachingTeamsRepository(
                 soccerApiService.getMatchesAsFlow(teamId).collect {
                     val matches: List<Match> = it.body()!!.matches
                     for (match in matches) {
-                        Log.i("Test", "refresh: $match")
                         insert(match)
                     }
                 }

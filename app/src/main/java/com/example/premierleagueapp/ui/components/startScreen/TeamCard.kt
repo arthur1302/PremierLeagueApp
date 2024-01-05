@@ -21,7 +21,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.example.premierleagueapp.R
-import com.example.premierleagueapp.ui.components.helpers.ImageHandler
+import com.example.premierleagueapp.ui.components.helpers.imageHandler
 
 @Composable
 fun TeamCard(name: String = "", shortName: String = "", imageUrl: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
@@ -37,7 +37,7 @@ fun TeamCard(name: String = "", shortName: String = "", imageUrl: String, onClic
                 .fillMaxWidth()
                 .padding(8.dp),
         ) {
-            painter = ImageHandler(imageUrl, painter)
+            painter = imageHandler(imageUrl, painter)
             Image(
                 painter = painter,
                 contentDescription = null,

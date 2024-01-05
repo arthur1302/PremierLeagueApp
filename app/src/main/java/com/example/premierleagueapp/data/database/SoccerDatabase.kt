@@ -19,6 +19,5 @@ import com.example.premierleagueapp.data.database.entities.DbTeam
 abstract class SoccerDatabase : RoomDatabase() {
     abstract fun teamDao(): TeamDao
     abstract fun matchDao(): MatchDao
-
     abstract fun tableDao(): TableDao
 }

@@ -10,7 +10,7 @@ import coil.compose.rememberImagePainter
 import coil.decode.SvgDecoder
 
 @Composable
-fun ImageHandler(
+fun imageHandler(
     imageUrl: String,
     painter: Painter,
 ): Painter {

@@ -40,11 +40,11 @@ class DefaultAppContainer(
         soccerDb.matchDao()
     }
 
-    private val tablehDao: TableDao by lazy {
+    private val tableDao: TableDao by lazy {
         soccerDb.tableDao()
     }
 
     override val soccerRepository: SoccerRepository by lazy {
-        CachingTeamsRepository(teamDao, retrofitService, matchDao, tablehDao)
+        CachingTeamsRepository(teamDao, retrofitService, matchDao, tableDao)
     }
 }

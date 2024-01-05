@@ -13,7 +13,7 @@ interface MatchDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(match: DbMatch)
 
-    @Query("delete from matches")
+    @Query("DELETE FROM matches")
     fun drop()
 
     @Query("SELECT * FROM matches WHERE status != 'FINISHED' LIMIT 5")

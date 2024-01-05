@@ -12,9 +12,9 @@ interface TeamDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(item: DbTeam)
 
-    @Query("Select * from teams order by name asc")
+    @Query("SELECT * FROM teams ORDER BY name ASC")
     fun getAllTeams(): Flow<List<DbTeam>>
 
-    @Query("SELECT * from teams WHERE id = :id")
+    @Query("SELECT * FROM teams WHERE id = :id")
     fun getTeam(id: Int): Flow<DbTeam>
 }

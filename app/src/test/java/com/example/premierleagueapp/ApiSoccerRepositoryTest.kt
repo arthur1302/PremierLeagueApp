@@ -3,9 +3,9 @@ package com.example.premierleagueapp
 import com.example.premierleagueapp.fake.FakeApiSoccerRepository
 import com.example.premierleagueapp.fake.FakeDataSource
 import com.example.premierleagueapp.model.Match
-import com.example.premierleagueapp.model.MatchApiResponse
 import com.example.premierleagueapp.model.Team
-import com.example.premierleagueapp.model.TeamApiResponse
+import com.example.premierleagueapp.model.apiResponses.MatchApiResponse
+import com.example.premierleagueapp.model.apiResponses.TeamApiResponse
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.test.runTest
 import org.junit.Test

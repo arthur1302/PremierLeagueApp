@@ -6,13 +6,14 @@
     <string name="contact_title">Contact</string>
     <string name="about_title">About</string>
     <string name="team_title">Team</string>
+    <string name="ranking_title">Standings</string>
 
     <!-- Button Tags -->
     <string name="back_button">Back button</string>
     <string name="home_button">Home button</string>
     <string name="about_button">About button</string>
     <string name="contact_button">Contact button</string>
-    <string name="add_button">Add button</string>
+    <string name="ranking_button">Ranking button</string>
 
     <!-- FAB's -->
     <string name="fab_scroll_up">Scroll Up</string>
@@ -39,6 +40,8 @@
     <string name="error_fetching_team">Error while fetching team.</string>
     <string name="error_fetching_teams">Error while fetching teams.</string>
     <string name="id_value_null">There was a problem fetching the teamId...</string>
+    <string name="invalid_date">Invalid date</string>
+    <string name="no_email_client_found">No email client found</string>
 
     <!-- Loaders -->
     <string name="loading_matches">Loading matches...</string>
