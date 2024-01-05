@@ -11,14 +11,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.premierleagueapp.R
 import com.example.premierleagueapp.ui.TeamApiState
 import com.example.premierleagueapp.ui.components.startScreen.TeamsList
-import com.example.premierleagueapp.ui.viewmodels.SoccerViewModel
+import com.example.premierleagueapp.ui.viewmodels.TeamsViewModel
 
 @Composable
 fun StartScreen(
     lazyListState: LazyListState,
     onTeamClick: (teamId: Int) -> Unit,
 ) {
-    val viewModel: SoccerViewModel = viewModel(factory = SoccerViewModel.Factory)
+    val viewModel: TeamsViewModel = viewModel(factory = TeamsViewModel.Factory)
     val teamApiState = viewModel.teamApiState
 
     when (teamApiState) {

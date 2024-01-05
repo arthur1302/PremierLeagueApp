@@ -6,7 +6,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
@@ -14,78 +13,24 @@ import com.example.premierleagueapp.SoccerApplication
 import com.example.premierleagueapp.data.SoccerRepository
 import com.example.premierleagueapp.model.Coach
 import com.example.premierleagueapp.model.Match
-import com.example.premierleagueapp.model.Table
 import com.example.premierleagueapp.model.Team
 import com.example.premierleagueapp.ui.MatchApiState
-import com.example.premierleagueapp.ui.TableApiState
 import com.example.premierleagueapp.ui.TeamApiDetailState
-import com.example.premierleagueapp.ui.TeamApiState
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class SoccerViewModel(
-    private val soccerRepository: SoccerRepository,
-) : ViewModel() {
-
-    var teamApiState: TeamApiState by mutableStateOf(TeamApiState.Loading)
-        private set
-
+class TeamDetailsViewModel(private val soccerRepository: SoccerRepository) : ViewModel() {
     var teamApiDetailState: TeamApiDetailState by mutableStateOf(TeamApiDetailState.Loading)
         private set
 
     var matchApiState: MatchApiState by mutableStateOf(MatchApiState.Loading)
         private set
 
-    var tableApiState: TableApiState by mutableStateOf(TableApiState.Loading)
-        private set
-
-    lateinit var uiListState: StateFlow<List<Team>>
-
     lateinit var uiTeamState: StateFlow<Team?>
-
     lateinit var uiMatchListState: StateFlow<List<Match>>
 
-    lateinit var uiTableState: StateFlow<List<Table>>
-    init {
-        getRepoTeams()
-        getRepoStandings()
-    }
-
-    private fun getRepoTeams() {
-        try {
-            viewModelScope.launch {
-                uiListState = soccerRepository.getTeams()
-                    .stateIn(
-                        scope = viewModelScope,
-                        started = SharingStarted.WhileSubscribed(5_000L),
-                        initialValue = listOf(),
-                    )
-                teamApiState = TeamApiState.Success
-            }
-        } catch (e: Exception) {
-            teamApiState = TeamApiState.Error
-            Log.e("Error: ", e.message, e)
-        }
-    }
-
-    private fun getRepoStandings() {
-        try {
-            viewModelScope.launch {
-                uiTableState = soccerRepository.getStandings()
-                    .stateIn(
-                        scope = viewModelScope,
-                        started = SharingStarted.WhileSubscribed(5_000L),
-                        initialValue = listOf(),
-                    )
-                tableApiState = TableApiState.Success
-            }
-        } catch (e: Exception) {
-            tableApiState = TableApiState.Error
-            Log.e("Error: ", e.message, e)
-        }
-    }
     fun getSingleTeam(teamId: Int) {
         try {
             uiTeamState = soccerRepository.getSingleTeam(teamId)
@@ -121,9 +66,9 @@ class SoccerViewModel(
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
-                val application = this[APPLICATION_KEY] as SoccerApplication
+                val application = this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as SoccerApplication
                 val soccerRepository = application.container.soccerRepository
-                SoccerViewModel(soccerRepository)
+                TeamDetailsViewModel(soccerRepository)
             }
         }
     }

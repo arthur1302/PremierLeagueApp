@@ -11,12 +11,13 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.premierleagueapp.R
 import com.example.premierleagueapp.ui.MatchApiState
-import com.example.premierleagueapp.ui.viewmodels.SoccerViewModel
+import com.example.premierleagueapp.ui.viewmodels.TeamDetailsViewModel
 import dev.chrisbanes.snapper.ExperimentalSnapperApi
 import dev.chrisbanes.snapper.rememberSnapperFlingBehavior
 
@@ -24,7 +25,7 @@ import dev.chrisbanes.snapper.rememberSnapperFlingBehavior
 @Composable
 fun MatchList(
     matchApiState: MatchApiState,
-    viewModel: SoccerViewModel,
+    viewModel: TeamDetailsViewModel,
 ) {
     when (matchApiState) {
         is MatchApiState.Success -> {
@@ -38,6 +39,7 @@ fun MatchList(
                 contentPadding = PaddingValues(horizontal = 8.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 state = lazyListState,
+                verticalAlignment = Alignment.CenterVertically,
                 flingBehavior = rememberSnapperFlingBehavior(lazyListState),
             ) {
                 items(matches) { match ->

@@ -3,7 +3,6 @@
 package com.example.premierleagueapp.ui
 
 import com.example.premierleagueapp.fake.FakeApiSoccerRepository
-import com.example.premierleagueapp.ui.viewmodels.SoccerViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestDispatcher

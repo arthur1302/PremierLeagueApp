@@ -2,7 +2,6 @@ package com.example.premierleagueapp.ui.screens
 
 import android.content.res.Configuration
 import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -29,11 +28,11 @@ import com.example.premierleagueapp.ui.components.detailScreen.MatchList
 import com.example.premierleagueapp.ui.components.detailScreen.SquadList
 import com.example.premierleagueapp.ui.components.detailScreen.TeamDetails
 import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
-import com.example.premierleagueapp.ui.viewmodels.SoccerViewModel
+import com.example.premierleagueapp.ui.viewmodels.TeamDetailsViewModel
 
 @Composable
 fun DetailScreen(teamId: Int) {
-    val viewModel: SoccerViewModel = viewModel(factory = SoccerViewModel.Factory)
+    val viewModel: TeamDetailsViewModel = viewModel(factory = TeamDetailsViewModel.Factory)
     val teamApiDetailState = viewModel.teamApiDetailState
     val matchApiState = viewModel.matchApiState
 
@@ -83,7 +82,7 @@ fun DetailScreen(teamId: Int) {
 
                     Column(
                         modifier = Modifier
-                            .weight(1.5f)
+                            .weight(1.55f)
                             .fillMaxHeight()
                             .padding(2.dp, 8.dp, 2.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
@@ -92,7 +91,7 @@ fun DetailScreen(teamId: Int) {
                     }
                     Column(
                         modifier = Modifier
-                            .weight(0.75f)
+                            .weight(0.70f)
                             .fillMaxHeight()
                             .padding(2.dp, 8.dp, 8.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,

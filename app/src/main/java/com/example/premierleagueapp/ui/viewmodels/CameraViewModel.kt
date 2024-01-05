@@ -1,4 +1,4 @@
-package com.example.premierleagueapp.ui.screens
+package com.example.premierleagueapp.ui.viewmodels
 
 import android.Manifest
 import android.os.Build
