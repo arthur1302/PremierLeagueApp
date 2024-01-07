@@ -22,11 +22,14 @@ This package contains all entities for the database
 #Package com.example.premierleagueapp.model
 This package contains all models
 
-#Package com.example.premierleagueapp.apiResponses
+#Package com.example.premierleagueapp.model.apiResponses
 This package contains all apiResponses
 
 #Package com.example.premierleagueapp.network
-This package contains everything for the API calls
+This package contains everything for the API calls and connectivity
+
+#Package com.example.premierleagueapp.network.connectivity
+This package contains all files for the connection status of the application
 
 #Package com.example.premierleagueapp.ui
 This package contains everything for the UI
@@ -64,13 +67,16 @@ This package contains all components that are used in the whole application
 #Package com.example.premierleagueapp.ui.components.helpers
 This package contains helpers used in the project
 
+#Package com.example.premierleagueapp.ui.components.offlineScreen
+This package contains all the components used for the offline page
+
 #Package com.example.premierleagueapp.ui.components.rankingScreen
 This package contains all the components used for the ranking page
 
 #Package com.example.premierleagueapp.ui.components.startScreen
 This package contains all the components used for the home page
 
-#Package com.example.premierleagueapp.ui.screen
+#Package com.example.premierleagueapp.ui.screens
 This package contains all the screen files
 
 #Package com.example.premierleagueapp.ui.theme
@@ -78,4 +84,3 @@ This package contains all the files used for the applications theme
 
 #Package com.example.premierleagueapp.ui.viewmodels
 This package contains all the viewmodels used in the application
-
