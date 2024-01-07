@@ -32,7 +32,6 @@ import com.example.premierleagueapp.ui.components.helpers.imageHandler
  *
  * @param player represents the specific [Player] for whom we want to make a card
  * @param crest represents the crest of the team for which the player is playing
- *
  */
 @Composable
 fun PlayerCard(player: Player, crest: String) {

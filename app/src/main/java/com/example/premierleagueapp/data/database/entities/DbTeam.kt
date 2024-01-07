@@ -10,7 +10,6 @@ import com.example.premierleagueapp.model.Team
  * Entity to create a table for teams
  *
  * @author Arthur Haus
- *
  */
 @Entity(tableName = "teams")
 data class DbTeam(

@@ -7,7 +7,6 @@ import com.example.premierleagueapp.model.Coach
  * Converter for a Coach item
  *
  * @author Arthur Haus
- *
  */
 class CoachConverter {
     @TypeConverter

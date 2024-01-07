@@ -18,7 +18,6 @@ import com.example.premierleagueapp.data.database.entities.DbTeam
  * Creation of a database
  *
  * @author Arthur Haus
- *
  */
 @Database(entities = [DbTeam::class, DbMatch::class, DbTable::class], version = 1, exportSchema = false)
 @TypeConverters(CoachConverter::class, PlayerListConverter::class, TeamConverter::class, CompetitionConverter::class)

@@ -15,7 +15,6 @@ import com.example.premierleagueapp.model.Player
  *
  * @param squad represents a list of [Player]
  * @param crest represent the crest of the team of this specific squad
- *
  */
 @Composable
 fun SquadList(squad: List<Player>?, crest: String?) {

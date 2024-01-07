@@ -1,4 +1,4 @@
-package com.example.premierleagueapp.ui.components.noConnectivityScreen
+package com.example.premierleagueapp.ui.components.offlineScreen
 
 import android.content.Intent
 import android.provider.Settings.ACTION_WIFI_SETTINGS
@@ -25,7 +25,7 @@ import com.example.premierleagueapp.R
  * @author Arthur Haus
  */
 @Composable
-fun NoConnectivityContent() {
+fun OfflineContent() {
     val painter: Painter = rememberImagePainter(R.drawable.offline)
     val context = LocalContext.current
     Column(
@@ -40,7 +40,7 @@ fun NoConnectivityContent() {
             val i = Intent(ACTION_WIFI_SETTINGS)
             context.startActivity(i)
         }, modifier = Modifier.padding(8.dp)) {
-            Text(text = "Wifi Settings")
+            Text(stringResource(R.string.offline_button))
         }
     }
 }

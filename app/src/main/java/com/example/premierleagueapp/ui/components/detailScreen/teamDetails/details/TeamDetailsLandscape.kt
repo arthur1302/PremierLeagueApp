@@ -19,7 +19,6 @@ import com.example.premierleagueapp.model.Team
  * @author Arthur Haus
  *
  * @param team [Team]
- *
  */
 @Composable
 fun TeamDetailsLandscape(team: Team?) {

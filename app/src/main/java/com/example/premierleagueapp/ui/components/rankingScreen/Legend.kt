@@ -14,7 +14,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.premierleagueapp.R
 
 /**
  * Composable for the legend used in the ranking
@@ -36,7 +38,7 @@ fun Legend() {
                     .padding(8.dp),
             )
             Spacer(modifier = Modifier.width(12.dp))
-            Text("Champions League", style = MaterialTheme.typography.bodyLarge)
+            Text(stringResource(R.string.champions_league), style = MaterialTheme.typography.bodyLarge)
         }
         Row(Modifier.padding(bottom = 8.dp)) {
             Box(
@@ -46,7 +48,7 @@ fun Legend() {
                     .padding(8.dp),
             )
             Spacer(modifier = Modifier.width(12.dp))
-            Text("Europa League", style = MaterialTheme.typography.bodyLarge)
+            Text(stringResource(R.string.europa_league), style = MaterialTheme.typography.bodyLarge)
         }
         Row(Modifier.padding(bottom = 8.dp)) {
             Box(
@@ -56,7 +58,7 @@ fun Legend() {
                     .padding(8.dp),
             )
             Spacer(modifier = Modifier.width(12.dp))
-            Text("Mid-table", style = MaterialTheme.typography.bodyLarge)
+            Text(stringResource(R.string.mid_table), style = MaterialTheme.typography.bodyLarge)
         }
         Row {
             Box(
@@ -66,7 +68,7 @@ fun Legend() {
                     .padding(8.dp),
             )
             Spacer(modifier = Modifier.width(12.dp))
-            Text("Degradation", style = MaterialTheme.typography.bodyLarge)
+            Text(stringResource(R.string.degradation_zone), style = MaterialTheme.typography.bodyLarge)
         }
     }
 }

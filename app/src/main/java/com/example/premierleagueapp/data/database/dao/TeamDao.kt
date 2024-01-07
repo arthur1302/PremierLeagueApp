@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
  * Dao for teams
  *
  * @author Arthur Haus
- *
  */
 @Dao
 interface TeamDao {

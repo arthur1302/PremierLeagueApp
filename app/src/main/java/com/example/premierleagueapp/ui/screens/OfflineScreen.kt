@@ -1,7 +1,7 @@
 package com.example.premierleagueapp.ui.screens
 
 import androidx.compose.runtime.Composable
-import com.example.premierleagueapp.ui.components.noConnectivityScreen.NoConnectivityContent
+import com.example.premierleagueapp.ui.components.offlineScreen.OfflineContent
 
 /**
  * Composable for the screen that will be shown if there is no connection available
@@ -9,6 +9,6 @@ import com.example.premierleagueapp.ui.components.noConnectivityScreen.NoConnect
  * @author Arthur Haus
  */
 @Composable
-fun NoConnectivityScreen() {
-    NoConnectivityContent()
+fun OfflineScreen() {
+    OfflineContent()
 }

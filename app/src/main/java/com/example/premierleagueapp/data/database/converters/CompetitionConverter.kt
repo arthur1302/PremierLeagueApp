@@ -9,7 +9,6 @@ import com.google.gson.reflect.TypeToken
  * Converter for a Competition item
  *
  * @author Arthur Haus
- *
  */
 class CompetitionConverter {
     private val gson = Gson()

@@ -32,9 +32,17 @@
     <!-- Contact Page -->
     <string name="contact_paragraph1">If you have any questions or would like to get in touch, you can reach me via the email address below:</string>
 
-    <!-- No Connectivity Page -->
+    <!-- Ranking Page -->
+    <string name="champions_league">Champions League</string>
+    <string name="europa_league">Europa League</string>
+    <string name="mid_table">Mid-table</string>
+    <string name="degradation_zone">Degradation zone</string>
+
+
+    <!-- Offline Page -->
     <string name="offline_paragraph1">You are not connected to the internet</string>
     <string name="offline_paragraph2">Please check your connection</string>
+    <string name="offline_button">Wifi Settings</string>
 
     <!-- Mail values -->
     <string name="mail_address">arthur.haus@student.hogent.be</string>
@@ -44,14 +52,14 @@
     <string name="error_fetching_matches">Error while fetching matches.</string>
     <string name="error_fetching_team">Error while fetching team.</string>
     <string name="error_fetching_teams">Error while fetching teams.</string>
-    <string name="id_value_null">There was a problem fetching the teamId...</string>
+    <string name="id_value_null">There was a problem fetching the teamId…</string>
     <string name="invalid_date">Invalid date</string>
     <string name="no_email_client_found">No email client found</string>
 
     <!-- Loaders -->
-    <string name="loading_matches">Loading matches...</string>
-    <string name="loading_team">Loading team...</string>
-    <string name="loading_teams">Loading teams...</string>
+    <string name="loading_matches">Loading matches…</string>
+    <string name="loading_team">Loading team…</string>
+    <string name="loading_teams">Loading teams…</string>
 
     <!-- Player Card -->
     <string name="goalkeeper_abrv">GK</string>

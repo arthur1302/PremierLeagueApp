@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
  * Dao for tables
  *
  * @author Arthur Haus
- *
  */
 @Dao
 interface TableDao {

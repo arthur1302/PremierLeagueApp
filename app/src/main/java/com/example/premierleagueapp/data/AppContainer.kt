@@ -14,7 +14,6 @@ import retrofit2.converter.gson.GsonConverterFactory
  * App container that creates the API connection
  *
  * @author Arthur Haus
- *
  */
 interface AppContainer {
     val soccerRepository: SoccerRepository

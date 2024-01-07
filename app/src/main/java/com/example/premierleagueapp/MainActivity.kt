@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import com.example.premierleagueapp.network.conectivity.ConnectionStatus
 import com.example.premierleagueapp.network.conectivity.connectivityStatus
 import com.example.premierleagueapp.ui.PremierLeagueApp
-import com.example.premierleagueapp.ui.screens.NoConnectivityScreen
+import com.example.premierleagueapp.ui.screens.OfflineScreen
 import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
 
 /**
@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
                     if (isConnected) {
                         PremierLeagueApp()
                     } else {
-                        NoConnectivityScreen()
+                        OfflineScreen()
                     }
                 }
             }

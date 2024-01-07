@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
  * Dao for matches
  *
  * @author Arthur Haus
- *
  */
 @Dao
 interface MatchDao {

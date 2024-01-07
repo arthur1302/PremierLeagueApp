@@ -10,7 +10,6 @@ import com.example.premierleagueapp.model.Team
  * Entity to create a table for matches
  *
  * @author Arthur Haus
- *
  */
 @Entity(tableName = "matches")
 data class DbMatch(

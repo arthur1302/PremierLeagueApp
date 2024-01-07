@@ -9,7 +9,6 @@ import com.google.gson.reflect.TypeToken
  * Converter for a PlayerList
  *
  * @author Arthur Haus
- *
  */
 class PlayerListConverter {
     @TypeConverter

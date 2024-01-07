@@ -9,7 +9,6 @@ import com.example.premierleagueapp.model.Team
  * Entity to create a table for standings
  *
  * @author Arthur Haus
- *
  */
 @Entity(tableName = "standings")
 data class DbTable(

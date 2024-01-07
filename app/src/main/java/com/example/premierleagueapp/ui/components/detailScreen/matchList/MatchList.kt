@@ -28,7 +28,6 @@ import dev.chrisbanes.snapper.rememberSnapperFlingBehavior
  *
  * @param matchApiState gets an apiState of the viewmodel
  * @param viewModel gets an instance of the [TeamDetailsViewModel]
- *
  */
 @OptIn(ExperimentalSnapperApi::class)
 @Composable

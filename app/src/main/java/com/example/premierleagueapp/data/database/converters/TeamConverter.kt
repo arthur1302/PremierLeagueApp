@@ -9,7 +9,6 @@ import com.google.gson.reflect.TypeToken
  * Converter for a Team item
  *
  * @author Arthur Haus
- *
  */
 class TeamConverter {
     private val gson = Gson()
