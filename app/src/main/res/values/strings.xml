@@ -22,6 +22,7 @@
     <!-- Test tags -->
     <string name="about_content">About Content</string>
     <string name="contact_content">Contact Content</string>
+    <string name="no_connection_content">No Connection Content</string>
 
     <!-- About page -->
     <string name="about_paragraph1">Hello, I\'m Arthur Haus, a final-year student in Applied Computer Science at HoGent.</string>
@@ -30,6 +31,10 @@
 
     <!-- Contact Page -->
     <string name="contact_paragraph1">If you have any questions or would like to get in touch, you can reach me via the email address below:</string>
+
+    <!-- No Connectivity Page -->
+    <string name="offline_paragraph1">You are not connected to the internet</string>
+    <string name="offline_paragraph2">Please check your connection</string>
 
     <!-- Mail values -->
     <string name="mail_address">arthur.haus@student.hogent.be</string>

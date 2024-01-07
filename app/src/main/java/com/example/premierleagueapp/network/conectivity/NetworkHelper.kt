@@ -1,4 +1,4 @@
-package com.example.premierleagueapp.network
+package com.example.premierleagueapp.network.conectivity
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -15,6 +15,12 @@ val Context.currentConnectivityStatus: ConnectionStatus
         return getCurrentConnectivityStatus(connectivityManager)
     }
 
+/**
+ * Function that returns a connection status
+ *
+ * @param connectivityManager [ConnectivityManager]
+ * @return [ConnectionStatus]
+ */
 private fun getCurrentConnectivityStatus(
     connectivityManager: ConnectivityManager,
 ): ConnectionStatus {
@@ -31,6 +37,9 @@ private fun getCurrentConnectivityStatus(
     }
 }
 
+/**
+ * Function that creates an observer to intercept changes from the connectivity status
+ */
 fun Context.observeConnectivityAsFlow() = callbackFlow {
     val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
@@ -53,6 +62,12 @@ fun Context.observeConnectivityAsFlow() = callbackFlow {
     }
 }
 
+/**
+ * Function that overrides the status value
+ *
+ * @param callback [Unit]
+ * @return [ConnectivityManager.NetworkCallback]
+ */
 fun NetworkCallback(callback: (ConnectionStatus) -> Unit): ConnectivityManager.NetworkCallback {
     return object : ConnectivityManager.NetworkCallback() {
         override fun onAvailable(network: Network) {

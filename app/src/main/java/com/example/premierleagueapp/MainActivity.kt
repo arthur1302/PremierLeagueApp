@@ -6,12 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import com.example.premierleagueapp.network.ConnectionStatus
-import com.example.premierleagueapp.network.connectivityStatus
+import com.example.premierleagueapp.network.conectivity.ConnectionStatus
+import com.example.premierleagueapp.network.conectivity.connectivityStatus
 import com.example.premierleagueapp.ui.PremierLeagueApp
+import com.example.premierleagueapp.ui.screens.NoConnectivityScreen
 import com.example.premierleagueapp.ui.theme.PremierLeagueAppTheme
 
 /**
@@ -33,8 +33,7 @@ class MainActivity : ComponentActivity() {
                     if (isConnected) {
                         PremierLeagueApp()
                     } else {
-                        Text("You are not connected to the internet.")
-                        Text("Please check your connections.")
+                        NoConnectivityScreen()
                     }
                 }
             }
